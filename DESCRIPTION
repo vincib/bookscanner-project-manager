@@ -1,0 +1,39 @@
+Book Scanner Project Manager : 
+
+Each project is a folder with the following : 
+
+- status: a simple text file saying where we are. 
+  - TOSCAN : project created, need scanning
+  - SCANNING : scanning in progress
+  - TOCHECK : scanning finished, need picture checking
+  - CHECKING : picture checking in progress
+  - TOCROP : checking finished, need cropping 
+  - CROPPING : cropping process started
+  - PDFOK : Image PDF generated
+
+- ocr: a simple text file saying where we are in the OCR process
+  - TODO : OCR not done, but Image PDF is ready
+  - OCRING : OCR in progress, 
+  - CHECKING : OCR done, need proofreading, (see OCR checking documentation for more info on ocr proofreading process)
+  - CHECKED : OCR done, and proofread, text version ready.
+
+- meta.json : a json object containing all the metadata of the book. Standard metadata includes:
+  - title : the title of the book, as printed on the cover page
+  - author : the list of book's authors, as an array of strings (or a string for single-author books)
+  - ean13 : the isbn or ean13 of the book, most of the time starting by 978...
+  - openlibrary : the url of this book in the open library
+  - editor : the name of the editor of this book
+  - date : the publication date (of this version of the book) expressed as an ISO date: can be yyyy or yyyy-mm or yyyy-mm-dd
+  - scandate : the current date when scanning the book (yyyy-mm-dd)
+  - rights : "public domain" or "" 
+
+
+- left : a folder containing the original untouched JPG files from the LEFT camera
+- right : a folder containing the original untouched JPG files from the RIGHT camera
+- processed : the rotated, cropped images, ready to create the Image PDF.
+- temp : a temporary folder that can be deleted anytime (but you are not advised to ;) ) : will contains the cropped version of the image files for blur check 
+- crop.json : a json array containing the crop to apply to each picture. Each original filename is a key, and the values are left top right bottom coordinates in the original picture to crop into.
+- trash : a trash folder for left/right images not kept (duplicates of pages, or badly scanned pictures) (no dumped processed image here, they are deleted)
+- book.pdf : the image-based pdf of the book.
+
+
