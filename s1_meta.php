@@ -8,7 +8,7 @@ if (!isset($_REQUEST["name"])) {
   exit();
 }
 $name=trim(strtolower($_REQUEST["name"]));
-if (!preg_match(PROJECT_PREG,$name)) {
+if (!preg_match(PROJECT_PREG,$name) || !is_dir(PROJECT_ROOT."/".$name)) {
   $error=_("Project name is incorrect");
   require("index.php");
   exit();
@@ -47,7 +47,7 @@ require_once("head.php");
 
 require_once("menu.php");
 
-$c=json_decode(file_get_contents(PROJECT_ROOT."/".$name."/meta.json"));
+$c=json_decode(file_get_contents(PROJECT_ROOT."/".$name."/meta.json"),true);
 foreach($c as $key=>$val) {
   if ($key!="name") {
     $_REQUEST[$key]=$val;

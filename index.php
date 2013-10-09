@@ -29,12 +29,18 @@ while (($c=readdir($d))!=false) {
 closedir($d);
 ?>
 
-<table class="hlist"><tr><th><?php __("Project"); ?></th><th><?php __("Metadata"); ?></th><th><?php __("Status"); ?></th>
+<table class="hlist"><tr><th></th><th><?php __("Project"); ?></th><th><?php __("Metadata"); ?></th><th><?php __("Status"); ?></th>
 <th colspan="4"><?php __("Actions"); ?></th>
 </tr>
 <?php
 foreach($projects as $proj=>$val) {
   echo "<tr>";
+  echo "<td><img src=\"";
+  if (is_file(PROJECT_ROOT."/".$proj."/tmp/cover.jpg")) 
+    echo PROJECT_WWW."/".$proj."/tmp/cover.jpg";
+  else
+    echo "/default_cover.png";
+  echo "\" style=\"height: 80px\"></td>";
   echo "<td>".he($proj)."</td>";
   echo "<td>";  
   foreach($ameta as $k=>$v) {

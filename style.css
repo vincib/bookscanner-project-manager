@@ -108,3 +108,8 @@ table.hlist td, table.hlist th {
     width: 180px;	
 }
 
+.my3col div.span4 {
+    border: 1px solid #CCC;
+    padding: 4px;
+    margin: 2px;
+}

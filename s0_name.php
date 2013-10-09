@@ -26,6 +26,7 @@ if (isset($_POST["name"])) {
       // Name or rename it
       if (isset($_REQUEST["rename"])) {
 	rename( PROJECT_ROOT."/".$rename, PROJECT_ROOT."/".$name );
+	if (is_file(PROJECT_ROOT."/".$name."/status")) touch(PROJECT_ROOT."/".$name."/status");
 	$success=_("Project successfully renamed");
 	require("index.php");
 	exit();
