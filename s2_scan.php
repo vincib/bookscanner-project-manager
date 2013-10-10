@@ -68,17 +68,36 @@ if ($right) {
 
 ?>
 </div>
+
+
+
 <div class="span4">
   <h4><?php __("State of the scanning session"); ?></h4>
-  Camera : 
+<p> 
+<button class="button" type="button" name="search" id="search" onclick="cam_search()" /><?php __("Search for Cameras"); ?></button>
+</p>
+
 <div id="camerastatus" />
 
 </div>
+<script type="text/javascript">
+  $().ready(function() {
+      cam_search()
+    })
+</script>
+	</div>
+
+
 <div class="span4">
   <h4><?php __("Actions"); ?></h4>
-  <button class="button" type="button" name="resetzoom" id="resetzoom" onclick="resetzoom()" /><?php __("Reset Zoom"); ?></button>
-  <button class="button" type="button" name="zoomin" id="zoomin" onclick="zoomin()" /><?php __("Zoom IN"); ?></button>
-  <button class="button" type="button" name="zoomout" id="zoomout" onclick="zoomout()" /><?php __("Zoom OUT"); ?></button>
+<p>
+  <button class="button" type="button" name="resetzoom" id="resetzoom" onclick="cam_resetzoom()" /><?php __("Reset Zoom"); ?></button>
+  <button class="button" type="button" name="zoomin" id="zoomin" onclick="cam_zoomin()" /><?php __("Zoom IN"); ?></button>
+  <button class="button" type="button" name="zoomout" id="zoomout" onclick="cam_zoomout()" /><?php __("Zoom OUT"); ?></button>
+</p>
+<div id="zoomstatus" />
+
+</div>
 </div>
 
 </div>

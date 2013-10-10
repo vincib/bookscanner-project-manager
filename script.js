@@ -1,4 +1,87 @@
 
+function cam_search() {
+    $('#camerastatus').html("<div class=\"alert\">Searching for cameras...</div>");
+      var ret = $.ajax({
+	url:            's2_scan_ajax.php?action=search',
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    // TODO : if ERROR: tell it
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#camerastatus').html(data);
+	  }
+	})
+}
+
+function cam_zoomin() {
+    $('#zoomstatus').html("<div class=\"alert\">Zooming IN...</div>");
+      var ret = $.ajax({
+	url:            's2_scan_ajax.php?action=zoomin',
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    // TODO : if ERROR: tell it
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#zoomstatus').html(data);
+	  }
+	})
+}
+
+
+function cam_zoomout() {
+    $('#zoomstatus').html("<div class=\"alert\">Zooming OUT...</div>");
+      var ret = $.ajax({
+	url:            's2_scan_ajax.php?action=zoomout',
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    // TODO : if ERROR: tell it
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#zoomstatus').html(data);
+	  }
+	})
+}
+
+
+function cam_resetzoom() {
+    $('#zoomstatus').html("<div class=\"alert\">Resetting zoom...</div>");
+      var ret = $.ajax({
+	url:            's2_scan_ajax.php?action=resetzoom',
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    // TODO : if ERROR: tell it
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#zoomstatus').html(data);
+	  }
+	})
+}
+
+
 function help(str) {
     $("#help").html(str);
 }

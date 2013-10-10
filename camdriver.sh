@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script shell triggered by the web page to launch any ptpcam action.
 # ptpcam must be in the current folder
@@ -33,14 +33,14 @@ case $1 in
 	then
 	    echo "No camera found"
 	    echo "Please connect and switch on both camera"
-	    exit 1
+	    exit 2
 	fi
 	WHICH1=$(gphoto2 --port "usb:${CAM1B},${CAM1D}" --get-config /main/settings/ownername|egrep "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
 	if [ -z "$CAM2B" -o -z "$CAM2D" ]
 	then
 	    echo "Only ONE camera found, which is the $WHICH1 one"
 	    echo "Please connect and switch on both camera"
-	    exit 1
+	    exit 3
 	fi
 	WHICH2=$(gphoto2 --port "usb:${CAM2B},${CAM2D}" --get-config /main/settings/ownername|egrep "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
 	tmpfile=/tmp/cam_tmp.sh.$$
@@ -57,7 +57,7 @@ case $1 in
 	    echo "USB_LEFT_DEV=$CAM1D" >>$tmpfile		
 	    else
 		echo "Can't identify camera 1 at bus $CAM1B:$CAM1D, please check"
-		exit 1
+		exit 4
 	    fi
 	fi
 
@@ -72,14 +72,14 @@ case $1 in
 	    echo "USB_LEFT_DEV=$CAM2D" >>$tmpfile		
 	    else
 		echo "Can't identify camera 2 at bus $CAM2B:$CAM2D, please check"
-		exit 1
+		exit 5
 	    fi
 	fi
 
 	if [ "$WHICH1" = "$WHICH2" ]
 	then
 	    echo "Camera 1 and 2 have the same position ! which is $WHICH1, please redo the camera configuration"
-	    exit 1
+	    exit 6
 	fi
 	mv "$tmpfile" "cam.sh"
 	echo "cam.sh successfully created, both camera properly detected"
@@ -91,23 +91,25 @@ case $1 in
 	if [ "$zoom" -gt 120 -o "$zoom" -lt 0 ]
 	then
 	    echo "Zoom must be between 0 and 120"
-	    exit 1
+	    exit 7
 	fi
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua set_zoom($zoom)" &
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua set_zoom($zoom)" &
-	while [ "`jobs -p`" ]
-	do
-	    sleep 1  # todo : timeout at 10 ?
-	done
+	# TODO : get back both $? and check it's 0
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua set_zoom($zoom)" 
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua set_zoom($zoom)" 
+#	while [ "`jobs -p`" ]
+#	do
+#	    sleep 1  # todo : timeout at 10 ?
+#	done
 	;;
 
     shoot)
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua press_full('shoot')" &
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua press_full('shoot')" &
-	while [ "`jobs -p`" ]
-	do
-	    sleep 1  # todo : timeout at 10 ?
-	done
+	# TODO : get back both $? and check it's 0
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua press_full('shoot')" 
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua press_full('shoot')" 
+#	while [ "`jobs -p`" ]
+#	do
+#	    sleep 1  # todo : timeout at 10 ?
+#	done
 	
 	;;
 esac
