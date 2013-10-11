@@ -2,13 +2,13 @@
 
 // Steps of the project (in "status" file as a simple string)
 $asteps=array(
-	      "TOSCAN" => "project created, need scanning",
-	      "SCANNING" => "scanning in progress",
-	      "TOCHECK" => "scanning finished, need picture checking",
-	      "CHECKING" => "picture checking in progress",
-	      "TOCROP" => "checking finished, need cropping ",
-	      "CROPPING" => "cropping process started",
-	      "PDFOK" => "Image PDF generated",
+	      "TOSCAN" => _("project created, need scanning"),
+	      "SCANNING" => _("scanning in progress"),
+	      "TOCHECK" => _("scanning finished, need picture checking"),
+	      "CHECKING" => _("picture checking in progress"),
+	      "TOCROP" => _("checking finished, need cropping "),
+	      "CROPPING" => _("cropping process started"),
+	      "PDFOK" => _("Image PDF generated"),
 	      );
 
 define("TYPE_SINGLE",0);

@@ -91,10 +91,10 @@ foreach($c as $key=>$val) {
   echo "</div>";
   break;
   case TYPE_DATE:
-  echo "<input type=\"text\" name=\"$key\" id=\"$key\" value=\"".he($_REQUEST[$key])."\"  onfocus=\"help('".addslashes($attribs[1])."')\" class=\"fmetadate\" /> (yyyy or yyyy-mm or yyyy-mm-dd)";
+  echo "<input type=\"text\" name=\"$key\" id=\"$key\" value=\"".he($_REQUEST[$key])."\"  onfocus=\"help('".addslashes($attribs[1])."')\" class=\"fmetadate\" /> "._("(yyyy or yyyy-mm or yyyy-mm-dd)");
   break;
   case TYPE_EAN13:
-  echo "<input type=\"text\" name=\"$key\" id=\"$key\" value=\"".he($_REQUEST[$key])."\"  onfocus=\"help('".addslashes($attribs[1])."')\" class=\"fmetaean\" /> (barcode, often starting by 978, no '-')";
+  echo "<input type=\"text\" name=\"$key\" id=\"$key\" value=\"".he($_REQUEST[$key])."\"  onfocus=\"help('".addslashes($attribs[1])."')\" class=\"fmetaean\" /> "._("(barcode, often starting by 978, no '-')");
   break;
   } 
 ?>

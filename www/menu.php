@@ -6,9 +6,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
 <?php
-	 $amenu["index.php"] = "Accueil";
-$amenu["s0_name.php"] = "Nouveau Projet";
-  //  $amenu["nav.php"] = "Naviguer";
+$amenu["index.php"] = _("Project List");
+$amenu["s0_name.php"] = _("New Project");
 
 foreach($amenu as $link => $menu) {
   if (substr($_SERVER["REQUEST_URI"],1,strlen($link))==$link) 
@@ -27,7 +26,7 @@ foreach($amenu as $link => $menu) {
 
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>Bookscanner Manager</h1>
-  <p class="lead">Industrializing the book scanning process</p>
+  <h1><?php __("Bookscanner Manager"); ?></h1>
+  <p class="lead"><?php __("Industrializing the book scanning process"); ?></p>
   </div>
 </header>

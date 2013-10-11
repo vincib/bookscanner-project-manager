@@ -46,7 +46,7 @@ while (($c=readdir($d))!==false) {
   if (filemtime(PROJECT_ROOT."/".$name."/left/".$c)>$lastLeft) $lastLeftFile=$c;
 }
 closedir($d);
-$d=opendir(PROJECT_ROOT."/".$name."right");
+$d=opendir(PROJECT_ROOT."/".$name."/right");
 while (($c=readdir($d))!==false) {
   if (is_file(PROJECT_ROOT."/".$name."/right/".$c)) $right++;
   if (filemtime(PROJECT_ROOT."/".$name."/right/".$c)>$lastRight) $lastRightFile=$c;
@@ -89,7 +89,7 @@ if ($right) {
 
 
 <div class="span4">
-  <h4><?php __("Actions"); ?></h4>
+   <h4><?php __("Actions"); ?></h4>
 <p>
   <button class="button" type="button" name="resetzoom" id="resetzoom" onclick="cam_resetzoom()" /><?php __("Reset Zoom"); ?></button>
   <button class="button" type="button" name="zoomin" id="zoomin" onclick="cam_zoomin()" /><?php __("Zoom IN"); ?></button>

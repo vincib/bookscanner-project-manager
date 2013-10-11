@@ -58,9 +58,9 @@ if (isset($_REQUEST["rename"])) {
 
 <?php 
   if ($isrename) 
-    echo "<h2>Renaming project '".he($_REQUEST["rename"])."'</h2>";
+    echo "<h2>".sprintf(_("Renaming project '%s'"),he($_REQUEST["rename"]))."</h2>";
   else 
-    echo "<h2>New Book scanning project</h2>";
+    echo "<h2>"._("New Book scanning project")."</h2>";
 ?>
 
 <form method="post" action="s0_name.php">

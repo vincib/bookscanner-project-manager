@@ -100,6 +100,9 @@ case $1 in
 #	do
 #	    sleep 1  # todo : timeout at 10 ?
 #	done
+# -- in case of error --
+#       echo "Can't zoom, an error occurred while sending command to a camera"
+#       exit 8
 	;;
 
     shoot)
@@ -110,6 +113,10 @@ case $1 in
 #	do
 #	    sleep 1  # todo : timeout at 10 ?
 #	done
+# -- in case of error --
+#       echo "Can't shoot, an error occurred while sending command to a camera"
+#       exit 9
 	
 	;;
 esac
+
