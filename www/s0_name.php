@@ -51,6 +51,9 @@ if (isset($_REQUEST["rename"])) {
   $_REQUEST["name"]=$_REQUEST["rename"];
 }
 
+$name=$_REQUEST["rename"];
+require_once("menu2.php");
+
 ?>
 
   <div class="container">

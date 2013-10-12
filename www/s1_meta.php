@@ -54,6 +54,7 @@ foreach($c as $key=>$val) {
   }
 }
 
+require_once("menu2.php");
 ?>
 
   <div class="container">

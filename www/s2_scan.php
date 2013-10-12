@@ -20,7 +20,9 @@ require_once("menu.php");
 
 $meta=json_decode(file_get_contents(PROJECT_ROOT."/".$name."/meta.json"),true);
 
+require_once("menu2.php");
 ?>
+
 
   <div class="container">
 <?php require_once("labels.php"); ?>
@@ -59,11 +61,11 @@ printf(_("%s right pictures present")."<br />",$right);
 echo "</p>\n";
 
 if ($left) {
-  echo "<a href=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" style=\"width: 100px;\" title=\""._("Last LEFT picture, click to see it")."\">";
+  echo "<a href=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" style=\"width: 100px;\" title=\""._("Last LEFT picture, click to see it")."\">&nbsp;";
 }
 
 if ($right) {
-  echo "<a href=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" style=\"width: 100px;\" title=\""._("Last RIGHT picture, click to see it")."\">";
+  echo "<a href=\"".PROJECT_WWW."/".$name."/right/".$lastRightFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/right/".$lastRightFile."\" style=\"width: 100px;\" title=\""._("Last RIGHT picture, click to see it")."\">";
 }
 
 ?>
