@@ -113,3 +113,16 @@ table.hlist td, table.hlist th {
     padding: 4px;
     margin: 2px;
 }
+
+.cropscroll {
+    height: 600px;
+    overflow-y:auto;
+}
+.cropscroll ul {
+     list-style-type:none;
+    white-space:nowrap;
+}
+.cropscroll ul li {
+    display: block;
+    padding-bottom: 4px;
+}

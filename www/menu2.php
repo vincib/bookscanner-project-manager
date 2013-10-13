@@ -6,6 +6,8 @@
 	      _("Rename")=>"s0_name.php?rename=",
 	      _("Metadata")=>"s1_meta.php?name=",
 	      _("Scan")=>"s2_scan.php?name=",
+	      _("Crop Left")=>"s3_crop_left.php?name=",
+	      _("Crop Right")=>"s3_crop_right.php?name=",
 	      _("Check")=>"s3_check.php?name=",
 	      );
 foreach($asub as $n=>$l) {

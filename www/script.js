@@ -1,4 +1,5 @@
 
+
 function cam_search() {
     $('#camerastatus').html("<div class=\"alert\">Searching for cameras...</div>");
       var ret = $.ajax({
