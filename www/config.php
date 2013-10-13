@@ -3,6 +3,7 @@
 header("Content-Type: text/html; charset=UTF-8");
 
 require_once("functions.php");
+require_once("lang_env.php");
 require_once("bsm.php");
 
 // Path where the projects will be stored (in the filesystem)

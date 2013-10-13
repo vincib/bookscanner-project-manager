@@ -1,1 +1,2 @@
-config.php
+www/config.php
+www/locales/*/LC_MESSAGES/*.mo

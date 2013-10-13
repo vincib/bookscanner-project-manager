@@ -1,4 +1,4 @@
-all: messages.pot fr_FR/LC_MESSAGES/messages.po
+all: messages.pot fr_FR/LC_MESSAGES/messages.mo
 
 messages.pot: ../*.php
 	[ -r $@ ] || touch $@
@@ -6,3 +6,7 @@ messages.pot: ../*.php
 
 %/LC_MESSAGES/messages.po: messages.pot
 	msgmerge -v -U $@ $^
+
+fr_FR/LC_MESSAGES/messages.mo: fr_FR/LC_MESSAGES/messages.po
+	msgfmt fr_FR/LC_MESSAGES/messages.po -o fr_FR/LC_MESSAGES/messages.mo
+
