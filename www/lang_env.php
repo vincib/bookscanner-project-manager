@@ -80,7 +80,12 @@ putenv("LC_MESSAGES=".$lang);
 putenv("LANG=".$lang);
 putenv("LANGUAGE=".$lang);
 // this locale MUST be selected in "dpkg-reconfigure locales"
-setlocale(LC_ALL,$lang); 
+if (!setlocale(LC_ALL,$lang)) {
+  if (!setlocale(LC_ALL,$lang.".UTF-8")) {
+    echo "CAN'T SET LOCALES, please reconfigure your locales to include $lang or ${lang}.UTF-8"; 
+    exit();
+  }
+}
 textdomain("messages");
 
 $empty="";
