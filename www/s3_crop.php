@@ -63,11 +63,110 @@ require_once("menu2.php");
 // select an image for cropping
 function crop(i) {
     $('#croppingarea').html('<img src="<?php echo PROJECT_WWW."/".$name."/temp/".$mode."/"; ?>'+i+'" alt="'+i+'" id="croppingimage"/>');
+    $('#filename').val(i);
 }
 </script>
-<div class="span8" id="croppingarea">
+
+<style type="text/css">
+  #croppingcanvas,  #croppingarea {
+position: absolute;
+left: 0; top: 0;
+width: 600px; height: 576px;
+}
+#croppingarea {
+  z-index: 2;
+  float: left;
+}
+#croppingcanvas {
+  z-index: 3;
+}
+#cropzone {
+position: relative;
+}
+</style>
+<div class="span6" id="cropzone">
+
+<div id="croppingarea"></div>
+<canvas id="croppingcanvas" width="600px" height="576px" style="width: 600px; height: 576px"></canvas>
 
 	</div>
+<script type="text/javascript">
+
+  $("#croppingcanvas").click(function(e){
+
+      if ($("#relx1").val() && $("#relx2").val()) {
+	// clear everything
+	$("#relx1").val(""); $("#rely1").val("");
+	var context=document.getElementById("croppingcanvas");
+	context.width=context.width;
+      }
+
+      var parentOffset = $(this).offset(); 
+      //or $(this).parent().offset(); if you really just want the current element's offset
+      var relX = e.pageX - parentOffset.left;
+      var relY = e.pageY - parentOffset.top;
+      if ($("#relx1").val()) {
+	me=2;
+      } else {
+	me=1;
+      }
+
+      $("#relx"+me).val(relX);
+      $("#rely"+me).val(relY);
+      var context=document.getElementById("croppingcanvas").getContext("2d");
+      context.moveTo(relX-10, relY);
+      context.lineTo(relX+10, relY);
+      context.moveTo(relX, relY-10);
+      context.lineTo(relX, relY+10);
+      context.strokeStyle = "#F00";
+      context.stroke();
+
+      if (me==1 && $("#w").val()) {
+	// Automatically draw the rectangle : 
+
+	relX2=relX+parseInt($("#w").val(),10);
+	relY2=relY+parseInt($("#h").val(),10);
+	$("#relx2").val(relX2);
+	$("#rely2").val(relY2);
+	var context=document.getElementById("croppingcanvas").getContext("2d");
+	context.moveTo(relX-10, relY);
+	context.lineTo(relX2, relY);
+	context.moveTo(relX, relY-10);
+	context.lineTo(relX, relY2);
+	context.moveTo(relX2, relY);
+	context.lineTo(relX2, relY2+10);
+	context.moveTo(relX, relY2);
+	context.lineTo(relX2+10, relY2);
+	context.strokeStyle = "#F00";
+	context.stroke();
+	
+      }
+      $('#go').focus();
+    });
+</script>
+<div class="span4" id="formarea">
+  <form method="post" action="s3_crop.php">
+    <table><tr><td><?php __("Filename"); ?></td><td><input type="text" name="filename" id="filename" value=""/></td></tr>
+<tr>
+  <td><?php __("Top X Left"); ?></td>
+  <td><input type="text" class="xy" id="relx1" name="relx1" value="" /> X <input type="text" class="xy" id="rely1" name="rely1" value="" /> <button class="button" name="cleartopleft" id="cleartopleft" type="button" onclick="cleartopleft()" shortcut="t" alt="(Alt-t)"><?php __("Clear"); ?></button></td>
+</tr>
+<tr>
+  <td><?php __("Bottom X Right"); ?></td>
+  <td><input type="text" class="xy" id="relx2" name="relx2" value="" /> X <input type="text" class="xy" id="rely2" name="rely2" value="" /> <button class="button" name="clearbottomright" id="clearbottomright" type="button" onclick="clearbottomright()" shortcut="b" alt="(Alt-b)"><?php __("Clear"); ?></button></td>
+</tr>
+<tr>
+  <td><?php __("Width X Height"); ?></td>
+  <td><input type="text" class="xy" id="w" name="w" value="<?php echo $width; ?>" /> X <input type="text" class="xy" id="h" name="h" value="<?php echo $height; ?>" /> <button class="button" name="clearwidthheight" id="clearwidthheight" type="button" onclick="clearwidthheight()" shortcut="w" alt="(Alt-w)"><?php __("Clear"); ?></button></td>
+</tr>
+<tr><td colspan="2">
+  <input type="submit" id="prev" name="prev" value="<?php __("OK & Previous"); ?>" shortcut="n" alt="(Alt-n)"/>
+  <input type="submit" id="next" name="next" value="<?php __("OK & Next"); ?>" shortcut="p" alt="(Alt-p)"/>
+</td></tr>
+</table>
+</form>
+
+</div>
 
 
 </div>

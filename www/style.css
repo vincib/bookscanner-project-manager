@@ -126,3 +126,7 @@ table.hlist td, table.hlist th {
     display: block;
     padding-bottom: 4px;
 }
+
+.xy {
+    width: 60px;
+}
