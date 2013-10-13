@@ -1,314 +1,372 @@
 # Bookscanner Project Manager 
 # Copyright (C) 2013 Bookscanner.fr Team
 # This file is distributed under the same license as the BookScanner Project Manager package.
-# Benjamin Sonntag <benjamin@sonntag.fr> 2013
+# Benjamin Sonntag <benjamin@sonntag.fr>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2013-10-11 21:41+0200\n"
-"PO-Revision-Date: 2013-10-11 21:41+0200\n"
+"POT-Creation-Date: 2013-10-13 21:31+0200\n"
+"PO-Revision-Date: 2013-10-13 21:38+0200\n"
 "Last-Translator: Benjamin Sonntag <benjamin@sonntag.fr>\n"
-"Language-Team: French <team@bookscanner.fr>\n"
+"Language-Team: français <team@alternc.org>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: bsm.php:5
+#: ../bsm.php:5
 msgid "project created, need scanning"
-msgstr ""
+msgstr "projet créé, à scanner"
 
-#: bsm.php:6
+#: ../bsm.php:6
 msgid "scanning in progress"
-msgstr ""
+msgstr "scan en cours"
 
-#: bsm.php:7
+#: ../bsm.php:7
 msgid "scanning finished, need picture checking"
-msgstr ""
+msgstr "scan terminé, vérification des images requis"
 
-#: bsm.php:8
+#: ../bsm.php:8
 msgid "picture checking in progress"
-msgstr ""
+msgstr "vérification des images en cours"
 
-#: bsm.php:9
+#: ../bsm.php:9
 msgid "checking finished, need cropping "
-msgstr ""
+msgstr "vérification terminée, recadrage requis"
 
-#: bsm.php:10
+#: ../bsm.php:10
 msgid "cropping process started"
-msgstr ""
+msgstr "recadrage commencé"
 
-#: bsm.php:11
+#: ../bsm.php:11
 msgid "Image PDF generated"
-msgstr ""
+msgstr "PDF image généré"
 
-#: bsm.php:21
+#: ../bsm.php:21
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
-#: bsm.php:21
+#: ../bsm.php:21
 msgid "Title of the book"
-msgstr ""
+msgstr "Titre du livre"
 
-#: bsm.php:22
+#: ../bsm.php:22
 msgid "Authors"
-msgstr ""
+msgstr "Auteurs"
 
-#: bsm.php:22
+#: ../bsm.php:22
 msgid "Authors of the book"
-msgstr ""
+msgstr "Auteurs du livre"
 
-#: bsm.php:23
+#: ../bsm.php:23
 msgid "Publisher"
-msgstr ""
+msgstr "Éditeur"
 
-#: bsm.php:23
+#: ../bsm.php:23
 msgid "Publisher of the book"
-msgstr ""
+msgstr "Éditeur du livre"
 
-#: bsm.php:24
+#: ../bsm.php:24
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
-#: bsm.php:24
+#: ../bsm.php:24
 msgid "Date of publication"
-msgstr ""
+msgstr "Date de publication"
 
-#: bsm.php:25
+#: ../bsm.php:25
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
-#: bsm.php:25
+#: ../bsm.php:25
 msgid "ISBN or EAN13 of the book (its barcode)"
-msgstr ""
+msgstr "ISBN ou EAN13 du livre (son code à barres)"
 
-#: camdriver.php:7
+#: ../camdriver.php:7
 msgid "No camera found"
-msgstr ""
+msgstr "Aucun appareil photo de trouvé"
 
-#: camdriver.php:7 camdriver.php:8
+#: ../camdriver.php:7 ../camdriver.php:8
 msgid "Please connect and switch on both camera"
-msgstr ""
+msgstr "Merci de connecter et allumer les 2 appareils photos"
 
-#: camdriver.php:12
+#: ../camdriver.php:12
 msgid "Zoom must be between 0 and 120"
-msgstr ""
+msgstr "Le zoom doit être compris entre 0 et 120"
 
-#: camdriver.php:13
+#: ../camdriver.php:13
 msgid "Can't zoom, an error occurred while sending command to a camera"
 msgstr ""
+"Impossible de zoomer, une erreur est survenue lors de l'envoi de la commande "
+"à l'appareil photo"
 
-#: camdriver.php:14
+#: ../camdriver.php:14
 msgid "Can't shoot, an error occurred while sending command to a camera"
 msgstr ""
+"Impossible de prendre une photo, une erreur est survenue lors de l'envoi "
+"d'une commande à l'appareil photo"
 
-#: head.php:4
+#: ../head.php:4
 msgid "Bookscanner Project Manager"
-msgstr ""
+msgstr "Gestionnaire de projets pour scanner à livre"
 
-#: index.php:14
-msgid "Project list"
-msgstr ""
-
-#: index.php:32 index.php:63
-msgid "Metadata"
-msgstr ""
-
-#: index.php:32
-msgid "Project"
-msgstr ""
-
-#: index.php:32
-msgid "Status"
-msgstr ""
-
-#: index.php:33 s2_scan.php:92
-msgid "Actions"
-msgstr ""
-
-#: index.php:62
-msgid "Rename"
-msgstr ""
-
-#: index.php:64
-msgid "Scan"
-msgstr ""
-
-#: index.php:65
-msgid "Check"
-msgstr ""
-
-#: labels.php:10
-msgid "Success"
-msgstr ""
-
-#: labels.php:11
-msgid "Warning"
-msgstr ""
-
-#: labels.php:12
-msgid "Error"
-msgstr ""
-
-#: labels.php:13
-msgid "Info"
-msgstr ""
-
-#: menu.php:9
+#: ../index.php:14 ../menu.php:9
 msgid "Project List"
-msgstr ""
+msgstr "Liste des projects"
 
-#: menu.php:10
+#: ../index.php:32 ../index.php:63 ../menu2.php:7
+msgid "Metadata"
+msgstr "Metadonnées"
+
+#: ../index.php:32
+msgid "Project"
+msgstr "Projet"
+
+#: ../index.php:32
+msgid "Status"
+msgstr "État"
+
+#: ../index.php:33 ../s2_scan.php:94
+msgid "Actions"
+msgstr "Actions"
+
+#: ../index.php:62 ../menu2.php:6
+msgid "Rename"
+msgstr "Renommer"
+
+#: ../index.php:64 ../menu2.php:8
+msgid "Scan"
+msgstr "Scanner"
+
+#: ../index.php:65 ../menu2.php:11
+msgid "Check"
+msgstr "Vérifier"
+
+#: ../labels.php:10
+msgid "Success"
+msgstr "Succès"
+
+#: ../labels.php:11
+msgid "Warning"
+msgstr "Attention"
+
+#: ../labels.php:12
+msgid "Error"
+msgstr "Erreur"
+
+#: ../labels.php:13
+msgid "Info"
+msgstr "Information"
+
+#: ../menu.php:10
 msgid "New Project"
-msgstr ""
+msgstr "Nouveau projet"
 
-#: menu.php:29
+#: ../menu.php:29
 msgid "Bookscanner Manager"
-msgstr ""
+msgstr "Gestionnaire de scanner à livres"
 
-#: menu.php:30
+#: ../menu.php:30
 msgid "Industrializing the book scanning process"
-msgstr ""
+msgstr "Industrialisation du processus de scan de livres"
 
-#: s0_name.php:8
+#: ../menu2.php:3
+msgid "Project Steps"
+msgstr "Étapes du projet"
+
+#: ../menu2.php:9
+msgid "Crop Left"
+msgstr "Cadrage Gauche"
+
+#: ../menu2.php:10
+msgid "Crop Right"
+msgstr "Cadrage Droite"
+
+#: ../s0_name.php:8
 msgid "Name must contain only a-z 0-9 - , ."
-msgstr ""
+msgstr "Le nom ne peut contenir que a-z 0-9 - , ."
 
-#: s0_name.php:13
+#: ../s0_name.php:13
 msgid "Nothing done, no change requested"
-msgstr ""
+msgstr "Rien n'a été demandé"
 
-#: s0_name.php:18
+#: ../s0_name.php:18
 msgid "BAD OLD NAME, this shall not happen ..."
-msgstr ""
+msgstr "MAUVAIS ANCIEN NOM, cela ne devrait pas arriver ..."
 
-#: s0_name.php:24
+#: ../s0_name.php:24
 msgid "A project with that name already exists, please choose another name"
-msgstr ""
+msgstr "Un projet de ce nom existe déjà, merci de choisir un autre nom"
 
-#: s0_name.php:30
+#: ../s0_name.php:30
 msgid "Project successfully renamed"
-msgstr ""
+msgstr "Projet renommé avec succès"
 
-#: s0_name.php:35
+#: ../s0_name.php:35
 msgid "Project successfully created, please set its metadata"
-msgstr ""
+msgstr "Projet créé avec succès, merci d'entrer ses métadonnées"
 
-#: s0_name.php:61
+#: ../s0_name.php:64
 #, php-format
 msgid "Renaming project '%s'"
-msgstr ""
+msgstr "Renommage du projet '%s'"
 
-#: s0_name.php:63
-msgid "New Book scanning project"
-msgstr ""
+#: ../s0_name.php:66
+msgid "New book scanning project"
+msgstr "Nouveau projet de scan de livre"
 
-#: s0_name.php:71
+#: ../s0_name.php:74
 msgid "Project Name"
-msgstr ""
+msgstr "Nom du projet"
 
-#: s0_name.php:76
+#: ../s0_name.php:79
 msgid "Create this project"
-msgstr ""
+msgstr "Créer ce projet"
 
-#: s0_name.php:76
+#: ../s0_name.php:79
 msgid "Rename this project"
-msgstr ""
+msgstr "Renommer ce projet"
 
-#: s1_meta.php:6 s2_scan.php:6
+#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_crop.php:12
 msgid "Project name missing"
-msgstr ""
+msgstr "Le nom du projet est manquant"
 
-#: s1_meta.php:12 s2_scan.php:12
+#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_crop.php:19
 msgid "Project name is incorrect"
-msgstr ""
+msgstr "Le nom du projet est incorrect"
 
-#: s1_meta.php:38
+#: ../s1_meta.php:38
 #, php-format
 msgid "Metadata for project '%s' successfully edited"
-msgstr ""
+msgstr "Métadonnées du projet '%s' modifiées avec succès"
 
-#: s1_meta.php:40
+#: ../s1_meta.php:40
 #, php-format
 msgid "Metadata for project '%s' not changed: nothing submitted"
-msgstr ""
+msgstr "Métadonnées du projet '%s' non modifiées : aucune donnée reçu"
 
-#: s1_meta.php:64
+#: ../s1_meta.php:65
 #, php-format
 msgid "Editing metadata of project '%s'"
-msgstr ""
+msgstr "Modification des métadonnées du projet '%s'"
 
-#: s1_meta.php:80
+#: ../s1_meta.php:81
 msgid "more..."
-msgstr ""
+msgstr "plus..."
 
-#: s1_meta.php:94
+#: ../s1_meta.php:95
 msgid "(yyyy or yyyy-mm or yyyy-mm-dd)"
-msgstr ""
+msgstr "(aaaa ou aaaa-mm ou aaaa-mm-jj)"
 
-#: s1_meta.php:97
+#: ../s1_meta.php:98
 msgid "(barcode, often starting by 978, no '-')"
-msgstr ""
+msgstr "(code à barres, commence souvent par 978, sans '-')"
 
-#: s1_meta.php:105
+#: ../s1_meta.php:106
 msgid "Save this project's Metadata"
-msgstr ""
+msgstr "Sauver les métadonnées de ce projet"
 
-#: s2_scan.php:28
+#: ../s2_scan.php:30
 #, php-format
 msgid "Scanning project '%s'"
-msgstr ""
+msgstr "Projet de scan '%s'"
 
-#: s2_scan.php:32
+#: ../s2_scan.php:34
 msgid "Current state of the project"
-msgstr ""
+msgstr "État actuel du projet"
 
-#: s2_scan.php:57
+#: ../s2_scan.php:59
 #, php-format
 msgid "%s left pictures present"
-msgstr ""
+msgstr "%s images de gauche actuellement"
 
-#: s2_scan.php:58
+#: ../s2_scan.php:60
 #, php-format
 msgid "%s right pictures present"
-msgstr ""
+msgstr "%s images de droite actuellement"
 
-#: s2_scan.php:62
+#: ../s2_scan.php:64
 msgid "Last LEFT picture, click to see it"
-msgstr ""
+msgstr "dernière image de GAUCHE, cliquez pour la voir"
 
-#: s2_scan.php:66
+#: ../s2_scan.php:68
 msgid "Last RIGHT picture, click to see it"
-msgstr ""
+msgstr "dernière image de DROITE, cliquez pour la voir"
 
-#: s2_scan.php:75
+#: ../s2_scan.php:77
 msgid "State of the scanning session"
-msgstr ""
+msgstr "État de la séance de scan"
 
-#: s2_scan.php:77
+#: ../s2_scan.php:79
 msgid "Search for Cameras"
-msgstr ""
+msgstr "Rechercher les appareils photos"
 
-#: s2_scan.php:94
+#: ../s2_scan.php:96
 msgid "Reset Zoom"
-msgstr ""
+msgstr "Réinitialiser le zoom"
 
-#: s2_scan.php:95
+#: ../s2_scan.php:97
 msgid "Zoom IN"
-msgstr ""
+msgstr "Zoomer"
 
-#: s2_scan.php:96
+#: ../s2_scan.php:98
 msgid "Zoom OUT"
-msgstr ""
+msgstr "Dézoomer"
 
-#: s2_scan_ajax.php:36
+#: ../s2_scan_ajax.php:36
 #, php-format
 msgid "can't zoom in, at %s"
-msgstr ""
+msgstr "impossible de zoomer à '%s'"
 
-#: s2_scan_ajax.php:53
+#: ../s2_scan_ajax.php:53
 #, php-format
 msgid "can't zoom out, at %s"
-msgstr ""
+msgstr "impossible de dézoomer à '%s'"
+
+#: ../s3_crop.php:6
+msgid "Mode is missing"
+msgstr "Le mode manque"
+
+#: ../s3_crop.php:26
+#, php-format
+msgid "Folder %s not found, you should scan pages first"
+msgstr "Dossier %s non trouvé, vous devriez scanner des pages d'abord"
+
+#: ../s3_crop.php:50
+#, php-format
+msgid "Cropping %s pictures for project '%s'"
+msgstr "Recadrage des images %s pour le projet '%s'"
+
+#: ../s3_crop.php:149
+msgid "Filename"
+msgstr "Nom du fichier"
+
+#: ../s3_crop.php:151
+msgid "Top X Left"
+msgstr "Haut X Gauche"
+
+#: ../s3_crop.php:152 ../s3_crop.php:156 ../s3_crop.php:160
+msgid "Clear"
+msgstr "Effacer"
+
+#: ../s3_crop.php:155
+msgid "Bottom X Right"
+msgstr "Bas x Droite"
+
+#: ../s3_crop.php:159
+msgid "Width X Height"
+msgstr "Largeur X Hauteur"
+
+#: ../s3_crop.php:163
+msgid "OK & Previous"
+msgstr "OK & Précédent"
+
+#: ../s3_crop.php:164
+msgid "OK & Next"
+msgstr "OK & Suivant"
+
+#~ msgid "Project list"
+#~ msgstr "Liste des projets"

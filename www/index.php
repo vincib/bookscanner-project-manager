@@ -11,7 +11,7 @@ require_once("menu.php");
   <div class="container">
 <?php require_once("labels.php"); ?>
 
-  <h2><?php __("Project list"); ?></h2>
+  <h2><?php __("Project List"); ?></h2>
 
 <?php
   $d=opendir(PROJECT_ROOT);
