@@ -17,8 +17,9 @@ foreach($amenu as $link => $menu) {
   echo "       <li class=\"".$active."\"><a href=\"".$link."\">".$menu."</a> </li>  \n";
 }		
 ?>
-            </ul>
-          </div>
+            </ul> 
+<div class="pull pull-right" style="padding-top: 8px"><a href="?setlang=en_US">en</a> - <a href="?setlang=fr_FR">fr</a></div>
+         </div>
         </div>
       </div>
     </div>
