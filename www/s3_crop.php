@@ -91,8 +91,12 @@ position: relative;
 
 	</div>
 <script type="text/javascript">
+    $(document).ready(function () {
+	$("#croppingcanvas").click(clickCanvas)
+	  })
 
-  $("#croppingcanvas").click(function(e){
+    /*
+    function(e){ 
 
       if ($("#relx1").val() && $("#relx2").val()) {
 	// clear everything
@@ -143,6 +147,8 @@ position: relative;
       }
       $('#go').focus();
     });
+    */
+
 </script>
 <div class="span4" id="formarea">
   <form method="post" action="s3_crop.php">

@@ -1,4 +1,85 @@
 
+function cleartopleft() {
+    $('#relx1').val("");
+    $('#rely1').val("");
+    redraw()
+}
+function clearbottomright() {
+    $('#relx2').val("");
+    $('#rely2').val("");
+    redraw()
+}
+function clearwidthheight() {
+    $('#w').val("");
+    $('#h').val("");
+    redraw()
+}
+
+function redraw() {
+    var context=document.getElementById("croppingcanvas");
+    context.width=context.width; // CLEAR
+    var relx1=0, relxy1=0, relx2=0, rely2=0, ok=0;
+    var context=document.getElementById("croppingcanvas").getContext("2d");
+    
+    if (
+	$('#relx1').val() && $('#rely1').val()
+    ) {
+	relx1=parseInt($('#relx1').val(),10);
+	rely1=parseInt($('#rely1').val(),10);
+	context.moveTo(relx1-10, rely1);
+	context.lineTo(relx1+10, rely1);
+	context.moveTo(relx1, rely1-10);
+	context.lineTo(relx1, rely1+10);
+	context.strokeStyle = "#F00";
+	context.stroke();
+	ok++;
+    }
+    if (
+	$('#relx2').val() && $('#rely2').val()
+    ) {
+	relx2=parseInt($('#relx2').val(),10);
+	rely2=parseInt($('#rely2').val(),10);
+	context.moveTo(relx2-10, rely2);
+	context.lineTo(relx2+10, rely2);
+	context.moveTo(relx2, rely2-10);
+	context.lineTo(relx2, rely2+10);
+	context.strokeStyle = "#F00";
+	context.stroke();
+	ok++;
+    }
+
+    if (ok==2) {
+	// we have both, draw the rectangle
+	context.moveTo(relx1-10, rely1);
+	context.lineTo(relx2, rely1);
+	context.moveTo(relx1, rely1-10);
+	context.lineTo(relx1, rely2);
+	context.moveTo(relx2, rely1);
+	context.lineTo(relx2, rely2+10);
+	context.moveTo(relx1, rely2);
+	context.lineTo(relx2+10, rely2);
+	context.strokeStyle = "#F00";
+	context.stroke();
+    }
+}
+
+function clickCanvas(e) {
+    var parentOffset = $("#croppingcanvas").offset(); 
+    var relX = e.pageX - parentOffset.left;
+    var relY = e.pageY - parentOffset.top;
+    if (!$('#relx1').val() || !$('#rely1').val()) {
+	$('#relx1').val(relX);
+	$('#rely1').val(relY);
+    } else 
+	if (!$('#relx2').val() || !$('#rely2').val()) {
+	    $('#relx2').val(relX);
+	    $('#rely2').val(relY);
+	} else {
+	    $('#relx1').val(relX);
+	    $('#rely1').val(relY);
+	}
+    redraw();
+}
 
 function cam_search() {
     $('#camerastatus').html("<div class=\"alert\">Searching for cameras...</div>");
@@ -8,7 +89,6 @@ function cam_search() {
 	    cache:          false,
 	    async:           true,
 	    success: function(data) {
-	    // TODO : if ERROR: tell it
 	    if (data.substring(0,6)=="ERROR:") {
 	      data="<div class=\"alert alert-error\">"+data+"</div>";
 	    }
@@ -28,7 +108,6 @@ function cam_zoomin() {
 	    cache:          false,
 	    async:           true,
 	    success: function(data) {
-	    // TODO : if ERROR: tell it
 	    if (data.substring(0,6)=="ERROR:") {
 	      data="<div class=\"alert alert-error\">"+data+"</div>";
 	    }
@@ -49,7 +128,6 @@ function cam_zoomout() {
 	    cache:          false,
 	    async:           true,
 	    success: function(data) {
-	    // TODO : if ERROR: tell it
 	    if (data.substring(0,6)=="ERROR:") {
 	      data="<div class=\"alert alert-error\">"+data+"</div>";
 	    }
@@ -87,6 +165,7 @@ function help(str) {
     $("#help").html(str);
 }
 
+// unused ? 
 function updateTypeAttributes() {
     $.ajax({
 	url: 'attributeform.php?type='+$('#type').val(),
@@ -97,44 +176,3 @@ function updateTypeAttributes() {
 }
 
 
-/* update the <select> list with objects of type 'type' */
-function searchObjectType(type,list) {
-    $.ajax({
-	url: 'objectsfromtype.php?type='+type,
-	success: function(data) {
-            $('#'+list).html(data);
-	}
-    });
-}
-
-
-/* update the <select> list with objects the correspond to linktype 'ltype' with an other object of type 'otype' */
-function searchObjectLinkType(ltype,otype,list) {
-    $.ajax({
-	url: 'objectsfromtype.php?otype='+otype+'&ltype='+ltype,
-	success: function(data) {
-            $('#'+list).html(data);
-	}
-    });
-}
-
-
-/* update the <select> list with linkstypes of type 'type' */
-function searchLinksType(type,list) {
-    $.ajax({
-	url: 'linkstypefromtype.php?type='+type,
-	success: function(data) {
-            $('#'+list).html(data);
-	}
-    });
-}
-
-// Show one object's subobject (object=source, subobject=destination)
-function explode(source,destination) {
-    $.ajax({
-        url: 'oneobject.php?id='+destination+'&exclude='+source,
-        success: function(data) {
-            $('#obj_'+source+'_'+destination).html(data);
-        }
-    });
-}
