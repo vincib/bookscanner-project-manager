@@ -62,6 +62,8 @@ foreach($projects as $proj=>$val) {
   echo "<td><a href=\"s0_name.php?rename=".urlencode($proj)."\">"._("Rename")."</a></td>";
   echo "<td><a href=\"s1_meta.php?name=".urlencode($proj)."\">"._("Metadata")."</a></td>";
   echo "<td><a href=\"s2_scan.php?name=".urlencode($proj)."\">"._("Scan")."</a></td>";
+  echo "<td><a href=\"s3_crop_left.php?name=".urlencode($proj)."\">"._("Crop Left")."</a></td>";
+  echo "<td><a href=\"s3_crop_right.php?name=".urlencode($proj)."\">"._("Crop Right")."</a></td>";
   echo "<td><a href=\"s3_check.php?name=".urlencode($proj)."\">"._("Check")."</a></td>";
   echo "</tr>";
 }

@@ -31,6 +31,7 @@ while (($project=readdir($h_projects))!=false) {
 }
 closedir($h_projects);
 
+
 // find pictures and rotate + crop them as required
 function process($root,$mode,$rotate) {
   echo "Processing $root $mode $rotate\n"; flush();
@@ -62,8 +63,8 @@ function process($root,$mode,$rotate) {
 	file_put_contents($root."/crop.json",json_encode($crop));
       }
       // now CONVERT
-      exec("convert ".escapeshellarg($src."/".$c)." -rotate $rotate -resize 96x -quality 80% ".escapeshellarg($dstsmall."/".$noext.".jpg"));
-      exec("convert ".escapeshellarg($src."/".$c)." -rotate $rotate -resize x576 -quality 80% ".escapeshellarg($dst."/".$noext.".jpg"));
+      exec("convert ".escapeshellarg($src."/".$c)." -rotate $rotate -resize 96x -quality 80% ".escapeshellarg($dstsmall."/".$c));
+      exec("convert ".escapeshellarg($src."/".$c)." -rotate $rotate -resize x576 -quality 80% ".escapeshellarg($dst."/".$c));
       echo "  converted $c\n"; flush();
       }
     }
@@ -72,3 +73,4 @@ function process($root,$mode,$rotate) {
 }
 
 
+// 

@@ -93,9 +93,15 @@ if ($right) {
 <div class="span4">
    <h4><?php __("Actions"); ?></h4>
 <p>
+  <button class="button" type="button" name="prepare" id="prepare" onclick="cam_prepare()" /><?php __("Prepare cam (before zooming/shooting)"); ?></button>
   <button class="button" type="button" name="resetzoom" id="resetzoom" onclick="cam_resetzoom()" /><?php __("Reset Zoom"); ?></button>
   <button class="button" type="button" name="zoomin" id="zoomin" onclick="cam_zoomin()" /><?php __("Zoom IN"); ?></button>
   <button class="button" type="button" name="zoomout" id="zoomout" onclick="cam_zoomout()" /><?php __("Zoom OUT"); ?></button>
+</p>
+<p>
+  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot()" /><?php __("Shoot Pictures!"); ?></button>
+  <button class="button" type="button" name="get" id="get" onclick="cam_get('<?php echo addslashes($name); ?>')" /><?php __("Get and delete files"); ?></button>
+
 </p>
 <div id="zoomstatus" />
 

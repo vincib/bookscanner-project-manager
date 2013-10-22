@@ -27,6 +27,9 @@ if [ -r "cam.sh" ]
 then
     source ./cam.sh
 fi
+MYFOLD="`dirname $0`"
+cd "$MYFOLD"
+MYFOLD="`pwd`"
 
 case $1 in
     search) 
@@ -41,23 +44,23 @@ case $1 in
 	    echo "Please connect and switch on both camera"
 	    exit 2
 	fi
-	WHICH1=$(gphoto2 --port "usb:${CAM1B},${CAM1D}" --get-config /main/settings/ownername|egrep -i "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
+	WHICH1=$(gphoto2 --port "usb:${CAM1B},${CAM1D}" --get-config /main/settings/ownername|egrep "(left|right)"|sed -e 's/.*\(left\|right\)/\1/g')
 	if [ -z "$CAM2B" -o -z "$CAM2D" ]
 	then
 	    echo "Only ONE camera found, which is the $WHICH1 one"
 	    echo "Please connect and switch on both camera"
 	    exit 3
 	fi
-	WHICH2=$(gphoto2 --port "usb:${CAM2B},${CAM2D}" --get-config /main/settings/ownername|egrep -i "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
+	WHICH2=$(gphoto2 --port "usb:${CAM2B},${CAM2D}" --get-config /main/settings/ownername|egrep -i "(left|right)"|sed -e 's/.*\(left\|right\)/\1/g')
 	tmpfile=/tmp/cam_tmp.sh.$$
 	echo "#!/bin/sh" >$tmpfile
 
-	if [ "$WHICH1" = "RIGHT" ]
+	if [ "$WHICH1" = "right" ]
 	then
 	    echo "USB_RIGHT_BUS=$CAM1B" >>$tmpfile
 	    echo "USB_RIGHT_DEV=$CAM1D" >>$tmpfile
 	else
-	    if [ "$WHICH1" = "LEFT" ]
+	    if [ "$WHICH1" = "left" ]
 	    then
 	    echo "USB_LEFT_BUS=$CAM1B" >>$tmpfile
 	    echo "USB_LEFT_DEV=$CAM1D" >>$tmpfile		
@@ -67,12 +70,12 @@ case $1 in
 	    fi
 	fi
 
-	if [ "$WHICH2" = "RIGHT" ]
+	if [ "$WHICH2" = "right" ]
 	then
 	    echo "USB_RIGHT_BUS=$CAM2B" >>$tmpfile
 	    echo "USB_RIGHT_DEV=$CAM2D" >>$tmpfile
 	else
-	    if [ "$WHICH2" = "LEFT" ]
+	    if [ "$WHICH2" = "left" ]
 	    then
 	    echo "USB_LEFT_BUS=$CAM2B" >>$tmpfile
 	    echo "USB_LEFT_DEV=$CAM2D" >>$tmpfile		
@@ -92,6 +95,15 @@ case $1 in
 	exit 0 
 	;;
 
+    prepare)
+	# TODO : get back both $? and check it's 0
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="mode 1"
+	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="mode 1"
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').prepare(40)"
+	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').prepare(40)"
+	exit 0 
+	;;
+
     zoom)
 	zoom=$2
 	if [ "$zoom" -gt 120 -o "$zoom" -lt 0 ]
@@ -100,8 +112,8 @@ case $1 in
 	    exit 7
 	fi
 	# TODO : get back both $? and check it's 0
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua set_zoom($zoom)" 
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua set_zoom($zoom)" 
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').prepare($zoom)"
+	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').prepare($zoom)"
 #	while [ "`jobs -p`" ]
 #	do
 #	    sleep 1  # todo : timeout at 10 ?
@@ -109,20 +121,24 @@ case $1 in
 # -- in case of error --
 #       echo "Can't zoom, an error occurred while sending command to a camera"
 #       exit 8
+	exit 0 
 	;;
 
     shoot)
 	# TODO : get back both $? and check it's 0
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua press_full('shoot')" 
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="lua press_full('shoot')" 
-#	while [ "`jobs -p`" ]
-#	do
-#	    sleep 1  # todo : timeout at 10 ?
-#	done
+	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()" &
+	P1="`jobs -p`"
+	sleep 0.2
+	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()"
+	P2="`jobs -p`"
+	while [ -d "/proc/$P1" -o -d "/proc/$P2" ]
+	do
+	    sleep 1  # todo : timeout at 10 ?
+	done
 # -- in case of error --
 #       echo "Can't shoot, an error occurred while sending command to a camera"
 #       exit 9
-	
+	exit 0
 	;;
     get)
 	left="$2"
@@ -133,14 +149,21 @@ case $1 in
 	    exit 10
 	fi
 	# TODO : get back both $? and check it's 0
-	pushd "$left" && \
-	    ./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
-	    ./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
-	popd
-	pushd "$right" && \
-	    ./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
-	    ./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
-	popd
+	( cd "$left" && \
+	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
+	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
+	) & 
+	P1="`jobs -p`"
+	( cd "$right" && \
+	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
+	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
+	) & 
+	P2="`jobs -p`"
+	while [ -d "/proc/$P1" -o -d "/proc/$P2" ]
+	do
+	    sleep 1  # todo : timeout at ??
+	done
+	exit 0 
 esac
 
 echo "Usage: camdriver.sh search | zoom <value> | shoot "
