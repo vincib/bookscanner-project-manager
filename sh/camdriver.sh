@@ -20,6 +20,8 @@
 #   shoot the 2 cameras
 #   dependency: ptpcam, cam.sh
 
+# get <directory left> <directory right>
+#   get all files from one camera to the specified directory, and delete them all.
 
 if [ -r "cam.sh" ]
 then
@@ -28,21 +30,25 @@ fi
 
 case $1 in
     search) 
-	lsusb |grep Canon| sed -e 's/^Bus \([0-9]*\) Device \([0-9]*\):.*$/\1 \2 /' | tr '\n' ' ' | read CAM1B CAM1D CAM2B CAM2D
+	ALL="`lsusb |grep "04a9:3243"| sed -e 's/^Bus \([0-9]*\) Device \([0-9]*\):.*$/\1 \2 /' | tr '\n' ' ' `"
+	CAM1B="`echo $ALL | awk '{print $1}' `"
+	CAM1D="`echo $ALL | awk '{print $2}' `"
+	CAM2B="`echo $ALL | awk '{print $3}' `"
+	CAM2D="`echo $ALL | awk '{print $4}' `"
 	if [ -z "$CAM1B" -o -z "$CAM1D" ]
 	then
 	    echo "No camera found"
 	    echo "Please connect and switch on both camera"
 	    exit 2
 	fi
-	WHICH1=$(gphoto2 --port "usb:${CAM1B},${CAM1D}" --get-config /main/settings/ownername|egrep "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
+	WHICH1=$(gphoto2 --port "usb:${CAM1B},${CAM1D}" --get-config /main/settings/ownername|egrep -i "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
 	if [ -z "$CAM2B" -o -z "$CAM2D" ]
 	then
 	    echo "Only ONE camera found, which is the $WHICH1 one"
 	    echo "Please connect and switch on both camera"
 	    exit 3
 	fi
-	WHICH2=$(gphoto2 --port "usb:${CAM2B},${CAM2D}" --get-config /main/settings/ownername|egrep "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
+	WHICH2=$(gphoto2 --port "usb:${CAM2B},${CAM2D}" --get-config /main/settings/ownername|egrep -i "(LEFT|RIGHT)"|sed -e "s/.*\(LEFT|RIGHT\)/\1/g")
 	tmpfile=/tmp/cam_tmp.sh.$$
 	echo "#!/bin/sh" >$tmpfile
 
@@ -118,5 +124,23 @@ case $1 in
 #       exit 9
 	
 	;;
+    get)
+	left="$2"
+	right="$3"
+	if [ -z "$left" -o -z "$right" ] 
+	then
+	    echo "Left and Right directory missing"
+	    exit 10
+	fi
+	# TODO : get back both $? and check it's 0
+	pushd "$left" && \
+	    ./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
+	    ./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
+	popd
+	pushd "$right" && \
+	    ./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
+	    ./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
+	popd
 esac
 
+echo "Usage: camdriver.sh search | zoom <value> | shoot "
