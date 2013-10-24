@@ -2,21 +2,26 @@
 
 require_once("config.php");
 
-sleep(1);
-
 if (
     !isset($_REQUEST["action"]) 
     || !isset($_REQUEST["project"])
     || !isset($_REQUEST["picture"])
-    || !isset($_REQUEST["left"])
-    || !isset($_REQUEST["right"])
-    || !isset($_REQUEST["top"]) 
-    || !isset($_REQUEST["bottom"])
     || !isset($_REQUEST["mode"])
    ) {
   header('HTTP/1.0 401 Not Implemented');
   echo "error: no action, project or picture requested";
   exit();
+}
+
+if ($_REQUEST["action"]!="get" && 
+    (!isset($_REQUEST["left"])
+    || !isset($_REQUEST["right"])
+    || !isset($_REQUEST["top"]) 
+     || !isset($_REQUEST["bottom"]))) {
+  header('HTTP/1.0 401 Not Implemented');
+  echo "error: no coordinates";
+  exit();
+  
 }
 
 $project=trim($_REQUEST["project"]);
@@ -41,6 +46,21 @@ if (!is_dir(PROJECT_ROOT."/".$project)) {
   exit();
 }
 
+if ($action=="get") {
+  // return a json with the current cropping area
+  $crop=@json_decode(@file_get_contents(PROJECT_ROOT."/".$project."/crop.json"),true);
+  if (!is_array($crop) 
+      || !isset($crop[$mode])
+      || !isset($crop[$mode][$picture])
+      )  {
+    echo json_encode(false); 
+  } else {
+    echo json_encode($crop[$mode][$picture]);
+  }
+  exit();
+}
+
+
 // GET the current cropping area
 $crop=@json_decode(@file_get_contents(PROJECT_ROOT."/".$project."/crop.json"),true);
 if (!is_array($crop) || !isset($crop["left"]) || !isset($crop["right"])) {
@@ -63,7 +83,7 @@ if ($_REQUEST["action"]==3) { // PUSH down to the rest
   $d=@opendir(PROJECT_ROOT."/".$project."/".$mode);
   if ($d) {
     while (($c=readdir($d))!=false) {
-      if (is_file(PROJECT_ROOT."/".$name."/".$mode."/".$c)) {
+      if (is_file(PROJECT_ROOT."/".$project."/".$mode."/".$c)) {
 	$pics[]=$c;
       }
     }
@@ -84,16 +104,3 @@ if ($_REQUEST["action"]==3) { // PUSH down to the rest
 
 
 file_put_contents(PROJECT_ROOT."/".$project."/crop.json",json_encode($crop));
-
-
-switch ($_REQUEST["action"]) {
-  
-case "":
-  unset($out);
-  exec(CAMDRIVER." search 2>&1",$out,$ret);
-  if ($ret!=0) echo "ERROR: "; else echo "OK: ";
-  echo implode("<br />",$out);
-  break;
-  
-
-}

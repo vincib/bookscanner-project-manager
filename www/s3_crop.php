@@ -53,26 +53,12 @@ require_once("menu2.php");
 <?php
   $i=1;
   foreach($pics as $pic) {
-  echo "<li><a href=\"#\" onclick=\"crop('".$pic."',".$i.")\"><img  id=\"cr".$i."\" src=\"".PROJECT_WWW."/".$name."/temp/small".$mode."/".$pic."\" style=\"height: 96px\" alt=\"".$pic."\" title=\"".$pic."\"></a></li>";
+    echo "<li><a href=\"#\" onclick=\"crop('".$pic."',".$i.",'".addslashes(PROJECT_WWW)."','".addslashes($name)."','".$mode."')\" id=\"cl".$i."\"><img  id=\"cr".$i."\" src=\"".PROJECT_WWW."/".$name."/temp/small".$mode."/".$pic."\" style=\"height: 96px\" alt=\"".$pic."\" title=\"".$pic."\"></a></li>";
   $i++;
 }
 ?>
 </ul>
 </div>
-
-<script type="text/javascript">
-// select an image for cropping
-    var currentid=0;
-    function crop(i,id) {
-    $('#croppingarea').html('<img src="<?php echo PROJECT_WWW."/".$name."/temp/".$mode."/"; ?>'+i+'" alt="'+i+'" id="croppingimage"/>');
-    $('#filename').val(i);
-    $('#cr'+id).addClass('active');
-    if (currentid) {
-      $('#cr'+currentid).removeClass('active');
-    }
-    currentid=id;
-}
-</script>
 
 <style type="text/css">
   #croppingcanvas,  #croppingarea {
@@ -99,7 +85,8 @@ position: relative;
 	</div>
 <script type="text/javascript">
     $(document).ready(function () {
-	$("#croppingcanvas").click(clickCanvas)
+	$("#croppingcanvas").click(clickCanvas);
+	  $('#cl1').clidk();
 	  })
 </script>
 <div class="span4" id="formarea">

@@ -1,4 +1,42 @@
 
+
+// select an image for cropping
+var currentid=0, lastid=0;
+function crop(i,id,path,project,mode) {
+    $('#croppingarea').html('<img src="'+path+'/'+project+'/temp/'+mode+'/'+i+'" alt="'+i+'" id="croppingimage"/>');
+    $('#filename').val(i);
+    $('#cr'+id).addClass('active');
+    if (lastid) {
+	$('#cr'+lastid).removeClass('active');
+    }
+    currentid=id;
+    lastid=id;
+    $('#relx1').val("");
+    $('#rely1').val("");
+    $('#relx2').val("");
+    $('#rely2').val("");
+    $('#w').val("");
+    $('#h').val("");
+    redraw();
+    // Now we search for the top/left/right/bottom values and launch a redraw
+    $.ajax({
+	dataType: "json",
+	url: 's3_crop_ajax.php?action=get&picture='+i+'&mode='+mode+'&project='+project,
+	cache: false,
+	async: false,
+	success: function(data) {
+	    $('#relx1').val(data.left);
+	    $('#rely1').val(data.top);
+	    $('#relx2').val(data.right);
+	    $('#rely2').val(data.bottom);
+	    $('#w').val("");
+	    $('#h').val("");
+	    redraw();
+	}
+    });
+}
+
+
 function submit_crop(way,mode,project) {
     // 1: previous   2: next  3: all 
     $('#submitmsg').html("<div class=\"alert\">Submitting data...</div>");
@@ -30,9 +68,12 @@ function submit_crop(way,mode,project) {
 	    currentid--;
 	}
     } else {
-	if ($('#cr'+(currentid+1))) {
+	if ($('#cl'+(currentid+1))) {
 	    currentid++;
 	}
+    }
+    if ($('#cl'+currentid)) {
+	$('#cl'+currentid).click();
     }
 }
 
