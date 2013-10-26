@@ -44,11 +44,10 @@ require_once("menu2.php");
 ?>
 
 
-  <div class="container">
 <?php require_once("labels.php"); ?>
 
   <h2><?php printf(_("Cropping %s pictures for project '%s'"),$mode,he($name)); ?></h2>
-<div class="row my3col"><div class="span2 cropscroll">
+<div class="row my3col"><div class="span2 cropscroll" id="cropscroll">
 <ul>
 <?php
   $i=1;
@@ -86,7 +85,7 @@ position: relative;
 <script type="text/javascript">
     $(document).ready(function () {
 	$("#croppingcanvas").click(clickCanvas);
-	  $('#cl1').clidk();
+	  $('#cl1').click();
 	  })
 </script>
 <div class="span4" id="formarea">
@@ -121,8 +120,6 @@ position: relative;
 
 </div>
 
-
-</div>
 
 </div>
 

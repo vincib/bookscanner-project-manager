@@ -32,6 +32,8 @@ function crop(i,id,path,project,mode) {
 	    $('#w').val("");
 	    $('#h').val("");
 	    redraw();
+	    var parentOffset = $("#cl"+currentid).parent().position(); 
+	    $('#cropscroll').scrollTop($('#cropscroll').scrollTop()+(parentOffset.top-300));
 	}
     });
 }
@@ -159,8 +161,8 @@ function redraw(isclick=false) {
 
 function clickCanvas(e) {
     var parentOffset = $("#croppingcanvas").offset(); 
-    var relX = e.pageX - parentOffset.left;
-    var relY = e.pageY - parentOffset.top;
+    var relX = parseInt(e.pageX - parentOffset.left,10);
+    var relY = parseInt(e.pageY - parentOffset.top,10);
     if (!$('#relx1').val() || !$('#rely1').val()) {
 	$('#relx1').val(relX);
 	$('#rely1').val(relY);
@@ -171,6 +173,10 @@ function clickCanvas(e) {
 	} else {
 	    $('#relx1').val(relX);
 	    $('#rely1').val(relY);
+	    if ($('#w').val() && $('#h').val()) {
+		$('#relx2').val(relX+parseInt($('#w').val(),10));
+		$('#rely2').val(relY+parseInt($('#h').val(),10));
+	    }
 	}
     redraw(true);
 }
