@@ -72,7 +72,7 @@ if (isset($setlang) && isset($lang)) {
 
 // User chose a non existent language, select the first available one 
 if ($lang == NULL) {
-  $lang = "en_US";
+  $lang = "fr_FR";
 }
 
 /* Language ok, set the locale environment */

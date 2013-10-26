@@ -53,14 +53,19 @@ require_once("menu2.php");
 <?php
   $i=1;
   foreach($pics as $pic) {
+<<<<<<< HEAD
   $noext=preg_replace('#\.[^\.]*$#','',$pic);
   echo "<li><a href=\"#\" onclick=\"crop('".$noext.".jpg"."',".$i.")\"><img  id=\"cr".$i."\" src=\"".PROJECT_WWW."/".$name."/temp/small".$mode."/".$noext.".jpg\" style=\"height: 96px\" alt=\"".$pic."\" title=\"".$pic."\"></a></li>";
+=======
+    echo "<li><a href=\"#\" onclick=\"crop('".$pic."',".$i.",'".addslashes(PROJECT_WWW)."','".addslashes($name)."','".$mode."')\" id=\"cl".$i."\"><img  id=\"cr".$i."\" src=\"".PROJECT_WWW."/".$name."/temp/small".$mode."/".$pic."\" style=\"height: 96px\" alt=\"".$pic."\" title=\"".$pic."\"></a></li>";
+>>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
   $i++;
 }
 ?>
 </ul>
 </div>
 
+<<<<<<< HEAD
 <script type="text/javascript">
 // select an image for cropping
     var lastid=0;
@@ -75,6 +80,8 @@ require_once("menu2.php");
 }
 </script>
 
+=======
+>>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 <style type="text/css">
   #croppingcanvas,  #croppingarea {
 position: absolute;
@@ -100,7 +107,8 @@ position: relative;
 	</div>
 <script type="text/javascript">
     $(document).ready(function () {
-	$("#croppingcanvas").click(clickCanvas)
+	$("#croppingcanvas").click(clickCanvas);
+	  $('#cl1').clidk();
 	  })
 </script>
 <div class="span4" id="formarea">

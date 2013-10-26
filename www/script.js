@@ -1,4 +1,45 @@
 
+<<<<<<< HEAD
+=======
+
+// select an image for cropping
+var currentid=0, lastid=0;
+function crop(i,id,path,project,mode) {
+    $('#croppingarea').html('<img src="'+path+'/'+project+'/temp/'+mode+'/'+i+'" alt="'+i+'" id="croppingimage"/>');
+    $('#filename').val(i);
+    $('#cr'+id).addClass('active');
+    if (lastid) {
+	$('#cr'+lastid).removeClass('active');
+    }
+    currentid=id;
+    lastid=id;
+    $('#relx1').val("");
+    $('#rely1').val("");
+    $('#relx2').val("");
+    $('#rely2').val("");
+    $('#w').val("");
+    $('#h').val("");
+    redraw();
+    // Now we search for the top/left/right/bottom values and launch a redraw
+    $.ajax({
+	dataType: "json",
+	url: 's3_crop_ajax.php?action=get&picture='+i+'&mode='+mode+'&project='+project,
+	cache: false,
+	async: false,
+	success: function(data) {
+	    $('#relx1').val(data.left);
+	    $('#rely1').val(data.top);
+	    $('#relx2').val(data.right);
+	    $('#rely2').val(data.bottom);
+	    $('#w').val("");
+	    $('#h').val("");
+	    redraw();
+	}
+    });
+}
+
+
+>>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 function submit_crop(way,mode,project) {
     // 1: previous   2: next  3: all 
     $('#submitmsg').html("<div class=\"alert\">Submitting data...</div>");
@@ -13,7 +54,11 @@ function submit_crop(way,mode,project) {
 	    +'&mode='+mode,
 	type:           'GET',
 	cache:          false,
+<<<<<<< HEAD
 	async:           true,
+=======
+	async:          false,
+>>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 	success: function(data) {
 	    if (data.substring(0,6)=="ERROR:") {
 		data="<div class=\"alert alert-error\">"+data+"</div>";
@@ -24,8 +69,27 @@ function submit_crop(way,mode,project) {
 	    $('#submitmsg').html(data);
 	}
     })
+<<<<<<< HEAD
 }
 
+=======
+    // we are here AFTER the return of the call (synchronously)
+    if (way==1) {
+	if (currentid>0) {
+	    currentid--;
+	}
+    } else {
+	if ($('#cl'+(currentid+1))) {
+	    currentid++;
+	}
+    }
+    if ($('#cl'+currentid)) {
+	$('#cl'+currentid).click();
+    }
+}
+
+
+>>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 function cleartopleft() {
     $('#relx1').val("");
     $('#rely1').val("");
@@ -202,6 +266,63 @@ function cam_resetzoom() {
 	})
 }
 
+
+function cam_prepare() {
+    $('#camerastatus').html("<div class=\"alert\">Preparing cameras...</div>");
+      var ret = $.ajax({
+	url:            's2_scan_ajax.php?action=prepare',
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#camerastatus').html(data);
+	  }
+	})
+}
+
+function cam_shoot() {
+    $('#camerastatus').html("<div class=\"alert\">Shooting...</div>");
+      var ret = $.ajax({
+	url:            's2_scan_ajax.php?action=shoot',
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#camerastatus').html(data);
+	  }
+	})
+}
+
+function cam_get(project) {
+    $('#camerastatus').html("<div class=\"alert\">Getting files...</div>");
+      var ret = $.ajax({
+	  url:            's2_scan_ajax.php?action=get&project='+project,
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#camerastatus').html(data);
+	  }
+	})
+}
 
 function help(str) {
     $("#help").html(str);

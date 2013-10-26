@@ -18,6 +18,12 @@ case "search":
   echo implode("<br />",$out);
   break;
   
+case "prepare":
+  exec(CAMDRIVER." prepare 2>&1",$out,$ret);
+  if ($ret!=0) echo "ERROR: "; else echo "OK: ";
+  echo implode("<br />",$out);
+  break;
+
 case "resetzoom":
   file_put_contents("tmp/zoom","40");
   unset($out);
@@ -62,6 +68,15 @@ case "zoomout":
 
 case "shoot":
   exec(CAMDRIVER." shoot 2>&1",$out,$ret);
+  if ($ret!=0) echo "ERROR: "; else echo "OK: ";
+  echo implode("<br />",$out);  
+  break;
+
+case "get":
+  if (!isset($_REQUEST["project"])) {
+    echo _("ERROR: project not set"); exit();
+  }
+  exec(CAMDRIVER." get ".escapeshellarg(PROJECT_ROOT."/".trim($_REQUEST["project"])."/left")." ".escapeshellarg(PROJECT_ROOT."/".trim($_REQUEST["project"])."/right")." 2>&1",$out,$ret);
   if ($ret!=0) echo "ERROR: "; else echo "OK: ";
   echo implode("<br />",$out);  
   break;
