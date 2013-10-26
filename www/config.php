@@ -7,7 +7,7 @@ require_once("lang_env.php");
 require_once("bsm.php");
 
 // Path where the projects will be stored (in the filesystem)
-define("PROJECT_ROOT","/home/benjamin/lqdn2/bookscanner/p");
+define("PROJECT_ROOT","/home/benjamin/p");
 // Path where the projects are available in the web server (will be used in http://localhost/<PROJECT_WWW>/<project name>/...)
 define("PROJECT_WWW","/projects");
 // allowed characters in project names : 

@@ -31,6 +31,7 @@ while (($project=readdir($h_projects))!=false) {
 }
 closedir($h_projects);
 
+
 // find pictures and rotate + crop them as required
 function process($root,$mode,$rotate) {
   echo "Processing $root $mode $rotate\n"; flush();
@@ -72,3 +73,4 @@ function process($root,$mode,$rotate) {
 }
 
 
+// 

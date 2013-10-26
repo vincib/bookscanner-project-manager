@@ -25,7 +25,7 @@ Each project is a folder with the following :
 - *right* : a folder containing the original untouched JPG files from the RIGHT camera
 - *processed* : the rotated, cropped images, ready to create the Image PDF.
 - *temp* : a temporary folder that can be deleted anytime (but you are not advised to ;) ) : will contains the cropped version of the image files for blur check 
-- *crop.json* : a json array containing the crop to apply to each picture. Each original filename is a key, and the values are left top right bottom coordinates in the original picture to crop into.
+- *crop.json* : a json array containing the crop to apply to each picture. the array has 2 keys: left and right. Then each original filename is a key, and the values are left top right bottom coordinates in the original picture to crop into. 
 - *trash* : a trash folder for left/right images not kept (duplicates of pages, or badly scanned pictures) (no dumped processed image here, they are deleted)
 - *book.pdf* : the image-based pdf of the book.
 
