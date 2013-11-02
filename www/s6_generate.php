@@ -127,6 +127,14 @@ require_once("menu2.php");
    <?php } ?>
   </td></tr>
 
+<?php
+  if (file_exists(PROJECT_ROOT."/".$name."/book.pdf")) {
+    ?>
+    <tr><th><?php __("PDF Image of the book "); ?></th>
+    <td><a href="<?php echo PROJECT_WWW."/".$name."/book.pdf"; ?>"><?php __("Download the Book"); ?></a></td></tr>
+    <?php
+  }
+?>
   </table>
 
 

@@ -1,6 +1,7 @@
 <?php
 
 // Generate Image PDF when asked for...
+$convertparams=" -quality 90% -modulate 160 -sigmoidal-contrast 10x80% -colors 2 ";
 
 //for each project
 define("NO_AUTH","1");
@@ -30,7 +31,6 @@ function dogeom($a) {
 }
 
 
-
 $h_projects=opendir(PROJECT_ROOT);
 while (($project=readdir($h_projects))!=false) {
   if (file_exists(PROJECT_ROOT."/".$project."/generate")) {
@@ -44,27 +44,40 @@ while (($project=readdir($h_projects))!=false) {
     // LEFT pictures must be rotated 90°,   RIGHT pictures must be rotated 270°
     reset($cleft); reset($cright);
     $image=0;
+    $totimage=count($cleft)+count($cright);
     @mkdir(PROJECT_ROOT."/".$project."/temp/generator");
     do {
       $oneleft=each($cleft);
       $oneright=each($cright);
       $stilltodo=is_array($oneleft);
       if ($stilltodo) {
-
 	// Rotate and Crop a picture
 	if ($image!=0) {
 	  // do the right picture (but not if it's the first one)
 	  $geometry=dogeom($oneright[1]);	
-	  exec("convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." -rotate 90 -crop $geometry -quality 90% ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".printf("%05d",$image).".jpg"));
+	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/right/".$oneright[0])." -rotate 270 -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
+	  echo "EXEC: $exe\n";
+	  exec($exe);
 	  $image++;
 	}
-	// Do the left one
-	$geometry=dogeom($oneleft[1]);
-	exec("convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." -rotate 90 -crop $geometry -quality 90% ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".printf("%05d",$image).".jpg"));
-	$image++;
+	// Do the left one (but not if it's the last one) 
+	if ($image!=($totimage-2)) {
+	  $geometry=dogeom($oneleft[1]);
+	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." -rotate 90 -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
+	  echo "EXEC: $exe\n";
+	  exec($exe);
+	  $image++;
+	}
       }
     } while ($stilltodo);
-  }
+    echo "Doing book.pdf for $project...\n";
+    $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/")."* ".escapeshellarg(PROJECT_ROOT."/".$project."/book.pdf");
+    echo "EXEC: $exe\n";
+    exec($exe);
+    echo "Done\n";
+    @unlink(PROJECT_ROOT."/".$project."/generate");
+  } // shall we generate pdf for this one ? 
+
 }
 closedir($h_projects);
 
