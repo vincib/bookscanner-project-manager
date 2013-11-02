@@ -39,7 +39,7 @@ case "zoomin":
   }
   $zoom+=5;
   if ($zoom>ZOOM_MAX) {
-    echo "ERROR: ".sprintf(_("can't zoom in, at %s"),ZOOM_MAX);
+    echo "ERROR: ".sprintf(_("can't zoom in, at %s"),$zoom);
     exit();
   }
   file_put_contents("tmp/zoom 2>&1",$zoom);

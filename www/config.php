@@ -15,3 +15,5 @@ define("PROJECT_PREG",'#^[0-9a-z,\.-]+$#');
 
 // path to camdriver script shell
 define("CAMDRIVER", "".dirname(__FILE__)."/../sh/camdriver_driver.sh");
+
+define("ZOOM_MAX",120);
