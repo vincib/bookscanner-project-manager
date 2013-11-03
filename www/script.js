@@ -248,7 +248,6 @@ function cam_resetzoom() {
 	    cache:          false,
 	    async:           true,
 	    success: function(data) {
-	    // TODO : if ERROR: tell it
 	    if (data.substring(0,6)=="ERROR:") {
 	      data="<div class=\"alert alert-error\">"+data+"</div>";
 	    }

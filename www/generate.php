@@ -36,7 +36,6 @@ while (($project=readdir($h_projects))!=false) {
   if (file_exists(PROJECT_ROOT."/".$project."/generate")) {
     // ok, let's read CROP and process all the files
     $crop=json_decode(file_get_contents(PROJECT_ROOT."/".$project."/crop.json"),true);
-    // start at right ;) ignore the first left ;) TODO: allow to reorder/delete images ...
     $cleft=$crop["left"];
     $cright=$crop["right"];
     ksort($cleft);
@@ -53,14 +52,14 @@ while (($project=readdir($h_projects))!=false) {
       if ($stilltodo) {
 	// Rotate and Crop a picture
 	if ($image!=0) {
-	  // do the right picture (but not if it's the first one)
+	  // do the right picture (but not if it's the first one (cover))
 	  $geometry=dogeom($oneright[1]);	
 	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/right/".$oneright[0])." -rotate 270 -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
 	  echo "EXEC: $exe\n";
 	  exec($exe);
 	  $image++;
 	}
-	// Do the left one (but not if it's the last one) 
+	// Do the left one (but not if it's the last one (cover))
 	if ($image!=($totimage-2)) {
 	  $geometry=dogeom($oneleft[1]);
 	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." -rotate 90 -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
@@ -81,5 +80,3 @@ while (($project=readdir($h_projects))!=false) {
 }
 closedir($h_projects);
 
-//      exec("convert ".escapeshellarg($src."/".$c)." -rotate $rotate -resize 96x -quality 80% ".escapeshellarg($dstsmall."/".$c));
-//      exec("convert ".escapeshellarg($src."/".$c)." -rotate $rotate -resize x576 -quality 80% ".escapeshellarg($dst."/".$c));
