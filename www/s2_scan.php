@@ -99,7 +99,7 @@ if ($right) {
   <button class="button" type="button" name="zoomout" id="zoomout" onclick="cam_zoomout()" /><?php __("Zoom OUT"); ?></button>
 </p>
 <p>
-  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot()" /><?php __("Shoot Pictures!"); ?></button>
+  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot('<?php echo addslashes($name); ?>')" /><?php __("Shoot Pictures!"); ?></button>
   <button class="button" type="button" name="get" id="get" onclick="cam_get('<?php echo addslashes($name); ?>')" /><?php __("Get and delete files"); ?></button>
 
 </p>

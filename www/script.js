@@ -279,10 +279,10 @@ function cam_prepare() {
 	})
 }
 
-function cam_shoot() {
+function cam_shoot(project) {
     $('#camerastatus').html("<div class=\"alert\">Shooting...</div>");
       var ret = $.ajax({
-	url:            's2_scan_ajax.php?action=shoot',
+	url:            's2_scan_ajax.php?action=shoot&project='+project,
 	    type:           'GET',
 	    cache:          false,
 	    async:           true,

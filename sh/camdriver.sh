@@ -125,11 +125,28 @@ case $1 in
 	;;
 
     shoot)
+	left="$2"
+	right="$3"
+	if [ -z "$left" -o -z "$right" ] 
+	then
+	    echo "Left and Right directory missing"
+	    exit 10
+	fi
 	# TODO : get back both $? and check it's 0
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()" &
+	( cd "$left" && \
+	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()" && \
+	    sleep 1 && \
+	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
+	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
+	) & 
 	P1="`jobs -p`"
 	sleep 0.2
-	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()"
+	( cd "$right" && \
+	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()" && \
+	    sleep 1 && \
+	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
+	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
+	) & 
 	P2="`jobs -p`"
 	while [ -d "/proc/$P1" -o -d "/proc/$P2" ]
 	do

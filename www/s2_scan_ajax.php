@@ -67,7 +67,10 @@ case "zoomout":
   break;
 
 case "shoot":
-  exec(CAMDRIVER." shoot 2>&1",$out,$ret);
+  if (!isset($_REQUEST["project"])) {
+    echo _("ERROR: project not set"); exit();
+  }
+  exec(CAMDRIVER." shoot ".escapeshellarg(PROJECT_ROOT."/".trim($_REQUEST["project"])."/left")." ".escapeshellarg(PROJECT_ROOT."/".trim($_REQUEST["project"])."/right")." 2>&1",$out,$ret);
   if ($ret!=0) echo "ERROR: "; else echo "OK: ";
   echo implode("<br />",$out);  
   break;
