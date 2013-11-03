@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2013-10-13 21:45+0200\n"
+"POT-Creation-Date: 2013-11-02 22:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,8 +137,16 @@ msgstr ""
 msgid "Scan"
 msgstr ""
 
-#: ../index.php:65 ../menu2.php:11
-msgid "Check"
+#: ../index.php:65 ../menu2.php:9
+msgid "Crop Left"
+msgstr ""
+
+#: ../index.php:66 ../menu2.php:10
+msgid "Crop Right"
+msgstr ""
+
+#: ../index.php:67 ../menu2.php:11
+msgid "Generate"
 msgstr ""
 
 #: ../labels.php:10
@@ -161,24 +169,16 @@ msgstr ""
 msgid "New Project"
 msgstr ""
 
-#: ../menu.php:29
+#: ../menu.php:30
 msgid "Bookscanner Manager"
 msgstr ""
 
-#: ../menu.php:30
+#: ../menu.php:31
 msgid "Industrializing the book scanning process"
 msgstr ""
 
 #: ../menu2.php:3
 msgid "Project Steps"
-msgstr ""
-
-#: ../menu2.php:9
-msgid "Crop Left"
-msgstr ""
-
-#: ../menu2.php:10
-msgid "Crop Right"
 msgstr ""
 
 #: ../s0_name.php:8
@@ -226,11 +226,11 @@ msgstr ""
 msgid "Rename this project"
 msgstr ""
 
-#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_crop.php:12
+#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_crop.php:12 ../s6_generate.php:6
 msgid "Project name missing"
 msgstr ""
 
-#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_crop.php:19
+#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_crop.php:19 ../s6_generate.php:12
 msgid "Project name is incorrect"
 msgstr ""
 
@@ -301,25 +301,41 @@ msgid "Search for Cameras"
 msgstr ""
 
 #: ../s2_scan.php:96
-msgid "Reset Zoom"
+msgid "Prepare cam (before zooming/shooting)"
 msgstr ""
 
 #: ../s2_scan.php:97
-msgid "Zoom IN"
+msgid "Reset Zoom"
 msgstr ""
 
 #: ../s2_scan.php:98
+msgid "Zoom IN"
+msgstr ""
+
+#: ../s2_scan.php:99
 msgid "Zoom OUT"
 msgstr ""
 
-#: ../s2_scan_ajax.php:36
+#: ../s2_scan.php:102
+msgid "Shoot Pictures!"
+msgstr ""
+
+#: ../s2_scan.php:103
+msgid "Get and delete files"
+msgstr ""
+
+#: ../s2_scan_ajax.php:42
 #, php-format
 msgid "can't zoom in, at %s"
 msgstr ""
 
-#: ../s2_scan_ajax.php:53
+#: ../s2_scan_ajax.php:59
 #, php-format
 msgid "can't zoom out, at %s"
+msgstr ""
+
+#: ../s2_scan_ajax.php:77
+msgid "ERROR: project not set"
 msgstr ""
 
 #: ../s3_crop.php:6
@@ -331,35 +347,86 @@ msgstr ""
 msgid "Folder %s not found, you should scan pages first"
 msgstr ""
 
-#: ../s3_crop.php:50
+#: ../s3_crop.php:49
 #, php-format
 msgid "Cropping %s pictures for project '%s'"
 msgstr ""
 
-#: ../s3_crop.php:149
+#: ../s3_crop.php:93
 msgid "Filename"
 msgstr ""
 
-#: ../s3_crop.php:151
+#: ../s3_crop.php:95
 msgid "Top X Left"
 msgstr ""
 
-#: ../s3_crop.php:152 ../s3_crop.php:156 ../s3_crop.php:160
+#: ../s3_crop.php:96 ../s3_crop.php:100 ../s3_crop.php:104
 msgid "Clear"
 msgstr ""
 
-#: ../s3_crop.php:155
+#: ../s3_crop.php:99
 msgid "Bottom X Right"
 msgstr ""
 
-#: ../s3_crop.php:159
+#: ../s3_crop.php:103
 msgid "Width X Height"
 msgstr ""
 
-#: ../s3_crop.php:163
+#: ../s3_crop.php:108
 msgid "OK & Previous"
 msgstr ""
 
-#: ../s3_crop.php:164
+#: ../s3_crop.php:109
 msgid "OK & Next"
+msgstr ""
+
+#: ../s3_crop.php:112
+msgid "Apply to this one and all following"
+msgstr ""
+
+#: ../s6_generate.php:58
+msgid ""
+"The image PDF creation process has been started. PDF will be available in "
+"some time depending on your computer's power"
+msgstr ""
+
+#: ../s6_generate.php:74
+#, php-format
+msgid "Generating PDF Image for Project '%s'"
+msgstr ""
+
+#: ../s6_generate.php:104
+msgid "Left images count"
+msgstr ""
+
+#: ../s6_generate.php:106
+msgid "Right images count"
+msgstr ""
+
+#: ../s6_generate.php:109
+msgid "Cropped left images"
+msgstr ""
+
+#: ../s6_generate.php:111
+msgid "Cropped right images"
+msgstr ""
+
+#: ../s6_generate.php:121
+msgid "PDF creation already in progress, please wait for it..."
+msgstr ""
+
+#: ../s6_generate.php:124
+msgid "Generate this project's PDF"
+msgstr ""
+
+#: ../s6_generate.php:126
+msgid "No picture or pictures not cropped, can't generate the project's PDF"
+msgstr ""
+
+#: ../s6_generate.php:133
+msgid "PDF Image of the book "
+msgstr ""
+
+#: ../s6_generate.php:134
+msgid "Download the Book"
 msgstr ""

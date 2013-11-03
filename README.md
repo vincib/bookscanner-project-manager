@@ -22,7 +22,7 @@ Installation Instructions
 
 on Debian GNU/Linux, or Ubuntu, install a webserver with php : 
 
- aptitude install libapache2-mod-php5 apache2-mpm-prefork
+ aptitude install libapache2-mod-php5 apache2-mpm-prefork gphoto2
 
 deploy this source code into /var/www/ 
 
@@ -38,6 +38,8 @@ edit /var/www/www/config_sample.php and save it into config.php
 if necessary, download and compile ptpcam, put a copy of it into /var/www/sh/
 
 go to http://localhost/ or http://yourmachinename/ to see the project manager.
+
+Note: you will need to launch identify.php and generate.php perdiodically: they generate the thumbnails and the image pdf of the book. (ideally launch them at boottime in a shell loop like  "while true ; do php identify.php ; sleep 30 ; done")
 
 
 Misc Information

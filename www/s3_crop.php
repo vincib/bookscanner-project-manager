@@ -1,5 +1,6 @@
 <?php
 
+// TODO: allow deleting / reordering of images.
 require_once("config.php");
 
 if (!isset($mode) || ($mode!="left" && $mode!="right")) {
