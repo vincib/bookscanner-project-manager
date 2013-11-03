@@ -1,6 +1,4 @@
 
-<<<<<<< HEAD
-=======
 
 // select an image for cropping
 var currentid=0, lastid=0;
@@ -34,12 +32,13 @@ function crop(i,id,path,project,mode) {
 	    $('#w').val("");
 	    $('#h').val("");
 	    redraw();
+	    var parentOffset = $("#cl"+currentid).parent().position(); 
+	    $('#cropscroll').scrollTop($('#cropscroll').scrollTop()+(parentOffset.top-300));
 	}
     });
 }
 
 
->>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 function submit_crop(way,mode,project) {
     // 1: previous   2: next  3: all 
     $('#submitmsg').html("<div class=\"alert\">Submitting data...</div>");
@@ -54,11 +53,7 @@ function submit_crop(way,mode,project) {
 	    +'&mode='+mode,
 	type:           'GET',
 	cache:          false,
-<<<<<<< HEAD
-	async:           true,
-=======
 	async:          false,
->>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 	success: function(data) {
 	    if (data.substring(0,6)=="ERROR:") {
 		data="<div class=\"alert alert-error\">"+data+"</div>";
@@ -69,10 +64,6 @@ function submit_crop(way,mode,project) {
 	    $('#submitmsg').html(data);
 	}
     })
-<<<<<<< HEAD
-}
-
-=======
     // we are here AFTER the return of the call (synchronously)
     if (way==1) {
 	if (currentid>0) {
@@ -89,7 +80,6 @@ function submit_crop(way,mode,project) {
 }
 
 
->>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 function cleartopleft() {
     $('#relx1').val("");
     $('#rely1').val("");
@@ -171,8 +161,8 @@ function redraw(isclick=false) {
 
 function clickCanvas(e) {
     var parentOffset = $("#croppingcanvas").offset(); 
-    var relX = e.pageX - parentOffset.left;
-    var relY = e.pageY - parentOffset.top;
+    var relX = parseInt(e.pageX - parentOffset.left,10);
+    var relY = parseInt(e.pageY - parentOffset.top,10);
     if (!$('#relx1').val() || !$('#rely1').val()) {
 	$('#relx1').val(relX);
 	$('#rely1').val(relY);
@@ -183,6 +173,10 @@ function clickCanvas(e) {
 	} else {
 	    $('#relx1').val(relX);
 	    $('#rely1').val(relY);
+	    if ($('#w').val() && $('#h').val()) {
+		$('#relx2').val(relX+parseInt($('#w').val(),10));
+		$('#rely2').val(relY+parseInt($('#h').val(),10));
+	    }
 	}
     redraw(true);
 }

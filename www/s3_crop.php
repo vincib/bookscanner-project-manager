@@ -44,44 +44,21 @@ require_once("menu2.php");
 ?>
 
 
-  <div class="container">
 <?php require_once("labels.php"); ?>
 
   <h2><?php printf(_("Cropping %s pictures for project '%s'"),$mode,he($name)); ?></h2>
-<div class="row my3col"><div class="span2 cropscroll">
+<div class="row my3col"><div class="span2 cropscroll" id="cropscroll">
 <ul>
 <?php
   $i=1;
   foreach($pics as $pic) {
-<<<<<<< HEAD
-  $noext=preg_replace('#\.[^\.]*$#','',$pic);
-  echo "<li><a href=\"#\" onclick=\"crop('".$noext.".jpg"."',".$i.")\"><img  id=\"cr".$i."\" src=\"".PROJECT_WWW."/".$name."/temp/small".$mode."/".$noext.".jpg\" style=\"height: 96px\" alt=\"".$pic."\" title=\"".$pic."\"></a></li>";
-=======
     echo "<li><a href=\"#\" onclick=\"crop('".$pic."',".$i.",'".addslashes(PROJECT_WWW)."','".addslashes($name)."','".$mode."')\" id=\"cl".$i."\"><img  id=\"cr".$i."\" src=\"".PROJECT_WWW."/".$name."/temp/small".$mode."/".$pic."\" style=\"height: 96px\" alt=\"".$pic."\" title=\"".$pic."\"></a></li>";
->>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
   $i++;
 }
 ?>
 </ul>
 </div>
 
-<<<<<<< HEAD
-<script type="text/javascript">
-// select an image for cropping
-    var lastid=0;
-    function crop(i,id) {
-    $('#croppingarea').html('<img src="<?php echo PROJECT_WWW."/".$name."/temp/".$mode."/"; ?>'+i+'" alt="'+i+'" id="croppingimage"/>');
-    $('#filename').val(i);
-    $('#cr'+id).addClass('active');
-    if (lastid) {
-      $('#cr'+lastid).removeClass('active');
-    }
-    lastid=id;
-}
-</script>
-
-=======
->>>>>>> 23c974aff3d0d3ff5c1bc32b5b59d5c6167cb6ce
 <style type="text/css">
   #croppingcanvas,  #croppingarea {
 position: absolute;
@@ -108,7 +85,7 @@ position: relative;
 <script type="text/javascript">
     $(document).ready(function () {
 	$("#croppingcanvas").click(clickCanvas);
-	  $('#cl1').clidk();
+	  $('#cl1').click();
 	  })
 </script>
 <div class="span4" id="formarea">
@@ -143,8 +120,6 @@ position: relative;
 
 </div>
 
-
-</div>
 
 </div>
 
