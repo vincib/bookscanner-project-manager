@@ -1,4 +1,3 @@
-
 BookScanning Machine project manager
 ====================================
 
@@ -47,7 +46,7 @@ Misc Information
 
 We use this program at the French Bookscanner at La Quadrature du Net's location. Our website is at http://www.bookscanner.fr/
 
-We are using the model created by Dan Reetz, available and discussed at http://www.biybookscanner.org/
+We are using the model created by Dan Reetz, available and discussed at http://www.diybookscanner.org/
 
 You can buy one to build yourself if you live in Europe at http://www.diybookscanner.eu/
 
