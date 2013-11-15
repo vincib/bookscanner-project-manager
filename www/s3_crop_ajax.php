@@ -17,7 +17,8 @@ if ($_REQUEST["action"]!="get" &&
     (!isset($_REQUEST["left"])
     || !isset($_REQUEST["right"])
     || !isset($_REQUEST["top"]) 
-     || !isset($_REQUEST["bottom"]))) {
+    || !isset($_REQUEST["bottom"]) 
+     || !isset($_REQUEST["rotate"]))) {
   header('HTTP/1.0 401 Not Implemented');
   echo "error: no coordinates";
   exit();
@@ -33,6 +34,7 @@ $left=doubleval($_REQUEST["left"]);
 $right=doubleval($_REQUEST["right"]);
 $top=doubleval($_REQUEST["top"]);
 $bottom=doubleval($_REQUEST["bottom"]);
+$rotate=doubleval($_REQUEST["rotate"]);
 
 if ($mode!='left' && $mode!='right') {
   header('HTTP/1.0 401 Not Implemented');
@@ -74,6 +76,7 @@ $crop[$mode][$picture]["left"]=$left;
 $crop[$mode][$picture]["right"]=$right;
 $crop[$mode][$picture]["top"]=$top;
 $crop[$mode][$picture]["bottom"]=$bottom;
+$crop[$mode][$picture]["rotate"]=$rotate;
 
 // $f=fopen("/tmp/t","ab"); fputs($f,"setting $mode $picture / $left $right $top $bottom\n".print_r($crop,true)); fclose($f);
 
@@ -96,6 +99,7 @@ if ($_REQUEST["action"]==3) { // PUSH down to the rest
 	$crop[$mode][$pic]["right"]=$right;
 	$crop[$mode][$pic]["top"]=$top;
 	$crop[$mode][$pic]["bottom"]=$bottom;
+	$crop[$mode][$pic]["rotate"]=$rotate;
       }
       if ($pic==$picture) $found=true;
     }

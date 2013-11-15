@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2013-11-02 22:11+0100\n"
+"POT-Creation-Date: 2013-11-04 22:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,11 +226,11 @@ msgstr ""
 msgid "Rename this project"
 msgstr ""
 
-#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_crop.php:12 ../s6_generate.php:6
+#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_crop.php:13 ../s6_generate.php:6
 msgid "Project name missing"
 msgstr ""
 
-#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_crop.php:19 ../s6_generate.php:12
+#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_crop.php:20 ../s6_generate.php:12
 msgid "Project name is incorrect"
 msgstr ""
 
@@ -334,53 +334,53 @@ msgstr ""
 msgid "can't zoom out, at %s"
 msgstr ""
 
-#: ../s2_scan_ajax.php:77
+#: ../s2_scan_ajax.php:71 ../s2_scan_ajax.php:80
 msgid "ERROR: project not set"
 msgstr ""
 
-#: ../s3_crop.php:6
+#: ../s3_crop.php:7
 msgid "Mode is missing"
 msgstr ""
 
-#: ../s3_crop.php:26
+#: ../s3_crop.php:27
 #, php-format
 msgid "Folder %s not found, you should scan pages first"
 msgstr ""
 
-#: ../s3_crop.php:49
+#: ../s3_crop.php:50
 #, php-format
 msgid "Cropping %s pictures for project '%s'"
 msgstr ""
 
-#: ../s3_crop.php:93
+#: ../s3_crop.php:94
 msgid "Filename"
 msgstr ""
 
-#: ../s3_crop.php:95
+#: ../s3_crop.php:96
 msgid "Top X Left"
 msgstr ""
 
-#: ../s3_crop.php:96 ../s3_crop.php:100 ../s3_crop.php:104
+#: ../s3_crop.php:97 ../s3_crop.php:101 ../s3_crop.php:105
 msgid "Clear"
 msgstr ""
 
-#: ../s3_crop.php:99
+#: ../s3_crop.php:100
 msgid "Bottom X Right"
 msgstr ""
 
-#: ../s3_crop.php:103
+#: ../s3_crop.php:104
 msgid "Width X Height"
 msgstr ""
 
-#: ../s3_crop.php:108
+#: ../s3_crop.php:109
 msgid "OK & Previous"
 msgstr ""
 
-#: ../s3_crop.php:109
+#: ../s3_crop.php:110
 msgid "OK & Next"
 msgstr ""
 
-#: ../s3_crop.php:112
+#: ../s3_crop.php:113
 msgid "Apply to this one and all following"
 msgstr ""
 

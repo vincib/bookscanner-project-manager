@@ -136,3 +136,31 @@ table.hlist td, table.hlist th {
 .xy {
     width: 60px;
 }
+
+
+/* CROPPING and CANVAS */
+  #croppingcanvas,  #croppingarea {
+position: absolute;
+left: 0; top: 0;
+width: 600px; height: 576px;
+}
+#croppingarea {
+  z-index: 20;
+  float: left;
+}
+#croppingcanvas {
+z-index: 30;
+}
+#cropzone {
+position: relative;
+}
+
+#grid  {
+position: absolute;
+left: 0; top: 0;
+width: 576px; height: 576px;
+background: none;
+}
+#grid {
+  z-index: 25;
+}

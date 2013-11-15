@@ -17,6 +17,7 @@ function crop(i,id,path,project,mode) {
     $('#rely2').val("");
     $('#w').val("");
     $('#h').val("");
+    $('#r').val("");
     redraw();
     // Now we search for the top/left/right/bottom values and launch a redraw
     $.ajax({
@@ -31,6 +32,7 @@ function crop(i,id,path,project,mode) {
 	    $('#rely2').val(data.bottom);
 	    $('#w').val("");
 	    $('#h').val("");
+	    $('#r').val(data.rotate);
 	    redraw();
 	    var parentOffset = $("#cl"+currentid).parent().position(); 
 	    $('#cropscroll').scrollTop($('#cropscroll').scrollTop()+(parentOffset.top-300));
@@ -40,6 +42,10 @@ function crop(i,id,path,project,mode) {
 
 
 function submit_crop(way,mode,project) {
+    if (way==3) {
+	if (!confirm("Confirm ?")) 
+	    return;
+    }
     // 1: previous   2: next  3: all 
     $('#submitmsg').html("<div class=\"alert\">Submitting data...</div>");
     var ret = $.ajax({
@@ -48,6 +54,7 @@ function submit_crop(way,mode,project) {
 	    +'&right='+$('#relx2').val()
 	    +'&top='+$('#rely1').val()
 	    +'&bottom='+$('#rely2').val()
+	    +'&rotate='+$('#r').val()
 	    +'&project='+project
 	    +'&picture='+$('#filename').val()
 	    +'&mode='+mode,
@@ -157,6 +164,11 @@ function redraw(isclick=false) {
 	$('#next').addClass('disabled');	$('#next').attr('disabled','disabled');
 	$('#allnext').addClass('disabled');	$('#allnext').attr('disabled','disabled');
     }
+    rot=parseInt($('#r').val(),10);
+    if (isNaN(rot)) rot=0;
+    $('#croppingimage').css("-moz-transform","rotate("+(rot/10)+"deg)");
+    $('#croppingimage').css("-webkit-transform","rotate("+(rot/10)+"deg)");
+    $('#croppingimage').css("transform","rotate("+(rot/10)+"deg)");
 }
 
 function clickCanvas(e) {
@@ -331,4 +343,17 @@ function updateTypeAttributes() {
     });
 }
 
-
+function rotate(value) {
+    var rot;
+    rot=parseInt($('#r').val(),10);
+    if (isNaN(rot)) rot=0;
+    rot+=value;
+    $('#r').val(rot);
+    $('#croppingimage').css("-moz-transform","rotate("+(rot/10)+"deg)");
+    $('#croppingimage').css("-webkit-transform","rotate("+(rot/10)+"deg)");
+    $('#croppingimage').css("transform","rotate("+(rot/10)+"deg)");
+}
+function clearrotate() {
+    $('#r').val(0);
+    rotate(0);
+}

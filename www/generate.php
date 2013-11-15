@@ -1,7 +1,7 @@
 <?php
 
 // Generate Image PDF when asked for...
-$convertparams=" -quality 90% -modulate 160 -sigmoidal-contrast 10x80% -colors 2 ";
+$convertparams=" -quality 90% -modulate 120 -sigmoidal-contrast 10x80% -colors 2 ";
 
 //for each project
 define("NO_AUTH","1");
@@ -54,7 +54,10 @@ while (($project=readdir($h_projects))!=false) {
 	if ($image!=0) {
 	  // do the right picture (but not if it's the first one (cover))
 	  $geometry=dogeom($oneright[1]);	
-	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/right/".$oneright[0])." -rotate 270 -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
+	  $r=intval($oneright[1]["rotate"]);
+	  //$rotate="-rotate ".str_replace(",",".",(270+$r/10))." ";
+	  $rotate="-rotate 270 -distort SRT '".str_replace(",",".",($r/10))."' ";
+	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/right/".$oneright[0])." $rotate -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
 	  echo "EXEC: $exe\n";
 	  exec($exe);
 	  $image++;
@@ -62,7 +65,10 @@ while (($project=readdir($h_projects))!=false) {
 	// Do the left one (but not if it's the last one (cover))
 	if ($image!=($totimage-2)) {
 	  $geometry=dogeom($oneleft[1]);
-	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." -rotate 90 -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
+	  $r=intval($oneleft[1]["rotate"]);
+	  //	  $rotate="-rotate ".str_replace(",",".",(90+$r/10))." ";
+	  $rotate="-rotate 90 -distort SRT '".str_replace(",",".",($r/10))."' ";
+	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." $rotate -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
 	  echo "EXEC: $exe\n";
 	  exec($exe);
 	  $image++;

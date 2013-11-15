@@ -60,29 +60,18 @@ require_once("menu2.php");
 </ul>
 </div>
 
-<style type="text/css">
-  #croppingcanvas,  #croppingarea {
-position: absolute;
-left: 0; top: 0;
-width: 600px; height: 576px;
-}
-#croppingarea {
-  z-index: 2;
-  float: left;
-}
-#croppingcanvas {
-  z-index: 3;
-}
-#cropzone {
-position: relative;
-}
-</style>
+
 <div class="span6" id="cropzone">
 
-<div id="croppingarea"></div>
-<canvas id="croppingcanvas" width="500px" height="576px" style="width: 500px; height: 576px"></canvas>
+  <div id="croppingarea"></div>
 
-	</div>
+  <canvas id="croppingcanvas" width="500px" height="576px" style="width: 500px; height: 576px"></canvas>
+
+  <img id="grid" src="grille48.png" width="576px" height="576px" style="width: 576px; height: 576px"/>
+
+</div>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
 	$("#croppingcanvas").click(clickCanvas);
@@ -91,26 +80,36 @@ position: relative;
 </script>
 <div class="span4" id="formarea">
   <form method="post" action="s3_crop.php">
-    <table><tr><td><?php __("Filename"); ?></td><td><input type="text" name="filename" id="filename" value=""/></td></tr>
+    <table><tr><td><?php __("Filename"); ?></td><td><input type="text" name="filename" id="filename" readonly="readonly" value=""/></td></tr>
 <tr>
   <td><?php __("Top X Left"); ?></td>
-  <td><input type="text" class="xy" id="relx1" name="relx1" value="" /> X <input type="text" class="xy" id="rely1" name="rely1" value="" /> <button class="button" name="btncleartopleft" id="btncleartopleft" type="button" onclick="cleartopleft()" shortcut="t" alt="(Alt-t)"><?php __("Clear"); ?></button></td>
+  <td><input type="text" class="xy" id="relx1" name="relx1" value="" /> X <input type="text" class="xy" id="rely1" name="rely1" value="" /> <button class="button" name="btncleartopleft" id="btncleartopleft" type="button" onclick="cleartopleft()" shortcut="t" title="(Alt-t)"><?php __("Clear"); ?></button></td>
 </tr>
 <tr>
   <td><?php __("Bottom X Right"); ?></td>
-  <td><input type="text" class="xy" id="relx2" name="relx2" value="" /> X <input type="text" class="xy" id="rely2" name="rely2" value="" /> <button class="button" name="btnclearbottomright" id="btnclearbottomright" type="button" onclick="clearbottomright()" shortcut="b" alt="(Alt-b)"><?php __("Clear"); ?></button></td>
+  <td><input type="text" class="xy" id="relx2" name="relx2" value="" /> X <input type="text" class="xy" id="rely2" name="rely2" value="" /> <button class="button" name="btnclearbottomright" id="btnclearbottomright" type="button" onclick="clearbottomright()" shortcut="b" title="(Alt-b)"><?php __("Clear"); ?></button></td>
 </tr>
 <tr>
   <td><?php __("Width X Height"); ?></td>
-  <td><input type="text" class="xy" id="w" name="w" value="<?php echo $width; ?>" /> X <input type="text" class="xy" id="h" name="h" value="<?php echo $height; ?>" /> <button class="button" name="btnclearwidthheight" id="btnclearwidthheight" type="button" onclick="clearwidthheight()" shortcut="w" alt="(Alt-w)"><?php __("Clear"); ?></button></td>
+  <td><input type="text" class="xy" id="w" name="w" value="<?php echo $width; ?>" /> X <input type="text" class="xy" id="h" name="h" value="<?php echo $height; ?>" /> <button class="button" name="btnclearwidthheight" id="btnclearwidthheight" type="button" onclick="clearwidthheight()" shortcut="w" title="(Alt-w)"><?php __("Clear"); ?></button></td>
+</tr>
+<tr>
+  <td><?php __("Rotate & Skew"); ?></td>
+  <td><?php __("Rotate"); ?> <input type="text" class="xy" id="r" name="r" value="<?php echo $rotate; ?>" />° <button class="button" name="btnclearrotate" id="btnclearrotate" type="button" onclick="clearrotate()" shortcut="z" title="(Alt-z)"><?php __("Clear"); ?></button></td>
 </tr>
 <tr><td colspan="2">
 <p>
-  <button type="button" id="prev" name="prev" shortcut="n" alt="(Alt-n)" onclick="submit_crop(1,'<?php echo $mode; ?>','<?php echo addslashes($name); ?>')"><?php __("OK & Previous"); ?></button>
-  <button type="button" id="next" name="next" shortcut="p" alt="(Alt-p)" onclick="submit_crop(2,'<?php echo $mode; ?>','<?php echo addslashes($name); ?>')"><?php __("OK & Next"); ?></button>
+  <button type="button" id="rotateminus" name="rotateminus" shortcut="e" title="(Alt-e)" onclick="rotate(-3)"><?php __("Rotate Left"); ?></button>
+  <button type="button" id="rotateplus" name="rotateplus" shortcut="r" title="(Alt-r)" onclick="rotate(3)"><?php __("Rotate Right"); ?></button>
+</p>
+  <p>&nbsp;</p>
+<p>
+  <button type="button" id="prev" name="prev" shortcut="n" title="(Alt-n)" onclick="submit_crop(1,'<?php echo $mode; ?>','<?php echo addslashes($name); ?>')"><?php __("OK & Previous"); ?></button>
+  <button type="button" id="next" name="next" shortcut="p" title="(Alt-p)" onclick="submit_crop(2,'<?php echo $mode; ?>','<?php echo addslashes($name); ?>')"><?php __("OK & Next"); ?></button>
 </p>
 <p>
-  <button type="button" id="allnext" name="allnext" shortcut="a" alt="(Alt-a)" onclick="submit_crop(3,'<?php echo $mode; ?>','<?php echo addslashes($name); ?>')"><?php __("Apply to this one and all following"); ?></button>
+  <button type="button" id="allnext" name="allnext" shortcut="a" title="(Alt-a)" onclick="submit_crop(3,'<?php echo $mode; ?>','<?php echo addslashes($name); ?>')"><?php __("Apply to this one and all following"); ?></button>
+
 </p>
 </td></tr>
 </table>
