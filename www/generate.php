@@ -1,7 +1,8 @@
 <?php
 
 // Generate Image PDF when asked for...
-$convertparams=" -quality 90% -modulate 120 -sigmoidal-contrast 10x80% -colors 2 ";
+$convertparams=" -quality 90% ";
+$convertparams2=" -modulate 120 -sigmoidal-contrast 10x80% -colors 2 ";
 
 //for each project
 define("NO_AUTH","1");
@@ -57,7 +58,12 @@ while (($project=readdir($h_projects))!=false) {
 	  $r=intval($oneright[1]["rotate"]);
 	  //$rotate="-rotate ".str_replace(",",".",(270+$r/10))." ";
 	  $rotate="-rotate 270 -distort SRT '".str_replace(",",".",($r/10))."' ";
-	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/right/".$oneright[0])." $rotate -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
+	  if ($image!=($totimage-1)) {
+	    $cp=$convertparams.$convertparams2;
+	  } else {
+	    $cp=$convertparams;
+	  }
+	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/right/".$oneright[0])." $rotate -crop $geometry $cp ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
 	  echo "EXEC: $exe\n";
 	  exec($exe);
 	  $image++;
@@ -67,8 +73,13 @@ while (($project=readdir($h_projects))!=false) {
 	  $geometry=dogeom($oneleft[1]);
 	  $r=intval($oneleft[1]["rotate"]);
 	  //	  $rotate="-rotate ".str_replace(",",".",(90+$r/10))." ";
+	  if ($image!=0) {
+	    $cp=$convertparams.$convertparams2;
+	  } else {
+	    $cp=$convertparams;
+	  }
 	  $rotate="-rotate 90 -distort SRT '".str_replace(",",".",($r/10))."' ";
-	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." $rotate -crop $geometry $convertparams ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
+	  $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/left/".$oneleft[0])." $rotate -crop $geometry $cp ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/".sprintf("%05d",$image).".jpg");
 	  echo "EXEC: $exe\n";
 	  exec($exe);
 	  $image++;
@@ -78,7 +89,7 @@ while (($project=readdir($h_projects))!=false) {
     echo "Doing book.pdf for $project...\n";
     $exe="convert ".escapeshellarg(PROJECT_ROOT."/".$project."/temp/generator/")."* ".escapeshellarg(PROJECT_ROOT."/".$project."/book.pdf");
     echo "EXEC: $exe\n";
-    exec($exe);
+    //    exec($exe);
     echo "Done\n";
     @unlink(PROJECT_ROOT."/".$project."/generate");
   } // shall we generate pdf for this one ? 
