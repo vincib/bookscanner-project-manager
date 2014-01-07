@@ -30,7 +30,7 @@ require_once("menu2.php");
 <h2><?php printf(_("Scanning project '%s'"),he($name)); ?></h2>
 <div class="row my3col">
 
-<div class="span4">
+<div class="span6">
   <h4><?php __("Current state of the project"); ?></h4>
 <?php
   if (!is_dir(PROJECT_ROOT."/".$name."/left")) 
@@ -69,15 +69,7 @@ if ($right) {
 }
 
 ?>
-</div>
-
-
-
-<div class="span4">
   <h4><?php __("State of the scanning session"); ?></h4>
-<p> 
-<button class="button" type="button" name="search" id="search" onclick="cam_search()" /><?php __("Search for Cameras"); ?></button>
-</p>
 
 <div id="camerastatus" />
 
@@ -90,18 +82,24 @@ if ($right) {
 	</div>
 
 
-<div class="span4">
+<div class="span6">
    <h4><?php __("Actions"); ?></h4>
 <p>
+  <button class="button" type="button" name="search" id="search" onclick="cam_search()" /><?php __("Search for Cameras"); ?></button>
+</p><p>
   <button class="button" type="button" name="prepare" id="prepare" onclick="cam_prepare()" /><?php __("Prepare cam (before zooming/shooting)"); ?></button>
+</p><p>
   <button class="button" type="button" name="resetzoom" id="resetzoom" onclick="cam_resetzoom()" /><?php __("Reset Zoom"); ?></button>
-  <button class="button" type="button" name="zoomin" id="zoomin" onclick="cam_zoomin()" /><?php __("Zoom IN"); ?></button>
-  <button class="button" type="button" name="zoomout" id="zoomout" onclick="cam_zoomout()" /><?php __("Zoom OUT"); ?></button>
-</p>
-<p>
-  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot('<?php echo addslashes($name); ?>')" /><?php __("Shoot Pictures!"); ?></button>
+</p><p>
+  <button class="button" type="button" name="zoomin" id="zoomin" onclick="cam_zoomin(1)" /><?php __("Zoom IN"); ?></button>
+  <button class="button" type="button" name="zoomout" id="zoomout" onclick="cam_zoomout(1)" /><?php __("Zoom OUT"); ?></button>
+  <button class="button" type="button" name="zoominmore" id="zoominmore" onclick="cam_zoomin(5)" /><?php __("Zoom IN More"); ?></button>
+  <button class="button" type="button" name="zoomoutmore" id="zoomoutmore" onclick="cam_zoomout(5)" /><?php __("Zoom OUT More"); ?></button>
+</p><p>
+  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot('<?php echo addslashes($name); ?>',0)" /><?php __("Shoot Pictures!"); ?></button>
+  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot('<?php echo addslashes($name); ?>',1)" /><?php __("Shoot and get Pictures!"); ?></button>
+</p><p>
   <button class="button" type="button" name="get" id="get" onclick="cam_get('<?php echo addslashes($name); ?>')" /><?php __("Get and delete files"); ?></button>
-
 </p>
 <div id="zoomstatus" />
 

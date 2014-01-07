@@ -134,6 +134,33 @@ case $1 in
 	fi
 	# TODO : get back both $? and check it's 0
 	( cd "$left" && \
+	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()"
+	) & 
+	P1="`jobs -p`"
+	sleep 0.2
+	( cd "$right" && \
+	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()"
+	) & 
+	P2="`jobs -p`"
+	while [ -d "/proc/$P1" -o -d "/proc/$P2" ]
+	do
+	    sleep 1  # todo : timeout at 10 ?
+	done
+# -- in case of error --
+#       echo "Can't shoot, an error occurred while sending command to a camera"
+#       exit 9
+	exit 0
+	;;
+    shootget)
+	left="$2"
+	right="$3"
+	if [ -z "$left" -o -z "$right" ] 
+	then
+	    echo "Left and Right directory missing"
+	    exit 10
+	fi
+	# TODO : get back both $? and check it's 0
+	( cd "$left" && \
 	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()" && \
 	    sleep 1 && \
 	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
