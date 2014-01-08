@@ -212,10 +212,10 @@ function cam_search() {
 	})
 }
 
-function cam_zoomin() {
+function cam_zoomin(much) {
     $('#zoomstatus').html("<div class=\"alert\">Zooming IN...</div>");
       var ret = $.ajax({
-	url:            's2_scan_ajax.php?action=zoomin',
+	url:            's2_scan_ajax.php?action=zoomin&much='+much,
 	    type:           'GET',
 	    cache:          false,
 	    async:           true,
@@ -232,10 +232,10 @@ function cam_zoomin() {
 }
 
 
-function cam_zoomout() {
+function cam_zoomout(much) {
     $('#zoomstatus').html("<div class=\"alert\">Zooming OUT...</div>");
       var ret = $.ajax({
-	url:            's2_scan_ajax.php?action=zoomout',
+	url:            's2_scan_ajax.php?action=zoomout&much='+much,
 	    type:           'GET',
 	    cache:          false,
 	    async:           true,
@@ -291,10 +291,10 @@ function cam_prepare() {
 	})
 }
 
-function cam_shoot(project) {
+function cam_shoot(project,alsoget) {
     $('#camerastatus').html("<div class=\"alert\">Shooting...</div>");
       var ret = $.ajax({
-	url:            's2_scan_ajax.php?action=shoot&project='+project,
+	url:            's2_scan_ajax.php?action=shoot&project='+project+'&alsoget='+alsoget,
 	    type:           'GET',
 	    cache:          false,
 	    async:           true,

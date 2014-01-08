@@ -98,6 +98,9 @@ table.hlist td, table.hlist th {
     margin: 0;
 }
 
+.fmeta {
+    width: 400px;
+}
 .fmetatext {
     width: 400px;	
 }

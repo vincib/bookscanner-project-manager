@@ -28,11 +28,16 @@ if (isset($_POST["name"])) {
 	rename( PROJECT_ROOT."/".$rename, PROJECT_ROOT."/".$name );
 	if (is_file(PROJECT_ROOT."/".$name."/status")) touch(PROJECT_ROOT."/".$name."/status");
 	$success=_("Project successfully renamed");
-	require("index.php");
+	$_REQUEST["name"]=$name;
+	unset($_POST);
+	$_SERVER["REQUEST_URI"]="s1_meta.php";
+	require("s1_meta.php");
 	exit();
       } else {
 	mkdir( PROJECT_ROOT."/".$name );
 	$success=_("Project successfully created, please set its metadata");
+	unset($_POST);
+	$_SERVER["REQUEST_URI"]="s1_meta.php";
 	require("s1_meta.php");
 	exit();
       }
@@ -52,7 +57,8 @@ if (isset($_REQUEST["rename"])) {
 }
 
 $name=$_REQUEST["rename"];
-require_once("menu2.php");
+if ($name) 
+  require_once("menu2.php");
 
 ?>
 
@@ -65,23 +71,28 @@ require_once("menu2.php");
   else 
     echo "<h2>"._("New book scanning project")."</h2>";
 ?>
-
+<p>
+<?php __("Enter a name for this book scanning project. A folder with that name will be created. You may use only a-z A-Z 0-9 and -"); ?>
 <form method="post" action="s0_name.php">
   <?php if ($isrename) { ?>
 <input type="hidden" name="rename" value="<?php eher("rename"); ?>"/>
   <?php } ?>
-<table class="hlist"> 
-  <tr><th><?php __("Project Name"); ?></th><td>
+</p>
+<p>
+<?php __("Project Name"); ?>
+
   <input type="text" name="name" id="name" value="<?php eher("name"); ?>" class="fmeta" />
-  </td></tr>
-
-  <tr><th></th><td>
+</p>
+<p>
   <input type="submit" name="go" id="go" value="<?php if ($isrename)  __("Rename this project"); else __("Create this project"); ?>" class="fmeta" />
-  </td></tr>
-
-  </table>
+</p>
 
 </div>
+<script type="text/javascript">
+  $().ready(function() {
+      $('#name').focus();
+    })
+</script>
 
 
 <?php

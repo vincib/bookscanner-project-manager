@@ -18,7 +18,7 @@ require_once("menu.php");
 $projects=array();
 while (($c=readdir($d))!=false) {
   if (substr($c,0,1)!="." && is_dir(PROJECT_ROOT."/".$c)) {
-    $projects[$c]=array("name" => $c);
+    $projects[$c]=array("name" => $c, "time" => filemtime(PROJECT_ROOT."/".$c) );
     if (is_file(PROJECT_ROOT."/".$c."/meta.json")) {
       $projects[$c]["meta"]=json_decode(file_get_contents(PROJECT_ROOT."/".$c."/meta.json"),true);
     } else {
@@ -27,22 +27,37 @@ while (($c=readdir($d))!=false) {
   }
 }
 closedir($d);
+
+function timesort($a,$b) {
+  if ($a["time"]<$b["time"]) return 1;
+  if ($a["time"]>$b["time"]) return -1;
+  return 0;
+}
+
+uasort($projects,"timesort");
+
 ?>
 
-<table class="hlist"><tr><th></th><th><?php __("Project"); ?></th><th><?php __("Metadata"); ?></th><th><?php __("Status"); ?></th>
-<th colspan="4"><?php __("Actions"); ?></th>
+<table class="hlist"><tr><th></th><th><?php __("Project"); ?></th><th><?php __("Title"); ?></th><th><?php __("Author"); ?></th><th><?php __("Status"); ?></th>
 </tr>
 <?php
 foreach($projects as $proj=>$val) {
   echo "<tr>";
-  echo "<td><img src=\"";
+  echo "<td><a href=\"s1_meta.php?name=".urlencode($proj)."\"><img src=\"";
   if (is_file(PROJECT_ROOT."/".$proj."/tmp/cover.jpg")) 
     echo PROJECT_WWW."/".$proj."/tmp/cover.jpg";
   else
     echo "/default_cover.png";
-  echo "\" style=\"height: 80px\"></td>";
-  echo "<td>".he($proj)."</td>";
+  echo "\" style=\"height: 40px\"></a></td>";
+  echo "<td><a href=\"s1_meta.php?name=".urlencode($proj)."\">".he($proj)."</a></td>";
   echo "<td>";  
+  echo he($val["meta"]["title"]);
+  echo "</td>";
+  echo "<td>";  
+  echo he($val["meta"]["author"][0]);
+  if (count($val["meta"]["author"][0])>1) printf(_("<i>(and %s others)</i>"),count($val["meta"]["author"][0])-1);
+  echo "</td>";
+  /*
   foreach($ameta as $k=>$v) {
     if (isset($val["meta"][$k])) {
       if (is_array($val["meta"][$k])) {
@@ -54,17 +69,18 @@ foreach($projects as $proj=>$val) {
   }
   if (!count($val["meta"])) echo "<i>no metadata</i>";
   echo "</td>";
+  */
   echo "<td>";
   if (is_file(PROJECT_ROOT."/".$proj."/status")) {
     echo $asteps[trim(file_get_contents(PROJECT_ROOT."/".$proj."/status"))];
   }
   echo "</td>";
+  /*
   echo "<td><a href=\"s0_name.php?rename=".urlencode($proj)."\">"._("Rename")."</a></td>";
   echo "<td><a href=\"s1_meta.php?name=".urlencode($proj)."\">"._("Metadata")."</a></td>";
   echo "<td><a href=\"s2_scan.php?name=".urlencode($proj)."\">"._("Scan")."</a></td>";
-  echo "<td><a href=\"s3_crop_left.php?name=".urlencode($proj)."\">"._("Crop Left")."</a></td>";
-  echo "<td><a href=\"s3_crop_right.php?name=".urlencode($proj)."\">"._("Crop Right")."</a></td>";
-  echo "<td><a href=\"s6_generate.php?name=".urlencode($proj)."\">"._("Generate")."</a></td>";
+  //  echo "<td><a href=\"s6_generate.php?name=".urlencode($proj)."\">"._("Generate")."</a></td>";
+  */
   echo "</tr>";
 }
 ?>
