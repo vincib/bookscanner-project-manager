@@ -25,7 +25,7 @@ case "prepare":
   break;
 
 case "resetzoom":
-  file_put_contents("tmp/zoom","40");
+  file_put_contents("/tmp/zoom","40");
   unset($out);
   exec(CAMDRIVER." zoom 40 2>&1",$out,$ret);
   if ($ret!=0) echo "ERROR: "; else echo "OK: ";
@@ -33,16 +33,16 @@ case "resetzoom":
   break;
 
 case "zoomin":
-  $zoom=intval(@file_get_contents("tmp/zoom"));
+  $zoom=intval(@file_get_contents("/tmp/zoom"));
   if (!$zoom) {
-    $zoom=40;
+    $zoom=45;
   }
   $zoom+=5;
   if ($zoom>ZOOM_MAX) {
     echo "ERROR: ".sprintf(_("can't zoom in, at %s"),$zoom);
     exit();
   }
-  file_put_contents("tmp/zoom 2>&1",$zoom);
+  file_put_contents("/tmp/zoom",$zoom);
   unset($out);
   exec(CAMDRIVER." zoom $zoom",$out,$ret);
   if ($ret!=0) echo "ERROR: "; else echo "OK: ";
@@ -50,7 +50,7 @@ case "zoomin":
   break;
 
 case "zoomout":
-  $zoom=intval(@file_get_contents("tmp/zoom"));
+  $zoom=intval(@file_get_contents("/tmp/zoom"));
   if (!$zoom) {
     $zoom=40;
   }
@@ -59,7 +59,7 @@ case "zoomout":
     echo "ERROR: ".sprintf(_("can't zoom out, at %s"),ZOOM_MAX);
     exit();
   }
-  file_put_contents("tmp/zoom 2>&1",$zoom);
+  file_put_contents("/tmp/zoom",$zoom);
   unset($out);
   exec(CAMDRIVER." zoom $zoom",$out,$ret);
   if ($ret!=0) echo "ERROR: "; else echo "OK: ";

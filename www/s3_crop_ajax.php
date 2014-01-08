@@ -62,6 +62,8 @@ if ($action=="get") {
   exit();
 }
 
+$lock=fopen(PROJECT_ROOT."/".$project."/temp/crop.json.lock","wb");
+flock($lock,LOCK_EX);
 
 // GET the current cropping area
 $crop=@json_decode(@file_get_contents(PROJECT_ROOT."/".$project."/crop.json"),true);
@@ -108,3 +110,6 @@ if ($_REQUEST["action"]==3) { // PUSH down to the rest
 
 
 file_put_contents(PROJECT_ROOT."/".$project."/crop.json",json_encode($crop));
+
+flock($lock,LOCK_UN);
+fclose($lock);
