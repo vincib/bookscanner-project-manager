@@ -39,7 +39,7 @@ if (isset($_POST["name"])) {
   } else {
     $warning=sprintf(_("Metadata for project '%s' not changed: nothing submitted"),$name);
   }
-  require("index.php");
+  require("s2_scan.php");
   exit();
 }
 

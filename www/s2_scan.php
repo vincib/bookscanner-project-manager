@@ -101,9 +101,6 @@ if ($right) {
 </p><p>
   <button class="button" type="button" name="get" id="get" onclick="cam_get('<?php echo addslashes($name); ?>')" /><?php __("Get and delete files"); ?></button>
 </p>
-<div id="zoomstatus" />
-
-</div>
 </div>
 
 </div>
