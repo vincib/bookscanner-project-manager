@@ -6,6 +6,7 @@
 	      _("Rename")=>"s0_name.php?rename=",
 	      _("Metadata")=>"s1_meta.php?name=",
 	      _("Scan")=>"s2_scan.php?name=",
+	      _("Post-processing")=>"s3_postproc.php?name=",
 	      //	      _("Generate")=>"s6_generate.php?name=",
 	      );
 foreach($asub as $n=>$l) {

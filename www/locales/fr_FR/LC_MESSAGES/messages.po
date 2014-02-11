@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2014-01-07 14:10+0100\n"
-"PO-Revision-Date: 2014-01-07 14:12+0100\n"
+"POT-Creation-Date: 2014-01-30 08:51+0100\n"
+"PO-Revision-Date: 2014-01-30 08:52+0100\n"
 "Last-Translator: Benjamin Sonntag <benjamin@sonntag.fr>\n"
 "Language-Team: français <team@alternc.org>\n"
 "Language: fr_FR\n"
@@ -45,45 +45,73 @@ msgstr "recadrage commencé"
 msgid "Image PDF generated"
 msgstr "PDF image généré"
 
-#: ../bsm.php:21 ../index.php:41
+#: ../bsm.php:22 ../index.php:41
 msgid "Title"
 msgstr "Titre"
 
-#: ../bsm.php:21
+#: ../bsm.php:22
 msgid "Title of the book"
 msgstr "Titre du livre"
 
-#: ../bsm.php:22
+#: ../bsm.php:23
 msgid "Authors"
 msgstr "Auteurs"
 
-#: ../bsm.php:22
+#: ../bsm.php:23
 msgid "Authors of the book"
 msgstr "Auteurs du livre"
 
-#: ../bsm.php:23
+#: ../bsm.php:24
 msgid "Publisher"
 msgstr "Éditeur"
 
-#: ../bsm.php:23
+#: ../bsm.php:24
 msgid "Publisher of the book"
 msgstr "Éditeur du livre"
 
-#: ../bsm.php:24
+#: ../bsm.php:25
 msgid "Date"
 msgstr "Date"
 
-#: ../bsm.php:24
+#: ../bsm.php:25
 msgid "Date of publication"
 msgstr "Date de publication"
 
-#: ../bsm.php:25
+#: ../bsm.php:26
 msgid "ISBN"
 msgstr "ISBN"
 
-#: ../bsm.php:25
+#: ../bsm.php:26
 msgid "ISBN or EAN13 of the book (its barcode)"
 msgstr "ISBN ou EAN13 du livre (son code à barres)"
+
+#: ../bsm.php:27
+msgid "Main Language"
+msgstr "Langue principale"
+
+#: ../bsm.php:27
+msgid "Main language of this book (used by OCR)"
+msgstr "Langue principale du livre (utilisée par l'OCR)"
+
+#: ../bsm.php:31
+msgid "-- Choose a language --"
+msgstr "-- Choisissez une langue --"
+
+#: ../bsm.php:32
+msgid "French"
+msgstr "Français"
+
+#: ../bsm.php:33
+msgid "English"
+msgstr "Anglais"
+
+#: ../bsm.php:34
+msgid "German"
+msgstr "Allemand"
+
+#: ../bsm.php:35
+msgid "Other or Multiple"
+msgstr "Autre ou multiples"
 
 #: ../camdriver.php:7
 msgid "No camera found"
@@ -178,6 +206,10 @@ msgstr "Metadonnées"
 msgid "Scan"
 msgstr "Scanner"
 
+#: ../menu2.php:9
+msgid "Post-processing"
+msgstr "Post-Process"
+
 #: ../s0_name.php:8
 msgid "Name must contain only a-z 0-9 - , ."
 msgstr "Le nom ne peut contenir que a-z 0-9 - , ."
@@ -231,11 +263,12 @@ msgstr "Créer ce projet"
 msgid "Rename this project"
 msgstr "Renommer ce projet"
 
-#: ../s1_meta.php:6 ../s2_scan.php:6 ../s6_generate.php:6
+#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_postproc.php:6 ../s6_generate.php:6
 msgid "Project name missing"
 msgstr "Le nom du projet est manquant"
 
-#: ../s1_meta.php:12 ../s2_scan.php:12 ../s6_generate.php:12
+#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_postproc.php:12
+#: ../s6_generate.php:12
 msgid "Project name is incorrect"
 msgstr "Le nom du projet est incorrect"
 
@@ -254,19 +287,19 @@ msgstr "Métadonnées du projet '%s' non modifiées : aucune donnée reçu"
 msgid "Editing metadata of project '%s'"
 msgstr "Modification des métadonnées du projet '%s'"
 
-#: ../s1_meta.php:81
+#: ../s1_meta.php:87
 msgid "more..."
 msgstr "plus..."
 
-#: ../s1_meta.php:95
+#: ../s1_meta.php:101
 msgid "(yyyy or yyyy-mm or yyyy-mm-dd)"
 msgstr "(aaaa ou aaaa-mm ou aaaa-mm-jj)"
 
-#: ../s1_meta.php:98
+#: ../s1_meta.php:104
 msgid "(barcode, often starting by 978, no '-')"
 msgstr "(code à barres, commence souvent par 978, sans '-')"
 
-#: ../s1_meta.php:106
+#: ../s1_meta.php:112
 msgid "Save this project's Metadata"
 msgstr "Sauver les métadonnées de ce projet"
 
@@ -359,6 +392,58 @@ msgstr "impossible de dézoomer à '%s'"
 msgid "ERROR: project not set"
 msgstr "ERREUR: projet non spécifié"
 
+#: ../s3_postproc.php:50
+msgid "The book image enhancement through Scantailor has been started."
+msgstr ""
+
+#: ../s3_postproc.php:50
+#, fuzzy
+msgid "This will take some time depending on your computer's power."
+msgstr ""
+"Le processus de création du PDF image a été démarré. Le PDF sera disponible "
+"dans quelques temps, selon la vitesse de votre ordinateur."
+
+#: ../s3_postproc.php:66
+#, fuzzy, php-format
+msgid "Post processing for project '%s'"
+msgstr "Recadrage des images %s pour le projet '%s'"
+
+#: ../s3_postproc.php:69
+msgid ""
+"Please check that you have all pictures in the right order on both Left and "
+"Right folders before launching Scantailor."
+msgstr ""
+
+#: ../s3_postproc.php:70
+msgid ""
+"We will start by the first picture in the left folder, which is usually the "
+"cover of the book."
+msgstr ""
+
+#: ../s3_postproc.php:108 ../s6_generate.php:104
+msgid "Left images count"
+msgstr "Nombre d'images à gauche"
+
+#: ../s3_postproc.php:110 ../s6_generate.php:106
+msgid "Right images count"
+msgstr "Nombre d'images à droite"
+
+#: ../s3_postproc.php:120
+#, fuzzy
+msgid "Scantailor already in progress, please wait for it..."
+msgstr "La création du PDF est déjà en cours, merci de patienter..."
+
+#: ../s3_postproc.php:123
+#, fuzzy
+msgid "Enhance this project's images through Scantailor"
+msgstr "Sauver les métadonnées de ce projet"
+
+#: ../s3_postproc.php:125
+#, fuzzy
+msgid "No picture, can't enhance the project's pictures"
+msgstr ""
+"Aucune image ou images non cadrées, impossible de générer le PDF de ce projet"
+
 #: ../s6_generate.php:58
 msgid ""
 "The image PDF creation process has been started. PDF will be available in "
@@ -371,14 +456,6 @@ msgstr ""
 #, php-format
 msgid "Generating PDF Image for Project '%s'"
 msgstr "Génération du PDF Image pour le projet '%s'"
-
-#: ../s6_generate.php:104
-msgid "Left images count"
-msgstr "Nombre d'images à gauche"
-
-#: ../s6_generate.php:106
-msgid "Right images count"
-msgstr "Nombre d'images à droite"
 
 #: ../s6_generate.php:109
 msgid "Cropped left images"
@@ -414,9 +491,6 @@ msgstr "Télécharger le livre"
 
 #~ msgid "Folder %s not found, you should scan pages first"
 #~ msgstr "Dossier %s non trouvé, vous devriez scanner des pages d'abord"
-
-#~ msgid "Cropping %s pictures for project '%s'"
-#~ msgstr "Recadrage des images %s pour le projet '%s'"
 
 #~ msgid "Filename"
 #~ msgstr "Nom du fichier"

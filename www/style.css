@@ -96,6 +96,7 @@ table.hlist td, table.hlist th {
     border-bottom: 1px solid #555;
     padding: 4px 8px;
     margin: 0;
+    text-align: left;
 }
 
 .fmeta {
