@@ -14,8 +14,16 @@ if (!preg_match(PROJECT_PREG,$name) || !is_dir(PROJECT_ROOT."/".$name)) {
   exit();
 }
 
+
 $meta=json_decode(file_get_contents(PROJECT_ROOT."/".$name."/meta.json"),true);
+
+$lock=fopen(PROJECT_ROOT."/".$project."/temp/crop.json.lock","wb");
+flock($lock,LOCK_EX);
+
 $crop=json_decode(file_get_contents(PROJECT_ROOT."/".$name."/crop.json"),true);
+
+flock($lock,LOCK_UN);
+fclose($lock);
 
   if (!is_dir(PROJECT_ROOT."/".$name."/left")) 
     mkdir(PROJECT_ROOT."/".$name."/left");

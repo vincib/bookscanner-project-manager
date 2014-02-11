@@ -35,7 +35,7 @@ case "resetzoom":
 case "zoomin":
   $zoom=intval(@file_get_contents("/tmp/zoom"));
   if (!$zoom) {
-    $zoom=40;
+    $zoom=45;
   }
   if ($zoom>=ZOOM_MAX) {
     echo "ERROR: ".sprintf(_("can't zoom in, at %s"),$zoom);
