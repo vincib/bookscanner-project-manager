@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2014-01-30 08:51+0100\n"
+"POT-Creation-Date: 2014-02-11 20:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,6 +131,16 @@ msgstr ""
 
 #: ../camdriver.php:14
 msgid "Can't shoot, an error occurred while sending command to a camera"
+msgstr ""
+
+#: ../gen-scantailor.php:10 ../s1_meta.php:6 ../s2_scan.php:6
+#: ../s3_postproc.php:12 ../s6_generate.php:6
+msgid "Project name missing"
+msgstr ""
+
+#: ../gen-scantailor.php:16 ../s1_meta.php:12 ../s2_scan.php:12
+#: ../s3_postproc.php:18 ../s6_generate.php:12
+msgid "Project name is incorrect"
 msgstr ""
 
 #: ../head.php:4
@@ -257,15 +267,6 @@ msgstr ""
 msgid "Rename this project"
 msgstr ""
 
-#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_postproc.php:6 ../s6_generate.php:6
-msgid "Project name missing"
-msgstr ""
-
-#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_postproc.php:12
-#: ../s6_generate.php:12
-msgid "Project name is incorrect"
-msgstr ""
-
 #: ../s1_meta.php:38
 #, php-format
 msgid "Metadata for project '%s' successfully edited"
@@ -386,48 +387,60 @@ msgstr ""
 msgid "ERROR: project not set"
 msgstr ""
 
-#: ../s3_postproc.php:50
-msgid "The book image enhancement through Scantailor has been started."
+#: ../s3_postproc.php:8
+msgid "Scantailor file created."
 msgstr ""
 
-#: ../s3_postproc.php:50
-msgid "This will take some time depending on your computer's power."
-msgstr ""
-
-#: ../s3_postproc.php:66
+#: ../s3_postproc.php:65
 #, php-format
 msgid "Post processing for project '%s'"
 msgstr ""
 
-#: ../s3_postproc.php:69
+#: ../s3_postproc.php:68
 msgid ""
 "Please check that you have all pictures in the right order on both Left and "
 "Right folders before launching Scantailor."
 msgstr ""
 
-#: ../s3_postproc.php:70
+#: ../s3_postproc.php:69
 msgid ""
 "We will start by the first picture in the left folder, which is usually the "
 "cover of the book."
 msgstr ""
 
-#: ../s3_postproc.php:108 ../s6_generate.php:104
+#: ../s3_postproc.php:107 ../s6_generate.php:104
 msgid "Left images count"
 msgstr ""
 
-#: ../s3_postproc.php:110 ../s6_generate.php:106
+#: ../s3_postproc.php:109 ../s6_generate.php:106
 msgid "Right images count"
 msgstr ""
 
-#: ../s3_postproc.php:120
-msgid "Scantailor already in progress, please wait for it..."
+#: ../s3_postproc.php:113
+msgid ""
+"If scantailor will be launched on another computer, set this field to the "
+"path of all the projects"
 msgstr ""
 
-#: ../s3_postproc.php:123
+#: ../s3_postproc.php:115
+msgid "Substitute"
+msgstr ""
+
+#: ../s3_postproc.php:128
+msgid "Scantailor file already generated. You can use it or regenerate it"
+msgstr ""
+
+#: ../s3_postproc.php:134
+msgid ""
+"This will delete all the existing files in the book/ folder and subfolder. "
+"Please confirm."
+msgstr ""
+
+#: ../s3_postproc.php:136
 msgid "Enhance this project's images through Scantailor"
 msgstr ""
 
-#: ../s3_postproc.php:125
+#: ../s3_postproc.php:138
 msgid "No picture, can't enhance the project's pictures"
 msgstr ""
 

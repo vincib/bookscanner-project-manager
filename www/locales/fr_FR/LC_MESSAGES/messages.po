@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2014-01-30 08:51+0100\n"
-"PO-Revision-Date: 2014-01-30 08:52+0100\n"
+"POT-Creation-Date: 2014-02-11 20:15+0100\n"
+"PO-Revision-Date: 2014-02-11 20:18+0100\n"
 "Last-Translator: Benjamin Sonntag <benjamin@sonntag.fr>\n"
 "Language-Team: français <team@alternc.org>\n"
 "Language: fr_FR\n"
@@ -137,6 +137,16 @@ msgstr ""
 "Impossible de prendre une photo, une erreur est survenue lors de l'envoi "
 "d'une commande à l'appareil photo"
 
+#: ../gen-scantailor.php:10 ../s1_meta.php:6 ../s2_scan.php:6
+#: ../s3_postproc.php:12 ../s6_generate.php:6
+msgid "Project name missing"
+msgstr "Le nom du projet est manquant"
+
+#: ../gen-scantailor.php:16 ../s1_meta.php:12 ../s2_scan.php:12
+#: ../s3_postproc.php:18 ../s6_generate.php:12
+msgid "Project name is incorrect"
+msgstr "Le nom du projet est incorrect"
+
 #: ../head.php:4
 msgid "Bookscanner Project Manager"
 msgstr "Gestionnaire de projets pour scanner à livre"
@@ -263,15 +273,6 @@ msgstr "Créer ce projet"
 msgid "Rename this project"
 msgstr "Renommer ce projet"
 
-#: ../s1_meta.php:6 ../s2_scan.php:6 ../s3_postproc.php:6 ../s6_generate.php:6
-msgid "Project name missing"
-msgstr "Le nom du projet est manquant"
-
-#: ../s1_meta.php:12 ../s2_scan.php:12 ../s3_postproc.php:12
-#: ../s6_generate.php:12
-msgid "Project name is incorrect"
-msgstr "Le nom du projet est incorrect"
-
 #: ../s1_meta.php:38
 #, php-format
 msgid "Metadata for project '%s' successfully edited"
@@ -392,57 +393,72 @@ msgstr "impossible de dézoomer à '%s'"
 msgid "ERROR: project not set"
 msgstr "ERREUR: projet non spécifié"
 
-#: ../s3_postproc.php:50
-msgid "The book image enhancement through Scantailor has been started."
-msgstr ""
+#: ../s3_postproc.php:8
+msgid "Scantailor file created."
+msgstr "fichier Scantailor créé."
 
-#: ../s3_postproc.php:50
-#, fuzzy
-msgid "This will take some time depending on your computer's power."
-msgstr ""
-"Le processus de création du PDF image a été démarré. Le PDF sera disponible "
-"dans quelques temps, selon la vitesse de votre ordinateur."
-
-#: ../s3_postproc.php:66
-#, fuzzy, php-format
+#: ../s3_postproc.php:65
+#, php-format
 msgid "Post processing for project '%s'"
-msgstr "Recadrage des images %s pour le projet '%s'"
+msgstr "Post-Process du projet '%s'"
 
-#: ../s3_postproc.php:69
+#: ../s3_postproc.php:68
 msgid ""
 "Please check that you have all pictures in the right order on both Left and "
 "Right folders before launching Scantailor."
 msgstr ""
+"Merci de vérifier que vous avez toutes les images dans le bon ordre dans les "
+"dossiers Left et Right avant de lancer Scantailor."
 
-#: ../s3_postproc.php:70
+#: ../s3_postproc.php:69
 msgid ""
 "We will start by the first picture in the left folder, which is usually the "
 "cover of the book."
 msgstr ""
+"Le programme commence par la première image dans le dossier left, qui est "
+"habituellement la couverture du livre."
 
-#: ../s3_postproc.php:108 ../s6_generate.php:104
+#: ../s3_postproc.php:107 ../s6_generate.php:104
 msgid "Left images count"
 msgstr "Nombre d'images à gauche"
 
-#: ../s3_postproc.php:110 ../s6_generate.php:106
+#: ../s3_postproc.php:109 ../s6_generate.php:106
 msgid "Right images count"
 msgstr "Nombre d'images à droite"
 
-#: ../s3_postproc.php:120
-#, fuzzy
-msgid "Scantailor already in progress, please wait for it..."
-msgstr "La création du PDF est déjà en cours, merci de patienter..."
-
-#: ../s3_postproc.php:123
-#, fuzzy
-msgid "Enhance this project's images through Scantailor"
-msgstr "Sauver les métadonnées de ce projet"
-
-#: ../s3_postproc.php:125
-#, fuzzy
-msgid "No picture, can't enhance the project's pictures"
+#: ../s3_postproc.php:113
+msgid ""
+"If scantailor will be launched on another computer, set this field to the "
+"path of all the projects"
 msgstr ""
-"Aucune image ou images non cadrées, impossible de générer le PDF de ce projet"
+"Si Scantailor doit être lancé depuis un autre ordinateur, indiquez dans ce "
+"champ le chemin d'accès vers les projets"
+
+#: ../s3_postproc.php:115
+msgid "Substitute"
+msgstr "Subtituer"
+
+#: ../s3_postproc.php:128
+msgid "Scantailor file already generated. You can use it or regenerate it"
+msgstr ""
+"Le fichier Scantailor a déjà été généré. Vous pouvez l'utiliser ou le "
+"régénérer"
+
+#: ../s3_postproc.php:134
+msgid ""
+"This will delete all the existing files in the book/ folder and subfolder. "
+"Please confirm."
+msgstr ""
+"Cela effacera tous les fichiers existant dans le dossier book/ et ses sous-"
+"dossiers. Merci de confirmer."
+
+#: ../s3_postproc.php:136
+msgid "Enhance this project's images through Scantailor"
+msgstr "Améliorer les images de ce projet via Scantailor"
+
+#: ../s3_postproc.php:138
+msgid "No picture, can't enhance the project's pictures"
+msgstr "Aucune image, impossible d'améliorer les images de ce projet."
 
 #: ../s6_generate.php:58
 msgid ""
@@ -485,6 +501,16 @@ msgstr "PDF Image du livre"
 #: ../s6_generate.php:134
 msgid "Download the Book"
 msgstr "Télécharger le livre"
+
+#, fuzzy
+#~ msgid "This will take some time depending on your computer's power."
+#~ msgstr ""
+#~ "Le processus de création du PDF image a été démarré. Le PDF sera "
+#~ "disponible dans quelques temps, selon la vitesse de votre ordinateur."
+
+#, fuzzy
+#~ msgid "Scantailor already in progress, please wait for it..."
+#~ msgstr "La création du PDF est déjà en cours, merci de patienter..."
 
 #~ msgid "Mode is missing"
 #~ msgstr "Le mode manque"
