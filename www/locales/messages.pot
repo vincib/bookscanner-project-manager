@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2014-01-08 21:24+0100\n"
+=======
+"POT-Creation-Date: 2014-02-11 20:15+0100\n"
+>>>>>>> 33bbd1ba9bef3a43d1b16e7243e143ca08448362
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,44 +49,72 @@ msgstr ""
 msgid "Image PDF generated"
 msgstr ""
 
-#: ../bsm.php:21 ../index.php:41
+#: ../bsm.php:22 ../index.php:41
 msgid "Title"
 msgstr ""
 
-#: ../bsm.php:21
+#: ../bsm.php:22
 msgid "Title of the book"
 msgstr ""
 
-#: ../bsm.php:22
+#: ../bsm.php:23
 msgid "Authors"
 msgstr ""
 
-#: ../bsm.php:22
+#: ../bsm.php:23
 msgid "Authors of the book"
 msgstr ""
 
-#: ../bsm.php:23
+#: ../bsm.php:24
 msgid "Publisher"
 msgstr ""
 
-#: ../bsm.php:23
+#: ../bsm.php:24
 msgid "Publisher of the book"
 msgstr ""
 
-#: ../bsm.php:24
+#: ../bsm.php:25
 msgid "Date"
 msgstr ""
 
-#: ../bsm.php:24
+#: ../bsm.php:25
 msgid "Date of publication"
 msgstr ""
 
-#: ../bsm.php:25
+#: ../bsm.php:26
 msgid "ISBN"
 msgstr ""
 
-#: ../bsm.php:25
+#: ../bsm.php:26
 msgid "ISBN or EAN13 of the book (its barcode)"
+msgstr ""
+
+#: ../bsm.php:27
+msgid "Main Language"
+msgstr ""
+
+#: ../bsm.php:27
+msgid "Main language of this book (used by OCR)"
+msgstr ""
+
+#: ../bsm.php:31
+msgid "-- Choose a language --"
+msgstr ""
+
+#: ../bsm.php:32
+msgid "French"
+msgstr ""
+
+#: ../bsm.php:33
+msgid "English"
+msgstr ""
+
+#: ../bsm.php:34
+msgid "German"
+msgstr ""
+
+#: ../bsm.php:35
+msgid "Other or Multiple"
 msgstr ""
 
 #: ../camdriver.php:7
@@ -103,6 +135,16 @@ msgstr ""
 
 #: ../camdriver.php:14
 msgid "Can't shoot, an error occurred while sending command to a camera"
+msgstr ""
+
+#: ../gen-scantailor.php:10 ../s1_meta.php:6 ../s2_scan.php:6
+#: ../s3_postproc.php:12 ../s6_generate.php:6
+msgid "Project name missing"
+msgstr ""
+
+#: ../gen-scantailor.php:16 ../s1_meta.php:12 ../s2_scan.php:12
+#: ../s3_postproc.php:18 ../s6_generate.php:12
+msgid "Project name is incorrect"
 msgstr ""
 
 #: ../head.php:4
@@ -174,6 +216,10 @@ msgstr ""
 msgid "Scan"
 msgstr ""
 
+#: ../menu2.php:9
+msgid "Post-processing"
+msgstr ""
+
 #: ../s0_name.php:8
 msgid "Name must contain only a-z 0-9 - , ."
 msgstr ""
@@ -225,14 +271,6 @@ msgstr ""
 msgid "Rename this project"
 msgstr ""
 
-#: ../s1_meta.php:6 ../s2_scan.php:6 ../s6_generate.php:6
-msgid "Project name missing"
-msgstr ""
-
-#: ../s1_meta.php:12 ../s2_scan.php:12 ../s6_generate.php:12
-msgid "Project name is incorrect"
-msgstr ""
-
 #: ../s1_meta.php:38
 #, php-format
 msgid "Metadata for project '%s' successfully edited"
@@ -248,19 +286,19 @@ msgstr ""
 msgid "Editing metadata of project '%s'"
 msgstr ""
 
-#: ../s1_meta.php:81
+#: ../s1_meta.php:87
 msgid "more..."
 msgstr ""
 
-#: ../s1_meta.php:95
+#: ../s1_meta.php:101
 msgid "(yyyy or yyyy-mm or yyyy-mm-dd)"
 msgstr ""
 
-#: ../s1_meta.php:98
+#: ../s1_meta.php:104
 msgid "(barcode, often starting by 978, no '-')"
 msgstr ""
 
-#: ../s1_meta.php:106
+#: ../s1_meta.php:112
 msgid "Save this project's Metadata"
 msgstr ""
 
@@ -353,6 +391,7 @@ msgstr ""
 msgid "ERROR: project not set"
 msgstr ""
 
+<<<<<<< HEAD
 #: ../s6_generate.php:66
 msgid ""
 "The image PDF creation process has been started. PDF will be available in "
@@ -360,10 +399,30 @@ msgid ""
 msgstr ""
 
 #: ../s6_generate.php:82
-#, php-format
-msgid "Generating PDF Image for Project '%s'"
+=======
+#: ../s3_postproc.php:8
+msgid "Scantailor file created."
 msgstr ""
 
+#: ../s3_postproc.php:65
+>>>>>>> 33bbd1ba9bef3a43d1b16e7243e143ca08448362
+#, php-format
+msgid "Post processing for project '%s'"
+msgstr ""
+
+#: ../s3_postproc.php:68
+msgid ""
+"Please check that you have all pictures in the right order on both Left and "
+"Right folders before launching Scantailor."
+msgstr ""
+
+#: ../s3_postproc.php:69
+msgid ""
+"We will start by the first picture in the left folder, which is usually the "
+"cover of the book."
+msgstr ""
+
+<<<<<<< HEAD
 #: ../s6_generate.php:112
 msgid "Left images count"
 msgstr ""
@@ -373,6 +432,56 @@ msgid "Right images count"
 msgstr ""
 
 #: ../s6_generate.php:117
+=======
+#: ../s3_postproc.php:107 ../s6_generate.php:104
+msgid "Left images count"
+msgstr ""
+
+#: ../s3_postproc.php:109 ../s6_generate.php:106
+msgid "Right images count"
+msgstr ""
+
+#: ../s3_postproc.php:113
+msgid ""
+"If scantailor will be launched on another computer, set this field to the "
+"path of all the projects"
+msgstr ""
+
+#: ../s3_postproc.php:115
+msgid "Substitute"
+msgstr ""
+
+#: ../s3_postproc.php:128
+msgid "Scantailor file already generated. You can use it or regenerate it"
+msgstr ""
+
+#: ../s3_postproc.php:134
+msgid ""
+"This will delete all the existing files in the book/ folder and subfolder. "
+"Please confirm."
+msgstr ""
+
+#: ../s3_postproc.php:136
+msgid "Enhance this project's images through Scantailor"
+msgstr ""
+
+#: ../s3_postproc.php:138
+msgid "No picture, can't enhance the project's pictures"
+msgstr ""
+
+#: ../s6_generate.php:58
+msgid ""
+"The image PDF creation process has been started. PDF will be available in "
+"some time depending on your computer's power"
+msgstr ""
+
+#: ../s6_generate.php:74
+#, php-format
+msgid "Generating PDF Image for Project '%s'"
+msgstr ""
+
+#: ../s6_generate.php:109
+>>>>>>> 33bbd1ba9bef3a43d1b16e7243e143ca08448362
 msgid "Cropped left images"
 msgstr ""
 

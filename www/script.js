@@ -213,7 +213,7 @@ function cam_search() {
 }
 
 function cam_zoomin(much) {
-    $('#zoomstatus').html("<div class=\"alert\">Zooming IN...</div>");
+    $('#camerastatus').html("<div class=\"alert\">Zooming IN...</div>");
       var ret = $.ajax({
 	url:            's2_scan_ajax.php?action=zoomin&much='+much,
 	    type:           'GET',
@@ -226,14 +226,14 @@ function cam_zoomin(much) {
 	    if (data.substring(0,3)=="OK:") {
 	      data="<div class=\"alert alert-success\">"+data+"</div>";
 	    }
-	    $('#zoomstatus').html(data);
+	    $('#camerastatus').html(data);
 	  }
 	})
 }
 
 
 function cam_zoomout(much) {
-    $('#zoomstatus').html("<div class=\"alert\">Zooming OUT...</div>");
+    $('#camerastatus').html("<div class=\"alert\">Zooming OUT...</div>");
       var ret = $.ajax({
 	url:            's2_scan_ajax.php?action=zoomout&much='+much,
 	    type:           'GET',
@@ -246,14 +246,14 @@ function cam_zoomout(much) {
 	    if (data.substring(0,3)=="OK:") {
 	      data="<div class=\"alert alert-success\">"+data+"</div>";
 	    }
-	    $('#zoomstatus').html(data);
+	    $('#camerastatus').html(data);
 	  }
 	})
 }
 
 
 function cam_resetzoom() {
-    $('#zoomstatus').html("<div class=\"alert\">Resetting zoom...</div>");
+    $('#camerastatus').html("<div class=\"alert\">Resetting zoom...</div>");
       var ret = $.ajax({
 	url:            's2_scan_ajax.php?action=resetzoom',
 	    type:           'GET',
@@ -266,7 +266,7 @@ function cam_resetzoom() {
 	    if (data.substring(0,3)=="OK:") {
 	      data="<div class=\"alert alert-success\">"+data+"</div>";
 	    }
-	    $('#zoomstatus').html(data);
+	    $('#camerastatus').html(data);
 	  }
 	})
 }

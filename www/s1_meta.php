@@ -39,7 +39,7 @@ if (isset($_POST["name"])) {
   } else {
     $warning=sprintf(_("Metadata for project '%s' not changed: nothing submitted"),$name);
   }
-  require("index.php");
+  require("s2_scan.php");
   exit();
 }
 
@@ -72,6 +72,12 @@ require_once("menu2.php");
   <tr><th><?php echo $attribs[0] ?></th><td>
    <?php
   switch ($attribs[2]) { 
+  case TYPE_LIST:
+  $list="a_list_".$key;
+  echo "<select name=\"$key\" id=\"$key\" class=\"fmetatext\" onfocus=\"help('".addslashes($attribs[1])."')\">";
+  eoption($$list,$_REQUEST[$key]);
+  echo "</select>";
+  break;
   case TYPE_SINGLE:
   echo "<input type=\"text\" name=\"$key\" id=\"$key\" value=\"".he($_REQUEST[$key])."\" class=\"fmetatext\" onfocus=\"help('".addslashes($attribs[1])."')\" />";
   break;
