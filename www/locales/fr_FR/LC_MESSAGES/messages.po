@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2014-01-07 14:10+0100\n"
+"POT-Creation-Date: 2014-01-08 21:24+0100\n"
 "PO-Revision-Date: 2014-01-07 14:12+0100\n"
 "Last-Translator: Benjamin Sonntag <benjamin@sonntag.fr>\n"
 "Language-Team: français <team@alternc.org>\n"
@@ -359,7 +359,7 @@ msgstr "impossible de dézoomer à '%s'"
 msgid "ERROR: project not set"
 msgstr "ERREUR: projet non spécifié"
 
-#: ../s6_generate.php:58
+#: ../s6_generate.php:66
 msgid ""
 "The image PDF creation process has been started. PDF will be available in "
 "some time depending on your computer's power"
@@ -367,45 +367,45 @@ msgstr ""
 "Le processus de création du PDF image a été démarré. Le PDF sera disponible "
 "dans quelques temps, selon la vitesse de votre ordinateur."
 
-#: ../s6_generate.php:74
+#: ../s6_generate.php:82
 #, php-format
 msgid "Generating PDF Image for Project '%s'"
 msgstr "Génération du PDF Image pour le projet '%s'"
 
-#: ../s6_generate.php:104
+#: ../s6_generate.php:112
 msgid "Left images count"
 msgstr "Nombre d'images à gauche"
 
-#: ../s6_generate.php:106
+#: ../s6_generate.php:114
 msgid "Right images count"
 msgstr "Nombre d'images à droite"
 
-#: ../s6_generate.php:109
+#: ../s6_generate.php:117
 msgid "Cropped left images"
 msgstr "Images gauche cadrées"
 
-#: ../s6_generate.php:111
+#: ../s6_generate.php:119
 msgid "Cropped right images"
 msgstr "Images droite cadrées"
 
-#: ../s6_generate.php:121
+#: ../s6_generate.php:129
 msgid "PDF creation already in progress, please wait for it..."
 msgstr "La création du PDF est déjà en cours, merci de patienter..."
 
-#: ../s6_generate.php:124
+#: ../s6_generate.php:132
 msgid "Generate this project's PDF"
 msgstr "Créer le PDF de ce projet"
 
-#: ../s6_generate.php:126
+#: ../s6_generate.php:134
 msgid "No picture or pictures not cropped, can't generate the project's PDF"
 msgstr ""
 "Aucune image ou images non cadrées, impossible de générer le PDF de ce projet"
 
-#: ../s6_generate.php:133
+#: ../s6_generate.php:141
 msgid "PDF Image of the book "
 msgstr "PDF Image du livre"
 
-#: ../s6_generate.php:134
+#: ../s6_generate.php:142
 msgid "Download the Book"
 msgstr "Télécharger le livre"
 

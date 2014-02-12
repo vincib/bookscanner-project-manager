@@ -47,7 +47,7 @@ case "zoomin":
     $zoom+=5;
   if ($zoom>ZOOM_MAX) $zoom=ZOOM_MAX;
 
-  file_put_contents("/tmp/zoom 2>&1",$zoom);
+  file_put_contents("/tmp/zoom",$zoom);
   unset($out);
   exec(CAMDRIVER." zoom $zoom",$out,$ret);
   if ($ret!=0) echo "ERROR: "; else echo "OK: ";
@@ -69,7 +69,7 @@ case "zoomout":
   else 
     $zoom-=5;
   if ($zoom<ZOOM_MIN) $zoom=ZOOM_MIN;
-  file_put_contents("tmp/zoom 2>&1",$zoom);
+  file_put_contents("/tmp/zoom",$zoom);
   unset($out);
   exec(CAMDRIVER." zoom $zoom",$out,$ret);
   if ($ret!=0) echo "ERROR: "; else echo "OK: ";

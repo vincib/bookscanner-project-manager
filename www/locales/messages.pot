@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2014-01-07 14:10+0100\n"
+"POT-Creation-Date: 2014-01-08 21:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -353,49 +353,49 @@ msgstr ""
 msgid "ERROR: project not set"
 msgstr ""
 
-#: ../s6_generate.php:58
+#: ../s6_generate.php:66
 msgid ""
 "The image PDF creation process has been started. PDF will be available in "
 "some time depending on your computer's power"
 msgstr ""
 
-#: ../s6_generate.php:74
+#: ../s6_generate.php:82
 #, php-format
 msgid "Generating PDF Image for Project '%s'"
 msgstr ""
 
-#: ../s6_generate.php:104
+#: ../s6_generate.php:112
 msgid "Left images count"
 msgstr ""
 
-#: ../s6_generate.php:106
+#: ../s6_generate.php:114
 msgid "Right images count"
 msgstr ""
 
-#: ../s6_generate.php:109
+#: ../s6_generate.php:117
 msgid "Cropped left images"
 msgstr ""
 
-#: ../s6_generate.php:111
+#: ../s6_generate.php:119
 msgid "Cropped right images"
 msgstr ""
 
-#: ../s6_generate.php:121
+#: ../s6_generate.php:129
 msgid "PDF creation already in progress, please wait for it..."
 msgstr ""
 
-#: ../s6_generate.php:124
+#: ../s6_generate.php:132
 msgid "Generate this project's PDF"
 msgstr ""
 
-#: ../s6_generate.php:126
+#: ../s6_generate.php:134
 msgid "No picture or pictures not cropped, can't generate the project's PDF"
 msgstr ""
 
-#: ../s6_generate.php:133
+#: ../s6_generate.php:141
 msgid "PDF Image of the book "
 msgstr ""
 
-#: ../s6_generate.php:134
+#: ../s6_generate.php:142
 msgid "Download the Book"
 msgstr ""

@@ -4,6 +4,8 @@
 # ptpcam must be in the current folder
 # cam.sh must contain the two LEFT / RIGHT camera USB location. 
 
+ptpcam=/var/www/sh/ptpcam.pi
+
 # Usage: camdriver.sh <action> <parameter>
 # action can be : 
 
@@ -97,10 +99,10 @@ case $1 in
 
     prepare)
 	# TODO : get back both $? and check it's 0
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="mode 1"
-	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="mode 1"
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').prepare(40)"
-	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').prepare(40)"
+	$ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="mode 1"
+	$ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="mode 1"
+	$ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').prepare(40)"
+	$ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').prepare(40)"
 	exit 0 
 	;;
 
@@ -112,8 +114,8 @@ case $1 in
 	    exit 7
 	fi
 	# TODO : get back both $? and check it's 0
-	./ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').prepare($zoom)"
-	./ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').prepare($zoom)"
+	$ptpcam --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').prepare($zoom)"
+	$ptpcam --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').prepare($zoom)"
 #	while [ "`jobs -p`" ]
 #	do
 #	    sleep 1  # todo : timeout at 10 ?
@@ -134,12 +136,12 @@ case $1 in
 	fi
 	# TODO : get back both $? and check it's 0
 	( cd "$left" && \
-	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()"
+	    "$ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()"
 	) & 
 	P1="`jobs -p`"
 	sleep 0.2
 	( cd "$right" && \
-	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()"
+	    "$ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()"
 	) & 
 	P2="`jobs -p`"
 	while [ -d "/proc/$P1" -o -d "/proc/$P2" ]
@@ -161,20 +163,20 @@ case $1 in
 	fi
 	# TODO : get back both $? and check it's 0
 	( cd "$left" && \
-	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()" && \
+	    "$ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} --chdk="luar require('lptpgui').shoot()" && \
 	    sleep 3 
 #&& \
-#	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
-#	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
+#	    "$ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
+#	    "$ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
 	) & 
 	P1="`jobs -p`"
 	sleep 0.2
 	( cd "$right" && \
-	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()" && \
+	    "$ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} --chdk="luar require('lptpgui').shoot()" && \
 	    sleep 3 
 #&& \
-#	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
-#	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
+#	    "$ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
+#	    "$ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
 	) & 
 	P2="`jobs -p`"
 	while [ -d "/proc/$P1" -o -d "/proc/$P2" ]
@@ -196,13 +198,13 @@ case $1 in
 	fi
 	# TODO : get back both $? and check it's 0
 	( cd "$left" && \
-	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
-	    "$MYFOLD/ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
+	    "$ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -G --overwrite && \
+	    "$ptpcam" --bus=${USB_LEFT_BUS} --dev=${USB_LEFT_DEV} -D
 	) & 
 	P1="`jobs -p`"
 	( cd "$right" && \
-	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
-	    "$MYFOLD/ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
+	    "$ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -G --overwrite && \
+	    "$ptpcam" --bus=${USB_RIGHT_BUS} --dev=${USB_RIGHT_DEV} -D
 	) & 
 	P2="`jobs -p`"
 	while [ -d "/proc/$P1" -o -d "/proc/$P2" ]

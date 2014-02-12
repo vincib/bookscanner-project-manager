@@ -50,3 +50,7 @@ We are using the model created by Dan Reetz, available and discussed at http://w
 
 You can buy one to build yourself if you live in Europe at http://www.diybookscanner.eu/
 
+Use gsettings to prevent automount of cameras by your window manager
+
+gsettings set org.gnome.desktop.media-handling automount "false"
+gsettings set org.gnome.desktop.media-handling automount-open "false"

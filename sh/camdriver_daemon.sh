@@ -18,7 +18,7 @@ rm -f /tmp/ididit.txt
 echo "done"
 
 chmod a+w /tmp/imdoingit.txt
-chown benjamin /tmp/imdoingit.txt
+chown pi /tmp/imdoingit.txt
 mv -f /tmp/imdoingit.txt /tmp/ididit.txt
 
 rm -f /tmp/doit_now.sh
