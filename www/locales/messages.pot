@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2014-01-08 21:24+0100\n"
-=======
-"POT-Creation-Date: 2014-02-11 20:15+0100\n"
->>>>>>> 33bbd1ba9bef3a43d1b16e7243e143ca08448362
+"POT-Creation-Date: 2014-02-19 20:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,12 +133,12 @@ msgstr ""
 msgid "Can't shoot, an error occurred while sending command to a camera"
 msgstr ""
 
-#: ../gen-scantailor.php:10 ../s1_meta.php:6 ../s2_scan.php:6
+#: ../gen-scantailor.php:8 ../s1_meta.php:6 ../s2_scan.php:6
 #: ../s3_postproc.php:12 ../s6_generate.php:6
 msgid "Project name missing"
 msgstr ""
 
-#: ../gen-scantailor.php:16 ../s1_meta.php:12 ../s2_scan.php:12
+#: ../gen-scantailor.php:14 ../s1_meta.php:12 ../s2_scan.php:12
 #: ../s3_postproc.php:18 ../s6_generate.php:12
 msgid "Project name is incorrect"
 msgstr ""
@@ -391,21 +387,11 @@ msgstr ""
 msgid "ERROR: project not set"
 msgstr ""
 
-<<<<<<< HEAD
-#: ../s6_generate.php:66
-msgid ""
-"The image PDF creation process has been started. PDF will be available in "
-"some time depending on your computer's power"
-msgstr ""
-
-#: ../s6_generate.php:82
-=======
 #: ../s3_postproc.php:8
 msgid "Scantailor file created."
 msgstr ""
 
 #: ../s3_postproc.php:65
->>>>>>> 33bbd1ba9bef3a43d1b16e7243e143ca08448362
 #, php-format
 msgid "Post processing for project '%s'"
 msgstr ""
@@ -413,7 +399,8 @@ msgstr ""
 #: ../s3_postproc.php:68
 msgid ""
 "Please check that you have all pictures in the right order on both Left and "
-"Right folders before launching Scantailor."
+"Right folders before launching Scantailor. Remove all unnecessary pictures "
+"at the beginning of the 'right' folder and at the end of the 'left' folder."
 msgstr ""
 
 #: ../s3_postproc.php:69
@@ -422,29 +409,19 @@ msgid ""
 "cover of the book."
 msgstr ""
 
-<<<<<<< HEAD
-#: ../s6_generate.php:112
+#: ../s3_postproc.php:107 ../s6_generate.php:112
 msgid "Left images count"
 msgstr ""
 
-#: ../s6_generate.php:114
-msgid "Right images count"
-msgstr ""
-
-#: ../s6_generate.php:117
-=======
-#: ../s3_postproc.php:107 ../s6_generate.php:104
-msgid "Left images count"
-msgstr ""
-
-#: ../s3_postproc.php:109 ../s6_generate.php:106
+#: ../s3_postproc.php:109 ../s6_generate.php:114
 msgid "Right images count"
 msgstr ""
 
 #: ../s3_postproc.php:113
 msgid ""
 "If scantailor will be launched on another computer, set this field to the "
-"path of all the projects"
+"path of all the projects<br />Example: on windows you could set it to "
+"<code>z:\\</code>, on Linux/mac, this could be <code>/mnt</code>"
 msgstr ""
 
 #: ../s3_postproc.php:115
@@ -469,19 +446,18 @@ msgstr ""
 msgid "No picture, can't enhance the project's pictures"
 msgstr ""
 
-#: ../s6_generate.php:58
+#: ../s6_generate.php:66
 msgid ""
 "The image PDF creation process has been started. PDF will be available in "
 "some time depending on your computer's power"
 msgstr ""
 
-#: ../s6_generate.php:74
+#: ../s6_generate.php:82
 #, php-format
 msgid "Generating PDF Image for Project '%s'"
 msgstr ""
 
-#: ../s6_generate.php:109
->>>>>>> 33bbd1ba9bef3a43d1b16e7243e143ca08448362
+#: ../s6_generate.php:117
 msgid "Cropped left images"
 msgstr ""
 

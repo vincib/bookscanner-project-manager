@@ -4,8 +4,6 @@
 
 require_once("config.php");
 
-$_REQUEST["name"]="damasio-zone";
-
 if (!isset($_REQUEST["name"])) {
   $error=_("Project name missing");
   require("index.php");
@@ -29,6 +27,11 @@ if (!is_dir(PROJECT_ROOT."/".$name."/book"))
 
 
 if (isset($_REQUEST["substitute"]) && $_REQUEST["substitute"]) {
+  if (preg_match("#^[a-zA-Z]:\\.*#",$_REQUEST["substitute"])) {
+    define("XML_WINDOWS",true);
+  } else {
+    define("XML_WINDOWS",false);
+  }
   define("XML_ROOT",$_REQUEST["substitute"]);
 } else {
   define("XML_ROOT",PROJECT_ROOT);
@@ -72,9 +75,23 @@ mkdir(PROJECT_ROOT."/".$name."/booktif",0777);
 
 ob_start();
 ?>
-<project outputDirectory="<?php echo XML_ROOT."/".$name."/booktif"; ?>" layoutDirection="LTR">
+<project outputDirectory="<?php 
+// "
+if (XML_WINDOWS) {
+  echo XML_ROOT.$name."\\booktif"; 
+} else {
+  echo XML_ROOT."/".$name."/booktif"; 
+}
+
+?>" layoutDirection="LTR">
   <directories>
-    <directory path="<?php echo XML_ROOT."/".$name."/book"; ?>" id="<?php echo $id++; ?>"/>
+    <directory path="<?php 
+if (XML_WINDOWS) {
+  echo str_replace("\\","/",XML_ROOT).$name."/book"; 
+} else {
+  echo XML_ROOT."/".$name."/book"; 
+}
+?>" id="<?php echo $id++; ?>"/>
   </directories>
   <files>
   <?php $firstfileid=$id; ?>
@@ -89,7 +106,7 @@ while ($found) {
     $s=bsm_imagesize(PROJECT_ROOT."/".$name."/left/".$v[1]);
     if (count($s)==2) {
       // We symlink every picture file from the first left one from page 1
-      symlink("../left/".$v[1],PROJECT_ROOT."/".$name."/book/i".sprintf("%05d",$page).".jpg");
+      symlink("../left/".$v[1], PROJECT_ROOT."/".$name."/book/i".sprintf("%05d",$page).".jpg");
       echo '    <file dirId="1" id="'.$id.'" name="'.'i'.sprintf("%05d",$page).'.jpg'.'"/>
 ';
       $images[$id]=array("name" => 'i'.sprintf("%05d",$page).'.jpg', "width" => $s[0], "height" => $s[1], "rotate" => 90,
@@ -102,7 +119,7 @@ while ($found) {
   if ($v=each($allright)) {
     $s=bsm_imagesize(PROJECT_ROOT."/".$name."/right/".$v[1]);
     if (count($s)==2) {
-      symlink("../right/".$v[1],PROJECT_ROOT."/".$name."/book/i".sprintf("%05d",$page).".jpg");
+      symlink("../right/".$v[1], PROJECT_ROOT."/".$name."/book/i".sprintf("%05d",$page).".jpg");
       echo '    <file dirId="1" id="'.$id.'" name="'.'i'.sprintf("%05d",$page).'.jpg'.'"/>
 ';
       $images[$id]=array("name" => 'i'.sprintf("%05d",$page).'.jpg', "width" => $s[0], "height" => $s[1], "rotate" => 270,

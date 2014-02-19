@@ -1,0 +1,563 @@
+# Bookscanner Project Manager 
+# Copyright (C) 2013 Bookscanner.fr Team
+# This file is distributed under the same license as the BookScanner Project Manager package.
+# Benjamin Sonntag <benjamin@sonntag.fr>, 2013, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BookscannerProjectManager 1.0\n"
+"Report-Msgid-Bugs-To: team@bookscanner.fr\n"
+"POT-Creation-Date: 2014-02-11 20:15+0100\n"
+"PO-Revision-Date: 2014-02-11 20:18+0100\n"
+"Last-Translator: Benjamin Sonntag <benjamin@sonntag.fr>\n"
+"Language-Team: français <team@alternc.org>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../bsm.php:5
+msgid "project created, need scanning"
+msgstr "projet créé, à scanner"
+
+#: ../bsm.php:6
+msgid "scanning in progress"
+msgstr "scan en cours"
+
+#: ../bsm.php:7
+msgid "scanning finished, need picture checking"
+msgstr "scan terminé, vérification des images requis"
+
+#: ../bsm.php:8
+msgid "picture checking in progress"
+msgstr "vérification des images en cours"
+
+#: ../bsm.php:9
+msgid "checking finished, need cropping "
+msgstr "vérification terminée, recadrage requis"
+
+#: ../bsm.php:10
+msgid "cropping process started"
+msgstr "recadrage commencé"
+
+#: ../bsm.php:11
+msgid "Image PDF generated"
+msgstr "PDF image généré"
+
+#: ../bsm.php:22 ../index.php:41
+msgid "Title"
+msgstr "Titre"
+
+#: ../bsm.php:22
+msgid "Title of the book"
+msgstr "Titre du livre"
+
+#: ../bsm.php:23
+msgid "Authors"
+msgstr "Auteurs"
+
+#: ../bsm.php:23
+msgid "Authors of the book"
+msgstr "Auteurs du livre"
+
+#: ../bsm.php:24
+msgid "Publisher"
+msgstr "Éditeur"
+
+#: ../bsm.php:24
+msgid "Publisher of the book"
+msgstr "Éditeur du livre"
+
+#: ../bsm.php:25
+msgid "Date"
+msgstr "Date"
+
+#: ../bsm.php:25
+msgid "Date of publication"
+msgstr "Date de publication"
+
+#: ../bsm.php:26
+msgid "ISBN"
+msgstr "ISBN"
+
+#: ../bsm.php:26
+msgid "ISBN or EAN13 of the book (its barcode)"
+msgstr "ISBN ou EAN13 du livre (son code à barres)"
+
+#: ../bsm.php:27
+msgid "Main Language"
+msgstr "Langue principale"
+
+#: ../bsm.php:27
+msgid "Main language of this book (used by OCR)"
+msgstr "Langue principale du livre (utilisée par l'OCR)"
+
+#: ../bsm.php:31
+msgid "-- Choose a language --"
+msgstr "-- Choisissez une langue --"
+
+#: ../bsm.php:32
+msgid "French"
+msgstr "Français"
+
+#: ../bsm.php:33
+msgid "English"
+msgstr "Anglais"
+
+#: ../bsm.php:34
+msgid "German"
+msgstr "Allemand"
+
+#: ../bsm.php:35
+msgid "Other or Multiple"
+msgstr "Autre ou multiples"
+
+#: ../camdriver.php:7
+msgid "No camera found"
+msgstr "Aucun appareil photo de trouvé"
+
+#: ../camdriver.php:7 ../camdriver.php:8
+msgid "Please connect and switch on both camera"
+msgstr "Merci de connecter et allumer les 2 appareils photos"
+
+#: ../camdriver.php:12
+msgid "Zoom must be between 0 and 120"
+msgstr "Le zoom doit être compris entre 0 et 120"
+
+#: ../camdriver.php:13
+msgid "Can't zoom, an error occurred while sending command to a camera"
+msgstr ""
+"Impossible de zoomer, une erreur est survenue lors de l'envoi de la commande "
+"à l'appareil photo"
+
+#: ../camdriver.php:14
+msgid "Can't shoot, an error occurred while sending command to a camera"
+msgstr ""
+"Impossible de prendre une photo, une erreur est survenue lors de l'envoi "
+"d'une commande à l'appareil photo"
+
+#: ../gen-scantailor.php:10 ../s1_meta.php:6 ../s2_scan.php:6
+#: ../s3_postproc.php:12 ../s6_generate.php:6
+msgid "Project name missing"
+msgstr "Le nom du projet est manquant"
+
+#: ../gen-scantailor.php:16 ../s1_meta.php:12 ../s2_scan.php:12
+#: ../s3_postproc.php:18 ../s6_generate.php:12
+msgid "Project name is incorrect"
+msgstr "Le nom du projet est incorrect"
+
+#: ../head.php:4
+msgid "Bookscanner Project Manager"
+msgstr "Gestionnaire de projets pour scanner à livre"
+
+#: ../index.php:14 ../menu.php:9
+msgid "Project List"
+msgstr "Liste des projects"
+
+#: ../index.php:41
+msgid "Author"
+msgstr "Auteur"
+
+#: ../index.php:41
+msgid "Project"
+msgstr "Projet"
+
+#: ../index.php:41
+msgid "Status"
+msgstr "État"
+
+#: ../index.php:58
+#, php-format
+msgid "<i>(and %s others)</i>"
+msgstr "<i>(et %s autres)</i>"
+
+#: ../labels.php:10
+msgid "Success"
+msgstr "Succès"
+
+#: ../labels.php:11
+msgid "Warning"
+msgstr "Attention"
+
+#: ../labels.php:12
+msgid "Error"
+msgstr "Erreur"
+
+#: ../labels.php:13
+msgid "Info"
+msgstr "Information"
+
+#: ../menu.php:10
+msgid "New Project"
+msgstr "Nouveau projet"
+
+#: ../menu.php:30
+msgid "Bookscanner Manager"
+msgstr "Gestionnaire de scanner à livres"
+
+#: ../menu.php:31
+msgid "Industrializing the book scanning process"
+msgstr "Industrialisation du processus de scan de livres"
+
+#: ../menu2.php:3
+msgid "Project Steps"
+msgstr "Étapes du projet"
+
+#: ../menu2.php:6
+msgid "Rename"
+msgstr "Renommer"
+
+#: ../menu2.php:7
+msgid "Metadata"
+msgstr "Metadonnées"
+
+#: ../menu2.php:8
+msgid "Scan"
+msgstr "Scanner"
+
+#: ../menu2.php:9
+msgid "Post-processing"
+msgstr "Post-Process"
+
+#: ../s0_name.php:8
+msgid "Name must contain only a-z 0-9 - , ."
+msgstr "Le nom ne peut contenir que a-z 0-9 - , ."
+
+#: ../s0_name.php:13
+msgid "Nothing done, no change requested"
+msgstr "Rien n'a été demandé"
+
+#: ../s0_name.php:18
+msgid "BAD OLD NAME, this shall not happen ..."
+msgstr "MAUVAIS ANCIEN NOM, cela ne devrait pas arriver ..."
+
+#: ../s0_name.php:24
+msgid "A project with that name already exists, please choose another name"
+msgstr "Un projet de ce nom existe déjà, merci de choisir un autre nom"
+
+#: ../s0_name.php:30
+msgid "Project successfully renamed"
+msgstr "Projet renommé avec succès"
+
+#: ../s0_name.php:38
+msgid "Project successfully created, please set its metadata"
+msgstr "Projet créé avec succès, merci d'entrer ses métadonnées"
+
+#: ../s0_name.php:70
+#, php-format
+msgid "Renaming project '%s'"
+msgstr "Renommage du projet '%s'"
+
+#: ../s0_name.php:72
+msgid "New book scanning project"
+msgstr "Nouveau projet de scan de livre"
+
+#: ../s0_name.php:75
+msgid ""
+"Enter a name for this book scanning project. A folder with that name will be "
+"created. You may use only a-z A-Z 0-9 and -"
+msgstr ""
+"Entrez un nom pour ce projet de scan de livres. Un dossier ayant ce nom sera "
+"créé. Vous pouvez utiliser a-z A-Z 0-9 et -"
+
+#: ../s0_name.php:82
+msgid "Project Name"
+msgstr "Nom du projet"
+
+#: ../s0_name.php:87
+msgid "Create this project"
+msgstr "Créer ce projet"
+
+#: ../s0_name.php:87
+msgid "Rename this project"
+msgstr "Renommer ce projet"
+
+#: ../s1_meta.php:38
+#, php-format
+msgid "Metadata for project '%s' successfully edited"
+msgstr "Métadonnées du projet '%s' modifiées avec succès"
+
+#: ../s1_meta.php:40
+#, php-format
+msgid "Metadata for project '%s' not changed: nothing submitted"
+msgstr "Métadonnées du projet '%s' non modifiées : aucune donnée reçu"
+
+#: ../s1_meta.php:65
+#, php-format
+msgid "Editing metadata of project '%s'"
+msgstr "Modification des métadonnées du projet '%s'"
+
+#: ../s1_meta.php:87
+msgid "more..."
+msgstr "plus..."
+
+#: ../s1_meta.php:101
+msgid "(yyyy or yyyy-mm or yyyy-mm-dd)"
+msgstr "(aaaa ou aaaa-mm ou aaaa-mm-jj)"
+
+#: ../s1_meta.php:104
+msgid "(barcode, often starting by 978, no '-')"
+msgstr "(code à barres, commence souvent par 978, sans '-')"
+
+#: ../s1_meta.php:112
+msgid "Save this project's Metadata"
+msgstr "Sauver les métadonnées de ce projet"
+
+#: ../s2_scan.php:30
+#, php-format
+msgid "Scanning project '%s'"
+msgstr "Projet de scan '%s'"
+
+#: ../s2_scan.php:34
+msgid "Current state of the project"
+msgstr "État actuel du projet"
+
+#: ../s2_scan.php:59
+#, php-format
+msgid "%s left pictures present"
+msgstr "%s images de gauche actuellement"
+
+#: ../s2_scan.php:60
+#, php-format
+msgid "%s right pictures present"
+msgstr "%s images de droite actuellement"
+
+#: ../s2_scan.php:64
+msgid "Last LEFT picture, click to see it"
+msgstr "dernière image de GAUCHE, cliquez pour la voir"
+
+#: ../s2_scan.php:68
+msgid "Last RIGHT picture, click to see it"
+msgstr "dernière image de DROITE, cliquez pour la voir"
+
+#: ../s2_scan.php:72
+msgid "State of the scanning session"
+msgstr "État de la séance de scan"
+
+#: ../s2_scan.php:86
+msgid "Actions"
+msgstr "Actions"
+
+#: ../s2_scan.php:88
+msgid "Search for Cameras"
+msgstr "Rechercher les appareils photos"
+
+#: ../s2_scan.php:90
+msgid "Prepare cam (before zooming/shooting)"
+msgstr "Préparer les appareils (avant de zoomer/capturer)"
+
+#: ../s2_scan.php:92
+msgid "Reset Zoom"
+msgstr "Réinitialiser le zoom"
+
+#: ../s2_scan.php:94
+msgid "Zoom IN"
+msgstr "Zoomer"
+
+#: ../s2_scan.php:95
+msgid "Zoom OUT"
+msgstr "Dézoomer"
+
+#: ../s2_scan.php:96
+msgid "Zoom IN More"
+msgstr "Zoomer Plus"
+
+#: ../s2_scan.php:97
+msgid "Zoom OUT More"
+msgstr "Dézoomer Plus"
+
+#: ../s2_scan.php:99
+msgid "Shoot Pictures!"
+msgstr "Capturer les images !"
+
+#: ../s2_scan.php:100
+msgid "Shoot and get Pictures!"
+msgstr "Capturer et transférer les images !"
+
+#: ../s2_scan.php:102
+msgid "Get and delete files"
+msgstr "Télécharger et effacer les fichiers"
+
+#: ../s2_scan_ajax.php:41
+#, php-format
+msgid "can't zoom in, at %s"
+msgstr "impossible de zoomer à '%s'"
+
+#: ../s2_scan_ajax.php:64
+#, php-format
+msgid "can't zoom out, at %s"
+msgstr "impossible de dézoomer à '%s'"
+
+#: ../s2_scan_ajax.php:81 ../s2_scan_ajax.php:94
+msgid "ERROR: project not set"
+msgstr "ERREUR: projet non spécifié"
+
+#: ../s3_postproc.php:8
+msgid "Scantailor file created."
+msgstr "fichier Scantailor créé."
+
+#: ../s3_postproc.php:65
+#, php-format
+msgid "Post processing for project '%s'"
+msgstr "Post-Process du projet '%s'"
+
+#: ../s3_postproc.php:68
+msgid ""
+"Please check that you have all pictures in the right order on both Left and "
+"Right folders before launching Scantailor."
+msgstr ""
+"Merci de vérifier que vous avez toutes les images dans le bon ordre dans les "
+"dossiers Left et Right avant de lancer Scantailor."
+
+#: ../s3_postproc.php:69
+msgid ""
+"We will start by the first picture in the left folder, which is usually the "
+"cover of the book."
+msgstr ""
+"Le programme commence par la première image dans le dossier left, qui est "
+"habituellement la couverture du livre."
+
+#: ../s3_postproc.php:107 ../s6_generate.php:104
+msgid "Left images count"
+msgstr "Nombre d'images à gauche"
+
+#: ../s3_postproc.php:109 ../s6_generate.php:106
+msgid "Right images count"
+msgstr "Nombre d'images à droite"
+
+#: ../s3_postproc.php:113
+msgid ""
+"If scantailor will be launched on another computer, set this field to the "
+"path of all the projects"
+msgstr ""
+"Si Scantailor doit être lancé depuis un autre ordinateur, indiquez dans ce "
+"champ le chemin d'accès vers les projets"
+
+#: ../s3_postproc.php:115
+msgid "Substitute"
+msgstr "Subtituer"
+
+#: ../s3_postproc.php:128
+msgid "Scantailor file already generated. You can use it or regenerate it"
+msgstr ""
+"Le fichier Scantailor a déjà été généré. Vous pouvez l'utiliser ou le "
+"régénérer"
+
+#: ../s3_postproc.php:134
+msgid ""
+"This will delete all the existing files in the book/ folder and subfolder. "
+"Please confirm."
+msgstr ""
+"Cela effacera tous les fichiers existant dans le dossier book/ et ses sous-"
+"dossiers. Merci de confirmer."
+
+#: ../s3_postproc.php:136
+msgid "Enhance this project's images through Scantailor"
+msgstr "Améliorer les images de ce projet via Scantailor"
+
+#: ../s3_postproc.php:138
+msgid "No picture, can't enhance the project's pictures"
+msgstr "Aucune image, impossible d'améliorer les images de ce projet."
+
+#: ../s6_generate.php:58
+msgid ""
+"The image PDF creation process has been started. PDF will be available in "
+"some time depending on your computer's power"
+msgstr ""
+"Le processus de création du PDF image a été démarré. Le PDF sera disponible "
+"dans quelques temps, selon la vitesse de votre ordinateur."
+
+#: ../s6_generate.php:74
+#, php-format
+msgid "Generating PDF Image for Project '%s'"
+msgstr "Génération du PDF Image pour le projet '%s'"
+
+#: ../s6_generate.php:109
+msgid "Cropped left images"
+msgstr "Images gauche cadrées"
+
+#: ../s6_generate.php:111
+msgid "Cropped right images"
+msgstr "Images droite cadrées"
+
+#: ../s6_generate.php:121
+msgid "PDF creation already in progress, please wait for it..."
+msgstr "La création du PDF est déjà en cours, merci de patienter..."
+
+#: ../s6_generate.php:124
+msgid "Generate this project's PDF"
+msgstr "Créer le PDF de ce projet"
+
+#: ../s6_generate.php:126
+msgid "No picture or pictures not cropped, can't generate the project's PDF"
+msgstr ""
+"Aucune image ou images non cadrées, impossible de générer le PDF de ce projet"
+
+#: ../s6_generate.php:133
+msgid "PDF Image of the book "
+msgstr "PDF Image du livre"
+
+#: ../s6_generate.php:134
+msgid "Download the Book"
+msgstr "Télécharger le livre"
+
+#, fuzzy
+#~ msgid "This will take some time depending on your computer's power."
+#~ msgstr ""
+#~ "Le processus de création du PDF image a été démarré. Le PDF sera "
+#~ "disponible dans quelques temps, selon la vitesse de votre ordinateur."
+
+#, fuzzy
+#~ msgid "Scantailor already in progress, please wait for it..."
+#~ msgstr "La création du PDF est déjà en cours, merci de patienter..."
+
+#~ msgid "Mode is missing"
+#~ msgstr "Le mode manque"
+
+#~ msgid "Folder %s not found, you should scan pages first"
+#~ msgstr "Dossier %s non trouvé, vous devriez scanner des pages d'abord"
+
+#~ msgid "Filename"
+#~ msgstr "Nom du fichier"
+
+#~ msgid "Top X Left"
+#~ msgstr "Haut X Gauche"
+
+#~ msgid "Clear"
+#~ msgstr "Effacer"
+
+#~ msgid "Bottom X Right"
+#~ msgstr "Bas x Droite"
+
+#~ msgid "Width X Height"
+#~ msgstr "Largeur X Hauteur"
+
+#, fuzzy
+#~ msgid "Rotate Left"
+#~ msgstr "Cadrage Gauche"
+
+#, fuzzy
+#~ msgid "Rotate Right"
+#~ msgstr "Bas x Droite"
+
+#~ msgid "OK & Previous"
+#~ msgstr "OK & Précédent"
+
+#~ msgid "OK & Next"
+#~ msgstr "OK & Suivant"
+
+#~ msgid "Apply to this one and all following"
+#~ msgstr "Appliquer à celle-ci et toutes les suivantes"
+
+#~ msgid "Crop Right"
+#~ msgstr "Cadrage Droite"
+
+#~ msgid "Generate"
+#~ msgstr "Générer"
+
+#~ msgid "Check"
+#~ msgstr "Vérifier"
+
+#~ msgid "Project list"
+#~ msgstr "Liste des projets"

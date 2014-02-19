@@ -65,7 +65,7 @@ require_once("menu2.php");
 <h2><?php printf(_("Post processing for project '%s'"),he($name)); ?></h2>
 
 <p>
-  <?php __("Please check that you have all pictures in the right order on both Left and Right folders before launching Scantailor."); ?> 
+  <?php __("Please check that you have all pictures in the right order on both Left and Right folders before launching Scantailor. Remove all unnecessary pictures at the beginning of the 'right' folder and at the end of the 'left' folder."); ?> 
   <?php __("We will start by the first picture in the left folder, which is usually the cover of the book."); ?>
 </p>
 
@@ -110,7 +110,7 @@ require_once("menu2.php");
      <td><?php echo $right ?></td></tr>
 
   <tr><td colspan="2">
-<?php __("If scantailor will be launched on another computer, set this field to the path of all the projects"); echo "<br>"; ?>
+<?php __("If scantailor will be launched on another computer, set this field to the path of all the projects<br />Example: on windows you could set it to <code>z:\\</code>, on Linux/mac, this could be <code>/mnt</code>"); echo "<br>"; ?>
 </td></tr>
   <tr><th><?php __("Substitute"); ?></th>
   <td>
