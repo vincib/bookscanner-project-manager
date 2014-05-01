@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2014-02-11 20:15+0100\n"
-"PO-Revision-Date: 2014-02-11 20:18+0100\n"
+"POT-Creation-Date: 2014-04-16 19:38+0200\n"
+"PO-Revision-Date: 2014-02-19 20:40+0100\n"
 "Last-Translator: Benjamin Sonntag <benjamin@sonntag.fr>\n"
 "Language-Team: français <team@alternc.org>\n"
 "Language: fr_FR\n"
@@ -137,12 +137,12 @@ msgstr ""
 "Impossible de prendre une photo, une erreur est survenue lors de l'envoi "
 "d'une commande à l'appareil photo"
 
-#: ../gen-scantailor.php:10 ../s1_meta.php:6 ../s2_scan.php:6
+#: ../gen-scantailor.php:8 ../s1_meta.php:6 ../s2_scan.php:6
 #: ../s3_postproc.php:12 ../s6_generate.php:6
 msgid "Project name missing"
 msgstr "Le nom du projet est manquant"
 
-#: ../gen-scantailor.php:16 ../s1_meta.php:12 ../s2_scan.php:12
+#: ../gen-scantailor.php:14 ../s1_meta.php:12 ../s2_scan.php:12
 #: ../s3_postproc.php:18 ../s6_generate.php:12
 msgid "Project name is incorrect"
 msgstr "Le nom du projet est incorrect"
@@ -340,56 +340,48 @@ msgid "Actions"
 msgstr "Actions"
 
 #: ../s2_scan.php:88
+msgid "I am lost, reset everything"
+msgstr "Je suis perdu, remise à zéro"
+
+#: ../s2_scan.php:91
 msgid "Search for Cameras"
 msgstr "Rechercher les appareils photos"
 
-#: ../s2_scan.php:90
+#: ../s2_scan.php:93
 msgid "Prepare cam (before zooming/shooting)"
 msgstr "Préparer les appareils (avant de zoomer/capturer)"
 
-#: ../s2_scan.php:92
-msgid "Reset Zoom"
-msgstr "Réinitialiser le zoom"
-
-#: ../s2_scan.php:94
+#: ../s2_scan.php:95
 msgid "Zoom IN"
 msgstr "Zoomer"
 
-#: ../s2_scan.php:95
+#: ../s2_scan.php:96
 msgid "Zoom OUT"
 msgstr "Dézoomer"
 
-#: ../s2_scan.php:96
-msgid "Zoom IN More"
-msgstr "Zoomer Plus"
-
-#: ../s2_scan.php:97
-msgid "Zoom OUT More"
-msgstr "Dézoomer Plus"
+#: ../s2_scan.php:98
+msgid "Shoot Pictures!"
+msgstr "Prendre 2 Photos !"
 
 #: ../s2_scan.php:99
-msgid "Shoot Pictures!"
-msgstr "Capturer les images !"
+msgid "Shoot Pictures and get Files!"
+msgstr "Prendre 2 Photos et Transférer les Fichiers !"
 
-#: ../s2_scan.php:100
-msgid "Shoot and get Pictures!"
-msgstr "Capturer et transférer les images !"
+#: ../s2_scan.php:101
+msgid "Get Files"
+msgstr "Transférer les Fichiers !"
 
-#: ../s2_scan.php:102
-msgid "Get and delete files"
-msgstr "Télécharger et effacer les fichiers"
-
-#: ../s2_scan_ajax.php:41
+#: ../s2_scan_ajax.php:48
 #, php-format
 msgid "can't zoom in, at %s"
 msgstr "impossible de zoomer à '%s'"
 
-#: ../s2_scan_ajax.php:64
+#: ../s2_scan_ajax.php:71
 #, php-format
 msgid "can't zoom out, at %s"
 msgstr "impossible de dézoomer à '%s'"
 
-#: ../s2_scan_ajax.php:81 ../s2_scan_ajax.php:94
+#: ../s2_scan_ajax.php:88 ../s2_scan_ajax.php:101
 msgid "ERROR: project not set"
 msgstr "ERREUR: projet non spécifié"
 
@@ -405,10 +397,12 @@ msgstr "Post-Process du projet '%s'"
 #: ../s3_postproc.php:68
 msgid ""
 "Please check that you have all pictures in the right order on both Left and "
-"Right folders before launching Scantailor."
+"Right folders before launching Scantailor. Remove all unnecessary pictures "
+"at the beginning of the 'right' folder and at the end of the 'left' folder."
 msgstr ""
 "Merci de vérifier que vous avez toutes les images dans le bon ordre dans les "
-"dossiers Left et Right avant de lancer Scantailor."
+"dossiers Left et Right avant de lancer Scantailor. Supprimez les images "
+"inutiles au début du dossier \"right\" et à la fin du dossier \"left\"."
 
 #: ../s3_postproc.php:69
 msgid ""
@@ -418,21 +412,24 @@ msgstr ""
 "Le programme commence par la première image dans le dossier left, qui est "
 "habituellement la couverture du livre."
 
-#: ../s3_postproc.php:107 ../s6_generate.php:104
+#: ../s3_postproc.php:107 ../s6_generate.php:112
 msgid "Left images count"
 msgstr "Nombre d'images à gauche"
 
-#: ../s3_postproc.php:109 ../s6_generate.php:106
+#: ../s3_postproc.php:109 ../s6_generate.php:114
 msgid "Right images count"
 msgstr "Nombre d'images à droite"
 
 #: ../s3_postproc.php:113
 msgid ""
 "If scantailor will be launched on another computer, set this field to the "
-"path of all the projects"
+"path of all the projects<br />Example: on windows you could set it to "
+"<code>z:\\</code>, on Linux/mac, this could be <code>/mnt</code>"
 msgstr ""
 "Si Scantailor doit être lancé depuis un autre ordinateur, indiquez dans ce "
-"champ le chemin d'accès vers les projets"
+"champ le chemin d'accès vers les projets.<br />Par exemple : sous windows, "
+"vous pouvez entre <code>z:\\</code>, sous Linux/mac, cela pourrait être "
+"<code>/mnt</code>"
 
 #: ../s3_postproc.php:115
 msgid "Substitute"
@@ -460,7 +457,7 @@ msgstr "Améliorer les images de ce projet via Scantailor"
 msgid "No picture, can't enhance the project's pictures"
 msgstr "Aucune image, impossible d'améliorer les images de ce projet."
 
-#: ../s6_generate.php:58
+#: ../s6_generate.php:66
 msgid ""
 "The image PDF creation process has been started. PDF will be available in "
 "some time depending on your computer's power"
@@ -468,39 +465,51 @@ msgstr ""
 "Le processus de création du PDF image a été démarré. Le PDF sera disponible "
 "dans quelques temps, selon la vitesse de votre ordinateur."
 
-#: ../s6_generate.php:74
+#: ../s6_generate.php:82
 #, php-format
 msgid "Generating PDF Image for Project '%s'"
 msgstr "Génération du PDF Image pour le projet '%s'"
 
-#: ../s6_generate.php:109
+#: ../s6_generate.php:117
 msgid "Cropped left images"
 msgstr "Images gauche cadrées"
 
-#: ../s6_generate.php:111
+#: ../s6_generate.php:119
 msgid "Cropped right images"
 msgstr "Images droite cadrées"
 
-#: ../s6_generate.php:121
+#: ../s6_generate.php:129
 msgid "PDF creation already in progress, please wait for it..."
 msgstr "La création du PDF est déjà en cours, merci de patienter..."
 
-#: ../s6_generate.php:124
+#: ../s6_generate.php:132
 msgid "Generate this project's PDF"
 msgstr "Créer le PDF de ce projet"
 
-#: ../s6_generate.php:126
+#: ../s6_generate.php:134
 msgid "No picture or pictures not cropped, can't generate the project's PDF"
 msgstr ""
 "Aucune image ou images non cadrées, impossible de générer le PDF de ce projet"
 
-#: ../s6_generate.php:133
+#: ../s6_generate.php:141
 msgid "PDF Image of the book "
 msgstr "PDF Image du livre"
 
-#: ../s6_generate.php:134
+#: ../s6_generate.php:142
 msgid "Download the Book"
 msgstr "Télécharger le livre"
+
+#~ msgid "Reset Zoom"
+#~ msgstr "Réinitialiser le zoom"
+
+#~ msgid "Zoom IN More"
+#~ msgstr "Zoomer Plus"
+
+#~ msgid "Zoom OUT More"
+#~ msgstr "Dézoomer Plus"
+
+#~ msgid "Get and delete files"
+#~ msgstr "Télécharger et effacer les fichiers"
 
 #, fuzzy
 #~ msgid "This will take some time depending on your computer's power."

@@ -357,3 +357,24 @@ function clearrotate() {
     $('#r').val(0);
     rotate(0);
 }
+
+
+
+function iamlost() {
+    $('#camerastatus').html("<div class=\"alert\">Resetting everything...</div>");
+      var ret = $.ajax({
+	url:            's2_scan_ajax.php?action=resetall',
+	    type:           'GET',
+	    cache:          false,
+	    async:           true,
+	    success: function(data) {
+	    if (data.substring(0,6)=="ERROR:") {
+	      data="<div class=\"alert alert-error\">"+data+"</div>";
+	    }
+	    if (data.substring(0,3)=="OK:") {
+	      data="<div class=\"alert alert-success\">"+data+"</div>";
+	    }
+	    $('#camerastatus').html(data);
+	  }
+	})
+}

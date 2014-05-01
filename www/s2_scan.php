@@ -2,6 +2,12 @@
 
 require_once("config.php");
 
+// limit access to this page from localhost only : 
+if ($_SERVER["REMOTE_ADDR"]!="127.0.0.1") {
+  require_once("s2_scan_no.php"); 
+  exit();
+}
+
 if (!isset($_REQUEST["name"])) {
   $error=_("Project name missing");
   require("index.php");
@@ -61,11 +67,11 @@ printf(_("%s right pictures present")."<br />",$right);
 echo "</p>\n";
 
 if ($left) {
-  echo "<a href=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" style=\"width: 100px;\" title=\""._("Last LEFT picture, click to see it")."\">&nbsp;";
+  echo "<a href=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/left/".$lastLeftFile."\" style=\"width: 100px;\" title=\""._("Last LEFT picture, click to see it")."\"></a>";
 }
 
 if ($right) {
-  echo "<a href=\"".PROJECT_WWW."/".$name."/right/".$lastRightFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/right/".$lastRightFile."\" style=\"width: 100px;\" title=\""._("Last RIGHT picture, click to see it")."\">";
+  echo "<a href=\"".PROJECT_WWW."/".$name."/right/".$lastRightFile."\" target=\"blank\"><img src=\"".PROJECT_WWW."/".$name."/right/".$lastRightFile."\" style=\"width: 100px;\" title=\""._("Last RIGHT picture, click to see it")."\"></a>";
 }
 
 ?>
@@ -84,22 +90,25 @@ if ($right) {
 
 <div class="span6">
    <h4><?php __("Actions"); ?></h4>
+<?php
+				/*
+ <p>
+  <button class="button" type="button" name="search" id="search" onclick="iamlost()" /><?php __("I am lost, reset everything"); ?></button>
+</p> 
+				*/
+?>
 <p>
   <button class="button" type="button" name="search" id="search" onclick="cam_search()" /><?php __("Search for Cameras"); ?></button>
 </p><p>
   <button class="button" type="button" name="prepare" id="prepare" onclick="cam_prepare()" /><?php __("Prepare cam (before zooming/shooting)"); ?></button>
 </p><p>
-  <button class="button" type="button" name="resetzoom" id="resetzoom" onclick="cam_resetzoom()" /><?php __("Reset Zoom"); ?></button>
-</p><p>
   <button class="button" type="button" name="zoomin" id="zoomin" onclick="cam_zoomin(1)" /><?php __("Zoom IN"); ?></button>
   <button class="button" type="button" name="zoomout" id="zoomout" onclick="cam_zoomout(1)" /><?php __("Zoom OUT"); ?></button>
-  <button class="button" type="button" name="zoominmore" id="zoominmore" onclick="cam_zoomin(5)" /><?php __("Zoom IN More"); ?></button>
-  <button class="button" type="button" name="zoomoutmore" id="zoomoutmore" onclick="cam_zoomout(5)" /><?php __("Zoom OUT More"); ?></button>
 </p><p>
   <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot('<?php echo addslashes($name); ?>',0)" /><?php __("Shoot Pictures!"); ?></button>
-  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot('<?php echo addslashes($name); ?>',1)" /><?php __("Shoot and get Pictures!"); ?></button>
+  <button class="button" type="button" name="shoot" id="shoot" onclick="cam_shoot('<?php echo addslashes($name); ?>',1)" /><?php __("Shoot Pictures and get Files!"); ?></button>
 </p><p>
-  <button class="button" type="button" name="get" id="get" onclick="cam_get('<?php echo addslashes($name); ?>')" /><?php __("Get and delete files"); ?></button>
+  <button class="button" type="button" name="get" id="get" onclick="cam_get('<?php echo addslashes($name); ?>')" /><?php __("Get Files"); ?></button>
 </p>
 </div>
 

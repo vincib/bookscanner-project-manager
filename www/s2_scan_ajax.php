@@ -11,6 +11,13 @@ if (!isset($_REQUEST["action"])) {
 
 switch ($_REQUEST["action"]) {
   
+case "resetall":
+  unset($out);
+  exec("sudo /var/www/sh/boot.sh 2>&1",$out,$ret);
+  if ($ret!=0) echo "ERROR: "; else echo "OK: ";
+  echo implode("<br />",$out);
+  break;
+
 case "search":
   unset($out);
   exec(CAMDRIVER." search 2>&1",$out,$ret);

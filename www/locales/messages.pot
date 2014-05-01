@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BookscannerProjectManager 1.0\n"
 "Report-Msgid-Bugs-To: team@bookscanner.fr\n"
-"POT-Creation-Date: 2014-02-19 20:32+0100\n"
+"POT-Creation-Date: 2014-04-16 19:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -334,56 +334,48 @@ msgid "Actions"
 msgstr ""
 
 #: ../s2_scan.php:88
+msgid "I am lost, reset everything"
+msgstr ""
+
+#: ../s2_scan.php:91
 msgid "Search for Cameras"
 msgstr ""
 
-#: ../s2_scan.php:90
+#: ../s2_scan.php:93
 msgid "Prepare cam (before zooming/shooting)"
 msgstr ""
 
-#: ../s2_scan.php:92
-msgid "Reset Zoom"
-msgstr ""
-
-#: ../s2_scan.php:94
+#: ../s2_scan.php:95
 msgid "Zoom IN"
 msgstr ""
 
-#: ../s2_scan.php:95
+#: ../s2_scan.php:96
 msgid "Zoom OUT"
 msgstr ""
 
-#: ../s2_scan.php:96
-msgid "Zoom IN More"
-msgstr ""
-
-#: ../s2_scan.php:97
-msgid "Zoom OUT More"
-msgstr ""
-
-#: ../s2_scan.php:99
+#: ../s2_scan.php:98
 msgid "Shoot Pictures!"
 msgstr ""
 
-#: ../s2_scan.php:100
-msgid "Shoot and get Pictures!"
+#: ../s2_scan.php:99
+msgid "Shoot Pictures and get Files!"
 msgstr ""
 
-#: ../s2_scan.php:102
-msgid "Get and delete files"
+#: ../s2_scan.php:101
+msgid "Get Files"
 msgstr ""
 
-#: ../s2_scan_ajax.php:41
+#: ../s2_scan_ajax.php:48
 #, php-format
 msgid "can't zoom in, at %s"
 msgstr ""
 
-#: ../s2_scan_ajax.php:64
+#: ../s2_scan_ajax.php:71
 #, php-format
 msgid "can't zoom out, at %s"
 msgstr ""
 
-#: ../s2_scan_ajax.php:81 ../s2_scan_ajax.php:94
+#: ../s2_scan_ajax.php:88 ../s2_scan_ajax.php:101
 msgid "ERROR: project not set"
 msgstr ""
 
